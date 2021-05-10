@@ -1,9 +1,10 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace Refrences
+namespace UnityEngine.Events
 {
-    public class EventPassthrough : MonoBehaviour
+    public class EventListner : MonoBehaviour
     {
         [SerializeField]
         private EventRefrence _eventRefrence;
@@ -27,17 +28,23 @@ namespace Refrences
             }
         }
         public Object DefaultData = default;
-        [SerializeField, TabGroup("Default", true,AnimateVisibility = false)]
-        private UnityRefrenceEvent _passThroughEvent;
+        [SerializeField, TabGroup("Default", true, AnimateVisibility = false)]
+        private UnityEventWrap<object> _passThroughEvent;
         [SerializeField, TabGroup("Early", true, AnimateVisibility = false)]
-        private UnityRefrenceEvent _earlyPassthroughEvent;
+        private UnityEventWrap<object> _earlyPassthroughEvent;
         [SerializeField, TabGroup("Late", true, AnimateVisibility = false)]
-        private UnityRefrenceEvent _latePassthroughEvent;
+        private UnityEventWrap<object> _latePassthroughEvent;
 
-        private void Start()
+        private void OnEnable()
         {
-            if (_eventRefrence != null)
-                _eventRefrence.eventRefrence += Trigger;
+            if (EventRefrence != null && EventRefrence.eventRefrence != null)
+                EventRefrence.eventRefrence.AddListener(Trigger);
+        }
+
+        private void OnDisable()
+        {
+            if (EventRefrence != null && EventRefrence.eventRefrence != null)
+                EventRefrence.eventRefrence.RemoveListener(Trigger);
         }
         [Button]
         public void TriggerDefault() => Trigger(DefaultData);
