@@ -4,12 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CustomAttributes;
+using Sirenix.OdinInspector;
 
 [ExecuteInEditMode]
 public class BF_MeshExtrusion : MonoBehaviour {
 
-    private Mesh originalMesh;
-    [LocalComponent][SerializeField]
+    public Mesh originalMesh;
     private MeshFilter meshFilter;
 
     public float offsetValue = 1f;
@@ -28,9 +28,15 @@ public class BF_MeshExtrusion : MonoBehaviour {
     
     void Awake()
     {
-        originalMesh = meshFilter.sharedMesh;
         CheckValues();
         BuildGeometry();
+    }
+
+    [ContextMenu("Assign")][Button]
+    private void AssignMesh() 
+    {
+        meshFilter = GetComponent<MeshFilter>();
+        originalMesh = meshFilter.sharedMesh;
     }
 
     private void OnEnable()
@@ -53,7 +59,7 @@ public class BF_MeshExtrusion : MonoBehaviour {
     {
         offsetValueMem = offsetValue;
         numberOfStacksMem = numberOfStacks;
-        //meshFilter = gameObject.GetComponent<MeshFilter>();
+        meshFilter = gameObject.GetComponent<MeshFilter>();
         oldTri = originalMesh.triangles;
         oldVert = originalMesh.vertices;
         oldNorm = originalMesh.normals;
