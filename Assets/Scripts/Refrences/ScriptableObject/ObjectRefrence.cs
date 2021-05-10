@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Refrences
 {
@@ -26,6 +27,6 @@ namespace Refrences
         }
         protected virtual void ValueChanged(object oldValue, object newValue) { }
         protected void TriggerOnValueChanged() => OnValueChanged?.Invoke(Value);
-        public UnityRefrenceEvent OnValueChanged = default;
+        public UnityEventWrap<object> OnValueChanged = default;
     }
 }

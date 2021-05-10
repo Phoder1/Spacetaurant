@@ -3,9 +3,10 @@ using PowerGamers.Misc;
 using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class MoveController : MonoBehaviour
+public class MoveController : MonoWrap
 {
     [SerializeField]
     GameObject planet = default;
@@ -31,7 +32,7 @@ public class MoveController : MonoBehaviour
     Vector2 moveDir = Vector2.zero;
     private float _colliderRadius = default;
 
-    public event Action<Vector3> OnMove = default;
+    public UnityEventWrap<object> OnMove = default;
 
     const int MAX_MOVE_STEPS = 20;
 
@@ -62,7 +63,7 @@ public class MoveController : MonoBehaviour
 
         void DrawLine(Landmark landmark)
         {
-            var direction = SphereFuncs.DirectionToPoint(transform, landmark.transform.position);
+            var direction = SphereTools.DirectionToPoint(transform, landmark.transform.position);
             Debug.DrawLine(transform.position, transform.position + direction);
         }
 #endif
