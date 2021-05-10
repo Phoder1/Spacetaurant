@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Refrences;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 public abstract class MonoWrap : MonoBehaviour
 {
-    [SerializeField]
-    private bool _refrenceToObject;
-    [SerializeField, ShowIf("refrenceToObject")]
+    [SerializeField, FoldoutGroup("Refrence", AnimateVisibility = false, Expanded = false)]
     private ObjectRefrence _refrence;
 
     protected virtual void Awake()
     {
-        if (_refrenceToObject)
+        if (_refrence != null)
             _refrence.Value = this;
 
         OnAwake();
