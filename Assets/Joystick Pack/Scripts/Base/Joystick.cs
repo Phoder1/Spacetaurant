@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
@@ -8,6 +8,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public float Horizontal { get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; } }
     public float Vertical { get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; } }
     public Vector2 Direction { get { return new Vector2(Horizontal, Vertical); } }
+    [PropertyOrder(98)] public UnityEventForRefrence OnMove;
 
     public float HandleRange
     {
@@ -31,8 +32,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] private bool snapX = false;
     [SerializeField] private bool snapY = false;
 
-    [SerializeField] protected RectTransform background = null;
-    [SerializeField] private RectTransform handle = null;
+    [SerializeField, BoxGroup(Order = 99)] protected RectTransform background = null;
+    [SerializeField, BoxGroup(Order = 99)] private RectTransform handle = null;
     private RectTransform baseRect = null;
 
     private Canvas canvas;
@@ -74,6 +75,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
         handle.anchoredPosition = input * radius * handleRange;
+
+        OnMove?.Invoke(input);
     }
 
     protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
@@ -133,6 +136,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+
+        OnMove?.Invoke(input);
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

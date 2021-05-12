@@ -27,6 +27,6 @@ namespace Refrences
         }
         protected virtual void ValueChanged(object oldValue, object newValue) { }
         protected void TriggerOnValueChanged() => OnValueChanged?.Invoke(Value);
-        public UnityEventWrap<object> OnValueChanged = default;
+        public UnityEventForRefrence OnValueChanged = default;
     }
 }

@@ -10,6 +10,6 @@ public class GameObjectRefrencer : MonoBehaviour
     protected virtual void Awake()
     {
         if (_refrence != null)
-            _refrence.Value = this;
+            _refrence.Value = gameObject;
     }
 }

@@ -11,7 +11,6 @@ public class Landmark : MonoBehaviour
     public static List<Landmark> landmarksPositions = new List<Landmark>();
     private bool _landmarkEnabled;
     #region Events
-    public event Action<bool> OnStateChangeEvent;
     public event Action OnDestroyEvent;
     public static event Action<Landmark> OnNewLandmarkEvent;
     #endregion

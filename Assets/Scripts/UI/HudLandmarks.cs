@@ -18,10 +18,8 @@ public class HudLandmarks : MonoBehaviour
         {
             this.landmark = landmark;
             this.marker = marker;
-            landmark.OnStateChangeEvent += OnLandmarkStateChange;
             landmark.OnDestroyEvent += OnLandmarkDestroyed;
         }
-        private void OnLandmarkStateChange(bool state) => Hidden = state;
         private void OnLandmarkDestroyed() => markers.Remove(this);
         private bool Hidden
         {

@@ -9,7 +9,7 @@ namespace UnityEngine.Events
         [SerializeField, Tooltip("A child event will call this event on trigger."), OnCollectionChanged(Before = "UnsubscribeFromChilds", After = "SubscribeToChilds")]
         private List<EventRefrence> _childEvents;
         [ReadOnly, Tooltip("Actions on trigger.")]
-        public UnityEventWrap<object> eventRefrence = new UnityEventWrap<object>();
+        public UnityEventForRefrence eventRefrence = new UnityEventForRefrence();
         public void TriggerEvent() => TriggerEvent(null);
         public void TriggerEvent(object obj) => eventRefrence?.Invoke(obj);
         private void OnDisable() => eventRefrence.RemoveAllListeners();

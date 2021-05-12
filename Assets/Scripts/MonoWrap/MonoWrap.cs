@@ -4,8 +4,11 @@ using UnityEngine;
 
 public abstract class MonoWrap : MonoBehaviour
 {
-    [SerializeField, FoldoutGroup("Refrence", AnimateVisibility = false, Expanded = false)]
+    [SerializeField]
     private ObjectRefrence _refrence;
+    [Space(order = 998)]
+    [SerializeField, PropertyOrder(999)]
+    protected bool _debug;
 
     protected virtual void Awake()
     {

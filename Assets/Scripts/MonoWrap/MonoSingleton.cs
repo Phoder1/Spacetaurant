@@ -18,6 +18,8 @@ public class MonoSingleton<T> : MonoWrap where T : MonoSingleton<T>
                     var singletonObj = new GameObject();
                     singletonObj.name = typeof(T).ToString();
                     _instance = singletonObj.AddComponent<T>();
+
+                    Debug.LogWarning("Singleton was loaded automatically, manual refrencing in scene is prefered.");
                 }
             }
             return _instance;
