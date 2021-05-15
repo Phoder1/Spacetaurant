@@ -5,11 +5,10 @@ namespace Spacetaurant
 {
     public class Planet : MonoBehaviour
     {
-        [SerializeField]
-        private bool _isMainPlanet;
+        public bool IsMainPlanet = true;
         private void OnEnable()
         {
-            if (_isMainPlanet)
+            if (IsMainPlanet)
                 AssignPlanet();
         }
         private void OnDisable()

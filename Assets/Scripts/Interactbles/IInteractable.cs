@@ -6,9 +6,9 @@ namespace Spacetaurant.Interactable
     public interface IInteractable
     {
         void StartInteraction();
-        void EndInteraction();
+        void CancelInteraction();
         Vector3 Position { get; }
-        bool Interactable { get; set; }
+        bool IsInteractable { get; set; }
         float InteractionTime { get; }
         Sprite ButtonIcon { get; }
     }
@@ -25,7 +25,7 @@ namespace Spacetaurant.Interactable
                 =>
                 {
                     float tempDist;
-                    if ((tempDist = Vector3.Distance(pos, x.Position)) < distance)
+                    if (x.IsInteractable && (tempDist = Vector3.Distance(pos, x.Position)) < distance)
                     {
                         closest = x;
                         distance = tempDist;
@@ -47,5 +47,7 @@ namespace Spacetaurant.Interactable
         }
         public void UpdateDistance(Vector3 pos)
             => distance = Vector3.Distance(pos, interactable.Position);
+
+        public static InteractableHit Clean => new InteractableHit(null, Mathf.Infinity);
     }
 }

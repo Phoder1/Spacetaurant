@@ -39,7 +39,7 @@ namespace Spacetaurant.Player
         private bool _interacting = default;
         public bool Interactiong => _interacting;
 
-        private InteractableHit _closestInteractableHit = default;
+        private InteractableHit _closestInteractableHit = InteractableHit.Clean;
         public InteractableHit InteractableHit => _closestInteractableHit;
         #endregion
         #region UnityCallbacks
@@ -77,21 +77,21 @@ namespace Spacetaurant.Player
         public void UpdateClosestInteractable()
         {
             InteractableHit closestHit = Interactables.GetClosest(transform.position);
+            bool sameInteractable = (InteractableHit.interactable != null && closestHit.interactable != null) && InteractableHit.interactable != closestHit.interactable;
+            bool moved = (InteractableHit.distance - closestHit.distance) > 0.01f;
 
-            if (InteractableHit != closestHit)
+            if (!sameInteractable || moved || !_closestInteractableHit.interactable.IsInteractable)
             {
-                if (closestHit == null || closestHit.interactable == null || closestHit.distance > _detectionRange)
+                _closestInteractableHit = closestHit;
+
+
+                if (closestHit.interactable == null || closestHit.distance > _detectionRange)
                 {
-                    _closestInteractableHit = null;
+                    _closestInteractableHit = InteractableHit.Clean;
                     OnNewClosestInteractable.Invoke(null);
                 }
-                else
-                {
-                    if (InteractableHit == null || InteractableHit != closestHit)
-                        OnNewClosestInteractable?.Invoke(closestHit.interactable);
-
-                    _closestInteractableHit = closestHit;
-                }
+                else if (!sameInteractable)
+                    OnNewClosestInteractable?.Invoke(closestHit.interactable);
             }
         }
         public void MoveTowards(Vector3 direction)
@@ -130,7 +130,7 @@ namespace Spacetaurant.Player
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, _detectionRange);
 
-            if (InteractableHit != null)
+            if (InteractableHit != null && InteractableHit.interactable != null)
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(transform.position, InteractableHit.interactable.Position);
@@ -179,6 +179,7 @@ namespace Spacetaurant.Player
         }
         public class PlayerInteractState : PlayerState
         {
+            bool _interacting = false;
             public PlayerInteractState(PlayerController controller) : base(controller) { }
             protected override void OnEnable()
             {
@@ -189,12 +190,18 @@ namespace Spacetaurant.Player
                 if (!ctrl.InteractionButton && ctrl.JoystickDirection != Vector2.zero)
                     SetStateToWalk();
 
-                if (ctrl.InteractableHit != null && ctrl.InteractableHit.interactable != null && ctrl.InteractableHit.distance <= ctrl._detectionRange)
+                if (ctrl.InteractableHit.interactable != null && ctrl.InteractableHit.interactable.IsInteractable && ctrl.InteractableHit.distance <= ctrl._detectionRange)
                 {
                     ctrl.InteractableHit.UpdateDistance(ctrl.transform.position);
 
                     if (ctrl.InteractableHit.distance <= ctrl._interactionRange)
-                        ctrl.InteractableHit.interactable.StartInteraction();
+                    {
+                        if (!_interacting)
+                        {
+                            ctrl.InteractableHit.interactable.StartInteraction();
+                            _interacting = true;
+                        }
+                    }
                     else
                         ctrl.MoveTo(ctrl.InteractableHit.interactable.Position, ctrl.InteractableHit.distance);
                 }
@@ -204,8 +211,8 @@ namespace Spacetaurant.Player
             void SetStateToWalk() => ctrl.PlayerStateMachine.State = new PlayerWalkState(ctrl);
             protected override void OnDisable()
             {
-                if (ctrl.InteractableHit != null && ctrl.InteractableHit.interactable != null)
-                    ctrl.InteractableHit.interactable.EndInteraction();
+                if (ctrl.InteractableHit != null && ctrl.InteractableHit.interactable != null && _interacting)
+                    ctrl.InteractableHit.interactable.CancelInteraction();
             }
         }
         #endregion
