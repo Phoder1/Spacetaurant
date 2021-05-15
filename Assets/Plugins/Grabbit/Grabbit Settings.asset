@@ -1097,7 +1097,7 @@ MonoBehaviour:
   LimitBodyVelocityInGravityMode: 0
   SetGravityInDirectionOfMouse: 0
   PausePositionReajustment: 1
-  ControlRotation: 0
+  ControlRotation: 1
   MaxVelocity: 10
   CollisionMaxVelocity: 1
   MaxAngularVelocity: 10
