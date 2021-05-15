@@ -9,10 +9,17 @@ namespace Spacetaurant.Tools
     {
         [Flags] private enum Modes { AutoRotation = 1, AutoFlat = 2, AutoAssign = 4 }
         [SerializeField, EnumToggleButtons]
-        private Modes _workModes = (Modes)~0;
+        private Modes _workModes = Modes.AutoRotation | Modes.AutoAssign;
 
         [SerializeField]
         private LayerMask layer;
+
+        [SerializeField, ReadOnly]
+        private Transform _partTransform;
+        private void Awake()
+        {
+            transform.SetParent(_partTransform);
+        }
 #if UNITY_EDITOR
         private Vector3 _lastPos;
 
@@ -25,7 +32,7 @@ namespace Spacetaurant.Tools
                     return;
 
                 if (_workModes.HasFlag(Modes.AutoAssign))
-                    AssignPart();
+                    AssignPart();                
 
                 if (_workModes.HasFlag(Modes.AutoRotation))
                     Rotate();
@@ -41,16 +48,18 @@ namespace Spacetaurant.Tools
         [Button, FoldoutGroup("Manual activation")]
         private void AssignPart()
         {
-            if (_hit == null && !CastRay(out _hit))
-                    return;
+            transform.SetParent(null);
 
-            transform.SetParent(_hit.Value.transform);
+            if (_hit == null && !CastRay(out _hit))
+                return;
+
+            _partTransform = _hit.Value.transform;
         }
         [Button, FoldoutGroup("Manual activation")]
         private void Rotate()
         {
             if (_hit == null && !CastRay(out _hit))
-                    return;
+                return;
 
             transform.rotation = Quaternion.FromToRotation(transform.up, _hit.Value.normal) * transform.rotation;
         }
@@ -58,10 +67,16 @@ namespace Spacetaurant.Tools
         private void Flatten()
         {
             if (_hit == null && !CastRay(out _hit))
-                    return;
+                return;
 
-            var meshFilter = GetComponent<MeshFilter>();
-            var closestPoint = meshFilter.sharedMesh.bounds.ClosestPoint(_hit.Value.point);
+            var mesh = GetComponentInChildren<MeshFilter>()?.sharedMesh;
+            if (mesh == null)
+            {
+                mesh = GetComponentInChildren<SkinnedMeshRenderer>()?.sharedMesh;
+                if (mesh == null)
+                    _workModes &= ~Modes.AutoFlat; 
+            }
+            var closestPoint = mesh.bounds.ClosestPoint(_hit.Value.point);
             transform.position += _hit.Value.point - (transform.position - closestPoint);
         }
         private bool CastRay(out RaycastHit? hit)
