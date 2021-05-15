@@ -132,13 +132,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         return 0;
     }
 
-    public virtual void OnPointerUp(PointerEventData eventData)
-    {
-        input = Vector2.zero;
-        handle.anchoredPosition = Vector2.zero;
-
-        OnMove?.Invoke(input);
-    }
+    public virtual void OnPointerUp(PointerEventData eventData) => ResetInput();
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
     {
@@ -149,6 +143,19 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             return localPoint - (background.anchorMax * baseRect.sizeDelta) + pivotOffset;
         }
         return Vector2.zero;
+    }
+
+    void OnDisable()
+    {
+        ResetInput();
+    }
+
+    private void ResetInput()
+    {
+        input = Vector2.zero;
+        handle.anchoredPosition = Vector2.zero;
+
+        OnMove?.Invoke(input);
     }
 }
 

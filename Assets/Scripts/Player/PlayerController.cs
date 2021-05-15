@@ -123,6 +123,7 @@ namespace Spacetaurant.Player
         public void StartInteraction()
         {
             _interactionButtonPressed = true;
+            _interacting = true;
         }
         public void StopInteraction()
         {

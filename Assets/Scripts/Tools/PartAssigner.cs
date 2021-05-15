@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Spacetaurant.Tools
 {
-#if UNITY_EDITOR
     [ExecuteInEditMode]
     public class PartAssigner : MonoBehaviour
     {
@@ -14,6 +13,7 @@ namespace Spacetaurant.Tools
 
         [SerializeField]
         private LayerMask layer;
+#if UNITY_EDITOR
         private Vector3 _lastPos;
 
         private RaycastHit? _hit;

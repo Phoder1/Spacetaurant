@@ -1,6 +1,4 @@
 using CustomAttributes;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Spacetaurant
@@ -8,11 +6,15 @@ namespace Spacetaurant
     [RequireComponent(typeof(Collider))]
     public class CulledPart : MonoBehaviour
     {
+        [LocalComponent(true)]
         public Collider partCollider;
+        [HideInInspector]
         public Vector3 center;
         private void Awake()
         {
-            partCollider = GetComponent<Collider>();
+            if (partCollider == null)
+                partCollider = GetComponent<Collider>();
+
             center = partCollider.bounds.center;
             Sphere_Culling.sphereParts.Add(this);
         }

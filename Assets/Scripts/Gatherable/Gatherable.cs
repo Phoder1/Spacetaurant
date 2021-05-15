@@ -82,7 +82,6 @@ namespace Spacetaurant.Interactable
         }
         public void EndInteraction()
         {
-            if(Time.time - _int)
             OnInteractionEnd?.Invoke(this);
         }
         void Update()
