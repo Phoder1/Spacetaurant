@@ -45,5 +45,7 @@ namespace Spacetaurant.Interactable
             this.interactable = interactable;
             this.distance = distance;
         }
+        public void UpdateDistance(Vector3 pos)
+            => distance = Vector3.Distance(pos, interactable.Position);
     }
 }
