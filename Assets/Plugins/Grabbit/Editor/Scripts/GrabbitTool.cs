@@ -159,9 +159,9 @@ namespace Grabbit
 
                 if (!butDontChangeTools)
                 {
-                    EditorTools.RestorePreviousPersistentTool();
-                    if (EditorTools.IsActiveTool(this))
-                        EditorTools.SetActiveTool((EditorTool) null);
+                    ToolManager.RestorePreviousPersistentTool();
+                    if (ToolManager.IsActiveTool(this))
+                        ToolManager.SetActiveTool((EditorTool) null);
                 }
 
                 toolbarIcon.image = settings.GrabbitLogo;
@@ -227,7 +227,7 @@ namespace Grabbit
         private void PrepareActivationHookUps()
         {
             GrabbitHandler.InstantDestroyFlag = false;
-            EditorTools.activeToolChanged += DisableToolOnChange;
+            ToolManager.activeToolChanged += DisableToolOnChange;
 
             EditorApplication.playModeStateChanged += ResetOnPlay;
 
@@ -260,7 +260,7 @@ namespace Grabbit
         {
 #if UNITY_2020_2
 #else
-            EditorTools.activeToolChanged -= DisableToolOnChange;
+            ToolManager.activeToolChanged -= DisableToolOnChange;
 #endif
             SceneView.beforeSceneGui -= BeforeSceneViewGUI;
             SceneView.duringSceneGui -= DuringSceneViewGUI;
@@ -298,7 +298,7 @@ namespace Grabbit
                 GrabbitHandler.InstantDestroyFlag = false;
                 Selection.objects = new Object[0] { };
 
-                EditorTools.RestorePreviousPersistentTool();
+                ToolManager.RestorePreviousPersistentTool();
                 EditorApplication.UnlockReloadAssemblies();
             }
         }
@@ -346,7 +346,7 @@ namespace Grabbit
             //    GrabbitEditor.DisableGrabbitToolChangeChecks();
             GrabbitHandler.InstantDestroyFlag = true;
             ExitTool();
-            EditorTools.SetActiveTool((EditorTool) null);
+            ToolManager.SetActiveTool((EditorTool) null);
             return true;
         }
 
@@ -363,7 +363,7 @@ namespace Grabbit
 
         private void DisableToolOnChange()
         {
-            if (EditorTools.activeToolType != typeof(GrabbitTool))
+            if (ToolManager.activeToolType != typeof(GrabbitTool))
                 DisableLogic(true);
         }
 
@@ -545,7 +545,7 @@ namespace Grabbit
 
         private void BeforeSceneViewGUI(SceneView obj)
         {
-            if (EditorTools.activeToolType != typeof(GrabbitTool) && Active)
+            if (ToolManager.activeToolType != typeof(GrabbitTool) && Active)
             {
                 DisableLogic();
                 return;

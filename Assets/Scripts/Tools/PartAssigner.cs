@@ -18,6 +18,7 @@ namespace Spacetaurant.Tools
         private Transform _partTransform;
         private void Awake()
         {
+            if(Application.isPlaying)
             transform.SetParent(_partTransform);
         }
 #if UNITY_EDITOR
@@ -48,7 +49,7 @@ namespace Spacetaurant.Tools
         [Button, FoldoutGroup("Manual activation")]
         private void AssignPart()
         {
-            transform.SetParent(null);
+         
 
             if (_hit == null && !CastRay(out _hit))
                 return;

@@ -1051,7 +1051,7 @@ MonoBehaviour:
   LayersToIgnore: 0
   ForceLayer: 0
   LayerToSwitchTo: 0
-  UseDynamicNonConvexColliders: 1
+  UseDynamicNonConvexColliders: 0
   ColliderBakingMode: 1
   MaxMeshCollidersCreated: 6
   ColliderResolution: 300000
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   tagSelected: Untagged
   AlignStrength: 1
   ExtraDragForRotationMode: 100
-  GravityStrength: {x: 0, y: -9.7965765, z: -0.000001167843}
+  GravityStrength: {x: 0, y: -9.799564, z: -0.0000011681992}
   LimitBodyVelocityInGravityMode: 0
   SetGravityInDirectionOfMouse: 0
   PausePositionReajustment: 1
