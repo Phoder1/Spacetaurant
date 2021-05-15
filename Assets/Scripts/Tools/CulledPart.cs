@@ -6,14 +6,13 @@ namespace Spacetaurant
     [RequireComponent(typeof(Collider))]
     public class CulledPart : MonoBehaviour
     {
-        [LocalComponent(true)]
+        [HideInInspector]
         public Collider partCollider;
         [HideInInspector]
         public Vector3 center;
         private void Awake()
         {
-            if (partCollider == null)
-                partCollider = GetComponent<Collider>();
+            partCollider = GetComponent<Collider>();
 
             center = partCollider.bounds.center;
             Sphere_Culling.sphereParts.Add(this);
