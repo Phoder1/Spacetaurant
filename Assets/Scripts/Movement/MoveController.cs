@@ -58,15 +58,6 @@ public class MoveController : MonoWrap
     {
         //moveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         moveDir = new Vector2(variableJoystick.Horizontal, variableJoystick.Vertical).normalized;
-#if UNITY_EDITOR
-        Landmark.landmarksPositions.ForEach(DrawLine);
-
-        void DrawLine(Landmark landmark)
-        {
-            var direction = SphereTools.LocalDirectionToPoint(transform, landmark.transform.position);
-            Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(new Vector3(direction.x,0,direction.y)));
-        }
-#endif
     }
     private void FixedUpdate()
     {

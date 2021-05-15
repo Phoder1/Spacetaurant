@@ -80,15 +80,6 @@ namespace Spacetaurant.Player
                             MoveTo(ClosestInteractableHit.interactable.Position, ClosestInteractableHit.distance);
                 }
             }
-
-
-            Landmark.landmarksPositions.ForEach(DrawLine);
-
-            void DrawLine(Landmark landmark)
-            {
-                var direction = SphereTools.LocalDirectionToPoint(transform, landmark.transform.position);
-                Debug.DrawLine(transform.position, transform.position + transform.TransformDirection(new Vector3(direction.x, 0, direction.y)));
-            }
         }
         private void UpdateClosestInteractable()
         {
