@@ -80,12 +80,12 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FadeDistanceEnd: 26
-    - _FadeDistanceStart: 16
+    - _FadeDistanceEnd: 100
+    - _FadeDistanceStart: 50
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GrassSaturation: 6
+    - _GrassSaturation: 1
     - _GrassShading: 0
     - _GrassThinness: 0.84
     - _GrassThinnessIntersection: 0.31
@@ -94,13 +94,16 @@ Material:
     - _NoisePower: 1.45
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ProceduralDistance: 5.5
+    - _ProceduralStrength: 1.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TilingN1: 5.44
+    - _TilingN1: 30
     - _TilingN2: 0.05
     - _TilingN3: 1
     - _UVSec: 0
+    - _UsePR: 0
     - _UseRT: 1
     - _UseShadow: 1
     - _UseShadowCast: 0
@@ -108,8 +111,9 @@ Material:
     - _WindMovement: 0.2
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.936, g: 0.936, b: 0.936, a: 1}
+    - _Color: {r: 0.43659663, g: 0.7924528, b: 0.6568857, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.95699996, g: 0.8818866, b: 0.69860995, a: 1}
+    - _GroundColor: {r: 0.8488746, g: 0.56981134, b: 1, a: 1}
     - _ProjectedShadowColor: {r: 0.13443393, g: 0.5, b: 0.38709545, a: 1}
-    - _SelfShadowColor: {r: 0.18803793, g: 0.29799995, b: 0.25258085, a: 1}
+    - _SelfShadowColor: {r: 0.29829028, g: 0, b: 0.5660378, a: 1}
+  m_BuildTextureStacks: []
