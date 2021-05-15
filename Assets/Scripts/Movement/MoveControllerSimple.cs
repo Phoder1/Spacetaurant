@@ -1,6 +1,7 @@
 using CustomAttributes;
 using PowerGamers.Misc;
 using Sirenix.OdinInspector;
+using Spacetaurant;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,8 +9,6 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CapsuleCollider))]
 public class MoveControllerSimple : MonoBehaviour, IMoveController
 {
-    [SerializeField]
-    GameObject planet = default;
     [SerializeField]
     private UnityEventForRefrence OnMove = default;
 
@@ -42,7 +41,7 @@ public class MoveControllerSimple : MonoBehaviour, IMoveController
     }
     private void UpdateFrameConstants(float distance)
     {
-        planetRadius = Vector3.Distance(transform.position, planet.transform.position);
+        planetRadius = Vector3.Distance(transform.position, BlackBoard.planet.transform.position);
         rotationRadians = RotationAngle(distance, planetRadius);
 
         moveChord = MovementChord(rotationRadians, planetRadius);
@@ -64,5 +63,5 @@ public class MoveControllerSimple : MonoBehaviour, IMoveController
         float VerticalMovement(float horizontalMove, float moveChord)
             => Mathf.Abs(Mathf.Sqrt((moveChord * moveChord) - (horizontalMove * horizontalMove)));
     }
-    Vector3 PlanetUp(Vector3 pos) => (pos - planet.transform.position).normalized;
+    Vector3 PlanetUp(Vector3 pos) => (pos - BlackBoard.planet.transform.position).normalized;
 }

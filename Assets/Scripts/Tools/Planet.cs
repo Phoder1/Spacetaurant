@@ -1,20 +1,21 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Spacetaurant
 {
     public class Planet : MonoBehaviour
     {
+        [SerializeField]
+        private bool _isMainPlanet;
         private void OnEnable()
         {
-            BlackBoard.planet = this;
+            if (_isMainPlanet)
+                AssignPlanet();
         }
         private void OnDisable()
         {
             if (BlackBoard.planet == this)
-                BlackBoard.planet = null;
+                UnassignPlanet();
         }
         [Button, ShowIf("@UnityEngine.Application.isPlaying")]
         private void AssignPlanet()
