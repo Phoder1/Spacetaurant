@@ -36,17 +36,22 @@ namespace Spacetaurant.Player
             set => _closestInteractableHit = value; 
         }
         #endregion
+        #region UnityCallbacks
         private void OnEnable() => _onMove_vector2.eventRefrence += (x) => _moveDir = (Vector2)x;
-        private void OnDisable() => _onMove_vector2.eventRefrence -= (x) => _moveDir = (Vector2)x;
-        private void Start()
-        {
-            UpdateClosestInteractable();
-        }
         private void Update()
         {
             var wasd = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
             if (wasd != Vector2.zero)
                 _moveDir = wasd;
+        }
+        private void OnDisable()
+        {
+            _onMove_vector2.eventRefrence -= (x) => _moveDir = (Vector2)x;
+            StopInteraction();
+        }
+        private void Start()
+        {
+            UpdateClosestInteractable();
         }
         private void FixedUpdate()
         {
@@ -66,9 +71,8 @@ namespace Spacetaurant.Player
             }
             else
             {
-                if (ClosestInteractableHit != null && ClosestInteractableHit.interactable != null)
+                if (ClosestInteractableHit != null && ClosestInteractableHit.interactable != null && ClosestInteractableHit.distance <= _detectionRange)
                 {
-                    if (ClosestInteractableHit.distance <= _detectionRange)
                         if (ClosestInteractableHit.distance <= _interactionRange)
                         {
                             if (!_interacting)
@@ -81,6 +85,7 @@ namespace Spacetaurant.Player
                 }
             }
         }
+        #endregion
         private void UpdateClosestInteractable()
         {
             InteractableHit closestHit = Interactables.GetClosest(transform.position);
@@ -114,12 +119,21 @@ namespace Spacetaurant.Player
         public void StartInteraction()
         {
             _interactionButtonPressed = true;
-            _interacting = true;
+        }
+        public void UpdateInteraction()
+        {
+            if (!_interacting)
+            {
+                _interacting = true;
+                StopInteraction();
+            }
         }
         public void StopInteraction()
         {
             _interactionButtonPressed = false;
         }
+        #region Debug
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             if (!_debug)
@@ -135,7 +149,8 @@ namespace Spacetaurant.Player
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(transform.position, ClosestInteractableHit.interactable.Position);
             }
-
         }
+#endif
+#endregion
     }
 }
