@@ -7,6 +7,7 @@ namespace Spacetaurant.Tools
     [ExecuteInEditMode]
     public class PartAssigner : MonoBehaviour
     {
+        const float RaycastExtraHeight = 5;
         [Flags] private enum Modes { AutoRotation = 1, AutoFlat = 2, AutoAssign = 4 }
         [SerializeField, EnumToggleButtons]
         private Modes _workModes = Modes.AutoRotation | Modes.AutoAssign;
@@ -82,10 +83,16 @@ namespace Spacetaurant.Tools
         }
         private bool CastRay(out RaycastHit? hit)
         {
-            Planet planet = FindObjectOfType<Planet>();
+            hit = default;
+            
+            Planet planet = Array.Find(FindObjectsOfType<Planet>(), (x) => x.IsMainPlanet);
+            
+            if (planet == null)
+                return false;
+
             var distance = Vector3.Distance(transform.position, planet.transform.position);
             Vector3 planetDirection = planet.transform.position - transform.position;
-            Ray ray = new Ray(transform.position, planetDirection);
+            Ray ray = new Ray(transform.position - planetDirection * RaycastExtraHeight, planetDirection);
             var success = Physics.Raycast(ray, out var tempHit, distance, layer, QueryTriggerInteraction.Collide);
             hit = (RaycastHit?)tempHit;
             return success;
