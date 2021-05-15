@@ -1,3 +1,4 @@
+using Assets.StateMachine;
 using CustomAttributes;
 using PowerGamers.Misc;
 using Sirenix.OdinInspector;
@@ -20,93 +21,80 @@ namespace Spacetaurant.Player
         [SerializeField]
         private EventRefrence _onMove_vector2 = default;
 
+        public StateMachine PlayerStateMachine;
+        private PlayerState DefaultState => WalkState;
+        private PlayerWalkState WalkState => new PlayerWalkState(this);
+
         #region Events
         [SerializeField, FoldoutGroup("Events"), SuffixLabel("Interactable")]
         private UnityEventForRefrence OnNewClosestInteractable = default;
         #endregion
         #region State
-        private Vector2 _moveDir = default;
-        private bool _interactionButtonPressed = default;
-        private bool _interacting = default;
-        private InteractableHit _closestInteractableHit = default;
+        private Vector2 _jsDir = default;
+        public Vector2 JoystickDirection => _jsDir;
 
-        public InteractableHit ClosestInteractableHit 
-        { 
-            get => _closestInteractableHit; 
-            set => _closestInteractableHit = value; 
-        }
+        private bool _interactionButton = default;
+        public bool InteractionButton => _interactionButton;
+
+        private bool _interacting = default;
+        public bool Interactiong => _interacting;
+
+        private InteractableHit _closestInteractableHit = default;
+        public InteractableHit InteractableHit => _closestInteractableHit;
         #endregion
         #region UnityCallbacks
-        private void OnEnable() => _onMove_vector2.eventRefrence += (x) => _moveDir = (Vector2)x;
-        private void Update()
+        private void OnEnable() => _onMove_vector2.eventRefrence += (x) => _jsDir = (Vector2)x;
+        protected override void OnAwake()
         {
-            var wasd = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-            if (wasd != Vector2.zero)
-                _moveDir = wasd;
-        }
-        private void OnDisable()
-        {
-            _onMove_vector2.eventRefrence -= (x) => _moveDir = (Vector2)x;
-            StopInteraction();
+            PlayerStateMachine = new StateMachine(DefaultState);
         }
         private void Start()
         {
             UpdateClosestInteractable();
         }
+        private void Update()
+        {
+            var wasd = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+
+            if (wasd != Vector2.zero)
+                _jsDir = wasd;
+        }
         private void FixedUpdate()
         {
-            UpdateClosestInteractable();
-            if (ClosestInteractableHit == null 
-                || ClosestInteractableHit.interactable == null 
-                || ClosestInteractableHit.distance > _detectionRange
-                || !_interactionButtonPressed)
-            {
-                MoveTowards(_moveDir);
+            PlayerStateMachine.State.FixedUpdate();
+        }
 
-                if (_interacting && ClosestInteractableHit.interactable != null)
-                {
-                    ClosestInteractableHit.interactable.EndInteraction();
-                    _interacting = false;
-                }
-            }
-            else
-            {
-                if (ClosestInteractableHit != null && ClosestInteractableHit.interactable != null && ClosestInteractableHit.distance <= _detectionRange)
-                {
-                        if (ClosestInteractableHit.distance <= _interactionRange)
-                        {
-                            if (!_interacting)
-                                ClosestInteractableHit.interactable.StartInteraction();
+        private void OnDisable()
+        {
+            PlayerStateMachine.State = null;
 
-                            _interacting = true;
-                        }
-                        else
-                            MoveTo(ClosestInteractableHit.interactable.Position, ClosestInteractableHit.distance);
-                }
-            }
+            _onMove_vector2.eventRefrence -= (x) => _jsDir = (Vector2)x;
+
+            StopInteraction();
         }
         #endregion
-        private void UpdateClosestInteractable()
+        #region Internal
+        public void UpdateClosestInteractable()
         {
             InteractableHit closestHit = Interactables.GetClosest(transform.position);
 
-            if (ClosestInteractableHit != closestHit)
+            if (InteractableHit != closestHit)
             {
                 if (closestHit == null || closestHit.interactable == null || closestHit.distance > _detectionRange)
                 {
-                    ClosestInteractableHit = null;
+                    _closestInteractableHit = null;
                     OnNewClosestInteractable.Invoke(null);
                 }
                 else
                 {
-                    if (ClosestInteractableHit == null || ClosestInteractableHit != closestHit)
+                    if (InteractableHit == null || InteractableHit != closestHit)
                         OnNewClosestInteractable?.Invoke(closestHit.interactable);
 
-                    ClosestInteractableHit = closestHit;
+                    _closestInteractableHit = closestHit;
                 }
             }
         }
-        private void MoveTowards(Vector3 direction)
+        public void MoveTowards(Vector3 direction)
         {
             float distance = _speed * Time.deltaTime;
             _moveController.Move(direction, distance);
@@ -118,20 +106,18 @@ namespace Spacetaurant.Player
         }
         public void StartInteraction()
         {
-            _interactionButtonPressed = true;
+            _interactionButton = true;
         }
         public void UpdateInteraction()
         {
             if (!_interacting)
-            {
-                _interacting = true;
-                StopInteraction();
-            }
+                _interactionButton = true;
         }
         public void StopInteraction()
         {
-            _interactionButtonPressed = false;
+            _interactionButton = false;
         }
+        #endregion
         #region Debug
 #if UNITY_EDITOR
         private void OnDrawGizmos()
@@ -144,13 +130,85 @@ namespace Spacetaurant.Player
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, _detectionRange);
 
-            if (ClosestInteractableHit != null)
+            if (InteractableHit != null)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawLine(transform.position, ClosestInteractableHit.interactable.Position);
+                Gizmos.DrawLine(transform.position, InteractableHit.interactable.Position);
             }
         }
 #endif
-#endregion
+        #endregion
+        #region StateMachine
+        public abstract class PlayerState : State
+        {
+            protected readonly PlayerController ctrl;
+
+            protected PlayerState(PlayerController controller)
+            {
+                this.ctrl = controller;
+
+            }
+        }
+        public class PlayerWalkState : PlayerState
+        {
+            public PlayerWalkState(PlayerController controller) : base(controller) { }
+            protected override void OnEnable()
+            {
+
+            }
+            protected override void OnUpdate()
+            {
+
+            }
+            protected override void OnFixedUpdate()
+            {
+                ctrl.UpdateClosestInteractable();
+
+                if (ctrl.InteractionButton && ctrl.InteractableHit != null && ctrl.InteractableHit.interactable != null)
+                {
+                    ctrl.PlayerStateMachine.State = new PlayerInteractState(ctrl);
+                    return;
+                }
+
+                ctrl.MoveTowards(ctrl.JoystickDirection);
+
+
+            }
+            protected override void OnDisable() { }
+
+        }
+        public class PlayerInteractState : PlayerState
+        {
+            public PlayerInteractState(PlayerController controller) : base(controller) { }
+            protected override void OnEnable()
+            {
+
+            }
+            protected override void OnFixedUpdate()
+            {
+                if (!ctrl.InteractionButton && ctrl.JoystickDirection != Vector2.zero)
+                    SetStateToWalk();
+
+                if (ctrl.InteractableHit != null && ctrl.InteractableHit.interactable != null && ctrl.InteractableHit.distance <= ctrl._detectionRange)
+                {
+                    ctrl.InteractableHit.UpdateDistance(ctrl.transform.position);
+
+                    if (ctrl.InteractableHit.distance <= ctrl._interactionRange)
+                        ctrl.InteractableHit.interactable.StartInteraction();
+                    else
+                        ctrl.MoveTo(ctrl.InteractableHit.interactable.Position, ctrl.InteractableHit.distance);
+                }
+                else
+                    SetStateToWalk();
+            }
+            void SetStateToWalk() => ctrl.PlayerStateMachine.State = new PlayerWalkState(ctrl);
+            protected override void OnDisable()
+            {
+                if (ctrl.InteractableHit != null && ctrl.InteractableHit.interactable != null)
+                    ctrl.InteractableHit.interactable.EndInteraction();
+            }
+        }
+        #endregion
     }
+
 }

@@ -1,6 +1,6 @@
 ﻿namespace Assets.StateMachine
 {
-    class StateMachine
+    public class StateMachine
     {
         State state;
         public StateMachine(State state)
@@ -23,7 +23,7 @@
             }
         }
     }
-    abstract class State
+    public abstract class State
     {
         bool enabled;
 
@@ -52,6 +52,12 @@
                 OnUpdate();
         }
         protected virtual void OnUpdate() { }
+        public void FixedUpdate()
+        {
+            if (enabled)
+                OnFixedUpdate();
+        }
+        protected virtual void OnFixedUpdate() { }
         public void Reset()
         {
             if (enabled)
