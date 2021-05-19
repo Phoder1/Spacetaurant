@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Spacetaurant.Resources;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,21 +25,36 @@ namespace Spacetaurant.Interactable
         #endregion
         #region Respawnable
         #endregion
+
+        [SerializeField]
+        private ResourceSlot _reward;
+        public ResourceSlot Reward => _reward;
         #endregion
 
         #region Events
         [SerializeField, TabGroup("Events"), SuffixLabel("This")]
-        private UnityEventForRefrence OnInteraction = default;
+        private UnityEventForRefrence _onInteraction = default;
+        public UnityEventForRefrence OnInteraction => _onInteraction;
+
         [SerializeField, TabGroup("Events"), SuffixLabel("This")]
-        private UnityEventForRefrence OnInteractionStart = default;
+        private UnityEventForRefrence _onInteractionStart = default;
+        public UnityEventForRefrence OnInteractionStart => _onInteraction;
+
         [SerializeField, TabGroup("Events"), SuffixLabel("This")]
-        private UnityEventForRefrence OnInteractionFinish = default;
+        private UnityEventForRefrence _onInteractionFinish = default;
+        public UnityEventForRefrence OnInteractionFinish => _onInteraction;
+
         [SerializeField, TabGroup("Events"), SuffixLabel("This")]
-        private UnityEventForRefrence OnInteractionCancel = default;
+        private UnityEventForRefrence _onInteractionCancel = default;
+        public UnityEventForRefrence OnInteractionCancel => _onInteraction;
+
         [SerializeField, TabGroup("Events"), SuffixLabel("This")]
-        private UnityEventForRefrence OnInteractable = default;
+        private UnityEventForRefrence _onInteractable = default;
+        public UnityEventForRefrence OnInteractable => _onInteraction;
+
         [SerializeField, TabGroup("Events"), SuffixLabel("This")]
-        private UnityEventForRefrence OnUninteractable = default;
+        private UnityEventForRefrence _onUninteractable = default;
+        public UnityEventForRefrence OnUninteractable => _onInteraction;
         #endregion
         #region State
         private float _gatherProgressTime = 0;

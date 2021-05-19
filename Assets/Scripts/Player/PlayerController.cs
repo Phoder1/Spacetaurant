@@ -2,9 +2,12 @@ using Assets.StateMachine;
 using CustomAttributes;
 using PowerGamers.Misc;
 using Sirenix.OdinInspector;
+using Spacetaurant.Containers;
 using Spacetaurant.Interactable;
 using UnityEngine;
 using UnityEngine.Events;
+using DataSaving;
+using Spacetaurant.Resources;
 
 namespace Spacetaurant.Player
 {
@@ -24,6 +27,8 @@ namespace Spacetaurant.Player
         public StateMachine PlayerStateMachine;
         private PlayerState DefaultState => WalkState;
         private PlayerWalkState WalkState => new PlayerWalkState(this);
+        
+        private PlayerInventory _playerInventory;
 
         #region Events
         [SerializeField, FoldoutGroup("Events"), SuffixLabel("Interactable")]
@@ -51,6 +56,9 @@ namespace Spacetaurant.Player
         private void Start()
         {
             UpdateClosestInteractable();
+            _playerInventory = DataHandler.GetData<PlayerInventory>();
+            DataHandler.autoSaveInterval = 30;
+            DataHandler.StartAutoSave();
         }
         private void Update()
         {
@@ -117,6 +125,7 @@ namespace Spacetaurant.Player
         {
             _interactionButton = false;
         }
+        public void AddReward(ResourceSlot reward) => _playerInventory.Add(reward);
         #endregion
         #region Debug
 #if UNITY_EDITOR
@@ -183,7 +192,10 @@ namespace Spacetaurant.Player
             public PlayerInteractState(PlayerController controller) : base(controller) { }
             protected override void OnEnable()
             {
-
+                if (ctrl.InteractableHit.interactable != null && ctrl.InteractableHit.interactable.IsInteractable && ctrl.InteractableHit.distance <= ctrl._detectionRange)
+                    ctrl.InteractableHit.interactable.OnInteractionFinish.AddListener(FinishedInteraction);
+                else
+                    SetStateToWalk();
             }
             protected override void OnFixedUpdate()
             {
@@ -208,11 +220,19 @@ namespace Spacetaurant.Player
                 else
                     SetStateToWalk();
             }
+            protected void FinishedInteraction(object interactable)
+            {
+                if(interactable is Gatherable _gatherable)
+                    ctrl.AddReward(_gatherable.Reward);
+            }
             void SetStateToWalk() => ctrl.PlayerStateMachine.State = new PlayerWalkState(ctrl);
             protected override void OnDisable()
             {
                 if (ctrl.InteractableHit != null && ctrl.InteractableHit.interactable != null && _interacting)
+                {
+                    ctrl.InteractableHit.interactable.OnInteractionFinish.RemoveListener(FinishedInteraction);
                     ctrl.InteractableHit.interactable.CancelInteraction();
+                }
             }
         }
         #endregion
