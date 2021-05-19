@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 097782735540f2d4db5606eae04ae6a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4e1d764fa7e47f34eae88e37253c2542, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoGrassTex:
-        m_Texture: {fileID: 2800000, guid: 5ddef0977dde72343992a79d27da33fe, type: 3}
+        m_Texture: {fileID: 2800000, guid: 85ea986c7f0510e498b3ddeeaba62ead, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
@@ -80,15 +80,15 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FadeDistanceEnd: 77
+    - _FadeDistanceEnd: 72
     - _FadeDistanceStart: 45.26
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrassSaturation: 1
-    - _GrassShading: 0.3
-    - _GrassThinness: 1.5
-    - _GrassThinnessIntersection: 0.2
+    - _GrassShading: 0.072
+    - _GrassThinness: 2.5
+    - _GrassThinnessIntersection: 0.47
     - _Metallic: 0
     - _Mode: 0
     - _NoisePower: 20
@@ -99,7 +99,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TilingN1: 30
+    - _TilingN1: 40
     - _TilingN2: 7
     - _TilingN3: 1
     - _UVSec: 0
@@ -111,9 +111,9 @@ Material:
     - _WindMovement: 0.1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5766428, g: 0.50978565, b: 0.585, a: 1}
+    - _Color: {r: 0.34901962, g: 0.50980395, b: 0.45393196, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.6414382, g: 0.65001523, b: 0.735849, a: 1}
+    - _GroundColor: {r: 0.8322407, g: 0.8666667, b: 0.6, a: 1}
     - _ProjectedShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SelfShadowColor: {r: 0, g: 0.2264151, b: 0.045830566, a: 1}
+    - _SelfShadowColor: {r: 1, g: 0.07017544, b: 0, a: 1}
   m_BuildTextureStacks: []
