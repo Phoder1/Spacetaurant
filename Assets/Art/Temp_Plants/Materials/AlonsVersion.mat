@@ -86,7 +86,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrassSaturation: 1
-    - _GrassShading: 0.072
+    - _GrassShading: 0.101
     - _GrassThinness: 2.5
     - _GrassThinnessIntersection: 0.47
     - _Metallic: 0
