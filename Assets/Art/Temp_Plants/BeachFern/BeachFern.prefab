@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5047095587736277608}
   - component: {fileID: 7056601836809528994}
   - component: {fileID: 1615421747963151065}
+  - component: {fileID: 325119797426348580}
   m_Layer: 0
   m_Name: BeachFern
   m_TagString: Untagged
@@ -99,3 +100,41 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _partTransform: {fileID: 0}
+--- !u!114 &325119797426348580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858274302890936183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a38b79beaeaa354690aa6f380c61275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _refrence: {fileID: 0}
+  _debug: 0
+  _interactable: 1
+  _gatherTime: 3
+  _buttonSprite: {fileID: 21300000, guid: 4be39af689047284d9702025ce8f9eb8, type: 3}
+  _reward:
+    _amount: 5
+    _resource: {fileID: 11400000, guid: aa1318518806c684790fd62163b54eff, type: 2}
+  _onInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionStart:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionCancel:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractable:
+    m_PersistentCalls:
+      m_Calls: []
+  _onUninteractable:
+    m_PersistentCalls:
+      m_Calls: []

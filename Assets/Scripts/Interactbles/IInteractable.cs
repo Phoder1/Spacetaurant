@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Spacetaurant.Interactable
 {
@@ -11,6 +12,14 @@ namespace Spacetaurant.Interactable
         bool IsInteractable { get; set; }
         float InteractionTime { get; }
         Sprite ButtonIcon { get; }
+        #region Events
+        UnityEventForRefrence OnInteraction { get; }
+        UnityEventForRefrence OnInteractionStart { get; }
+        UnityEventForRefrence OnInteractionFinish { get; }
+        UnityEventForRefrence OnInteractionCancel { get; }
+        UnityEventForRefrence OnInteractable { get; }
+        UnityEventForRefrence OnUninteractable { get; }
+        #endregion
     }
     public static class Interactables
     {
