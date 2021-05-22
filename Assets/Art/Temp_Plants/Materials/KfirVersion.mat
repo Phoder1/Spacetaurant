@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AlonsVersion
+  m_Name: KfirVersion
   m_Shader: {fileID: 4800000, guid: bf1b67d8223379749a0a88d47d0a7154, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
