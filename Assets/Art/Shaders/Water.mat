@@ -32,22 +32,22 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Foam_Amount: 5
-    - Foam_Cutoff: 3.5
-    - Foam_Evolution_Speed: 1.25
-    - Foam_Scale: 5
+    - Foam_Amount: 5.08
+    - Foam_Cutoff: 1.78
+    - Foam_Evolution_Speed: 2.48
+    - Foam_Scale: 2.62
     - Global_Fading: 30
-    - Light_Probe_Contribution: 2.5
-    - Refaction_Scale: 1
-    - Refraction_Evolution_Speed: 1.5
-    - Refraction_Height: 0.2
-    - Vector1_77A997E: 0.5
-    - Water_Depth: 1.5
-    - Wave_Height: 0.15
-    - Wave_Scale: 7.2
-    - Wave_Speed: 1.55
+    - Light_Probe_Contribution: 2.67
+    - Refaction_Scale: 8.99
+    - Refraction_Evolution_Speed: 1.96
+    - Refraction_Height: 0.044
+    - Vector1_77A997E: 0.635
+    - Water_Depth: 1.65
+    - Wave_Height: 0.65
+    - Wave_Scale: 15.9
+    - Wave_Speed: 1.38
     m_Colors:
-    - Foam_Color: {r: 1, g: 1, b: 1, a: 0.5450981}
-    - Shallow_Water_Color: {r: 0.44313726, g: 0.8750768, b: 0.8980392, a: 0.3176471}
-    - Trough_Color: {r: 0, g: 0.03410326, b: 0.7215686, a: 0.4627451}
+    - Foam_Color: {r: 1, g: 1, b: 1, a: 0.80784315}
+    - Shallow_Water_Color: {r: 0, g: 0.007093223, b: 0.8113208, a: 0.3176471}
+    - Trough_Color: {r: 0, g: 0.16740954, b: 0.6226415, a: 0.7647059}
   m_BuildTextureStacks: []

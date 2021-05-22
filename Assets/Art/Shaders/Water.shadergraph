@@ -2638,7 +2638,7 @@
     ],
     "synonyms": [],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
@@ -9252,7 +9252,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Vector1_3BAC4E7D",
     "m_StageCapability": 3,
-    "m_Value": 1.0,
+    "m_Value": 0.7599999904632568,
     "m_DefaultValue": 0.0,
     "m_Labels": [
         "X"
