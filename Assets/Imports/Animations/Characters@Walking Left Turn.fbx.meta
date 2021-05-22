@@ -14,7 +14,7 @@ ModelImporter:
     second: Take 001
   - first:
       74: -3780516532778130023
-    second: turnning left - dont use
+    second: mixamo.com (2)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -51,13 +51,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: turnning left - dont use
+      name: mixamo.com (2)
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
       lastFrame: 36
       wrapMode: 0
-      orientationOffsetY: -13.68
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
