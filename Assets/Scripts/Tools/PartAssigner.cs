@@ -91,7 +91,7 @@ namespace Spacetaurant.Tools
                 return false;
 
             var distance = Vector3.Distance(transform.position, planet.transform.position);
-            Vector3 planetDirection = planet.transform.position - transform.position;
+            Vector3 planetDirection = (planet.transform.position - transform.position).normalized;
             Ray ray = new Ray(transform.position - planetDirection * RaycastExtraHeight, planetDirection);
             var success = Physics.Raycast(ray, out var tempHit, distance, layer, QueryTriggerInteraction.Collide);
             hit = (RaycastHit?)tempHit;
