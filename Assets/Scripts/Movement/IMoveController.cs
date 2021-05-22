@@ -2,7 +2,21 @@
 using Sirenix.Serialization;
 using System;
 
-public interface IMoveController
+namespace Spacetaurant.movement
 {
-    void Move(Vector2 direction, float distance);
+    public interface IMoveController
+    {
+        /// <summary>
+        /// Applying a local movement relative to the planet's up direction.
+        /// Should always be used in FixedUpdate!
+        /// </summary>
+        /// <param name="direction"> The direction relative to the planet's up direction.</param>
+        /// <param name="distance">The distance to move in the direction.</param>
+        void Move(Vector2 direction, float distance);
+        /// <summary>
+        /// Applies gravity in the direction of the planet.
+        /// </summary>
+        /// <param name="gravity">The amount of gravity to apply.</param>
+        void ApplyGravity(float gravity);
+    }
 }

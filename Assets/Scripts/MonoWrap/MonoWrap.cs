@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class MonoWrap : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, FoldoutGroup("Wrap", order: 999, Expanded = false)]
     private ObjectRefrence _refrence;
     [Space(order = 998)]
-    [SerializeField, PropertyOrder(999)]
+    [SerializeField, FoldoutGroup("Wrap", order: 999, Expanded = false)]
     protected bool _debug;
 
     protected virtual void Awake()

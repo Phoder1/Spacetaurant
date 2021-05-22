@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using DataSaving;
 using Spacetaurant.Resources;
+using Spacetaurant.movement;
 
 namespace Spacetaurant.Player
 {
@@ -17,14 +18,16 @@ namespace Spacetaurant.Player
         private float _interactionRange = default;
         [SerializeField, GUIColor("@Color.yellow")]
         private float _detectionRange = default;
-        [SerializeField, LocalComponent]
-        private MoveControllerSimple _moveController = default;
+
+
         [SerializeField]
         private float _speed = 10;
+
         [SerializeField]
         private EventRefrence _onMove_vector2 = default;
 
         public StateMachine PlayerStateMachine;
+        private IMoveController _moveController = default;
         private PlayerState DefaultState => WalkState;
         private PlayerWalkState WalkState => new PlayerWalkState(this);
         
@@ -52,13 +55,14 @@ namespace Spacetaurant.Player
         protected override void OnAwake()
         {
             PlayerStateMachine = new StateMachine(DefaultState);
+            _moveController = GetComponent<IMoveController>();
         }
         private void Start()
         {
             UpdateClosestInteractable();
             _playerInventory = DataHandler.GetData<PlayerInventory>();
-            DataHandler.autoSaveInterval = 30;
-            DataHandler.StartAutoSave();
+            //DataHandler.autoSaveInterval = 30;
+            //DataHandler.StartAutoSave();
         }
         private void Update()
         {
@@ -70,6 +74,7 @@ namespace Spacetaurant.Player
         private void FixedUpdate()
         {
             PlayerStateMachine.State.FixedUpdate();
+            _moveController.ApplyGravity(1);
         }
 
         private void OnDisable()
