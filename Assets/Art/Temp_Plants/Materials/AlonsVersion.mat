@@ -100,9 +100,12 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     - _TilingN1: 111.48
     - _TilingN2: 26.94
 =======
+=======
+>>>>>>> parent of a2eaaa7 (character animations)
     - _TilingN1: 40
     - _TilingN2: 7
 >>>>>>> parent of a2eaaa7 (character animations)
