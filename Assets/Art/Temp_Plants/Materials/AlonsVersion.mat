@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoGrassTex:
-        m_Texture: {fileID: 2800000, guid: 85ea986c7f0510e498b3ddeeaba62ead, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5ddef0977dde72343992a79d27da33fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise:
@@ -86,34 +86,34 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrassSaturation: 1
-    - _GrassShading: 0.101
-    - _GrassThinness: 2.5
-    - _GrassThinnessIntersection: 0.47
+    - _GrassShading: 0.169
+    - _GrassThinness: 2
+    - _GrassThinnessIntersection: 0.33
     - _Metallic: 0
     - _Mode: 0
-    - _NoisePower: 20
+    - _NoisePower: 11.56
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ProceduralDistance: 0
-    - _ProceduralStrength: 0
+    - _ProceduralDistance: 74.6
+    - _ProceduralStrength: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TilingN1: 17.49
-    - _TilingN2: 7
+    - _TilingN1: 111.48
+    - _TilingN2: 26.94
     - _TilingN3: 1
     - _UVSec: 0
     - _UsePR: 0
     - _UseRT: 0
     - _UseShadow: 0
     - _UseShadowCast: 0
-    - _WindForce: 0.1
-    - _WindMovement: 0.1
+    - _WindForce: 0.03
+    - _WindMovement: 0.78
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.34901962, g: 0.50980395, b: 0.45393196, a: 1}
+    - _Color: {r: 0.21987364, g: 0.5754717, b: 0.27980968, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.8322407, g: 0.8666667, b: 0.6, a: 1}
+    - _GroundColor: {r: 0.33846566, g: 0.5471698, b: 0.2761659, a: 1}
     - _ProjectedShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SelfShadowColor: {r: 1, g: 0.07017544, b: 0, a: 1}
   m_BuildTextureStacks: []
