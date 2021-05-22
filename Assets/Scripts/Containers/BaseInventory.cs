@@ -1,6 +1,7 @@
 using DataSaving;
 using Spacetaurant.Resources;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,10 +10,13 @@ namespace Spacetaurant.Containers
     [Serializable]
     public abstract class BaseInventory : IDirtyData, IContainer<ResourceSlot>
     {
-        private DirtyDataList<ResourceSlot> _container;
+        [SerializeField]
+        protected DirtyDataList<ResourceSlot> _container = new DirtyDataList<ResourceSlot>();
+        [SerializeField]
+        protected List<ResourceSlot> _containerSimple = new List<ResourceSlot>();
         public DirtyDataList<ResourceSlot> Container => _container;
 
-        private bool _isDirty;
+        private bool _isDirty = true;
         public bool IsDirty
         {
             get => _isDirty || Container.IsDirty;
@@ -29,7 +33,6 @@ namespace Spacetaurant.Containers
 
         public event Action OnDirty;
 
-        [SerializeField]
         private UnityEventForRefrence _onValueChange;
         public UnityEventForRefrence OnValueChange => _onValueChange;
         public void Add(ResourceSlot item)
@@ -37,9 +40,15 @@ namespace Spacetaurant.Containers
             int index = Container.FindIndex(x => x.Resource == item.Resource);
 
             if (index == -1)
+            {
                 Container.Add(item);
+                _containerSimple.Add(item);
+            }
             else
+            {
                 Container[index].Amount += item.Amount;
+                _containerSimple[index].Amount += item.Amount;
+            }
         }
 
         public void Saved()

@@ -64,6 +64,14 @@ namespace Spacetaurant.Resources
         }
 
         private bool _isDirty;
+
+        public ResourceSlot(int amount, ResourceSO resource)
+        {
+            _amount = amount;
+            _resource = resource;
+            _isDirty = true;
+        }
+
         public bool IsDirty => _isDirty;
 
         public event Action OnDirty;
