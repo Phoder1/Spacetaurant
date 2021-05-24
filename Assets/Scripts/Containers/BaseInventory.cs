@@ -12,8 +12,6 @@ namespace Spacetaurant.Containers
     {
         [SerializeField]
         protected DirtyDataList<ResourceSlot> _container = new DirtyDataList<ResourceSlot>();
-        [SerializeField]
-        protected List<ResourceSlot> _containerSimple = new List<ResourceSlot>();
         public DirtyDataList<ResourceSlot> Container => _container;
 
         private bool _isDirty = true;
@@ -42,12 +40,12 @@ namespace Spacetaurant.Containers
             if (index == -1)
             {
                 Container.Add(item);
-                _containerSimple.Add(item);
+                _container.Add(item);
             }
             else
             {
                 Container[index].Amount += item.Amount;
-                _containerSimple[index].Amount += item.Amount;
+                _container[index].Amount += item.Amount;
             }
         }
 
