@@ -5,14 +5,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d0b7ea2376477d4c99f23bff357556f037e23d61"
+      "hash": "dfd12ed8e44b3381e92c9d4894572179e4a78c72"
     },
     "com.alontalmi.datahandler": {
       "version": "https://github.com/Phoder1/DataHandler.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "c8654328fcde706430d8c14f58624b955066e3a8"
+      "hash": "c496406bdf73bcb40a7ec8fac2e30ecb883bfd87"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -56,7 +56,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.7",
+      "version": "2.0.8",
       "depth": 0,
       "source": "registry",
       "dependencies": {
