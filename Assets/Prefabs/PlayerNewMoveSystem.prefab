@@ -165,6 +165,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 6290764543981791270, guid: af73f770a01757b458ed994e613ecf53, type: 3}
+      propertyPath: far clip plane
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6290764543522647577, guid: af73f770a01757b458ed994e613ecf53, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af73f770a01757b458ed994e613ecf53, type: 3}
