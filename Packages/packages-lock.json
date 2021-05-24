@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "dfd12ed8e44b3381e92c9d4894572179e4a78c72"
+      "hash": "d3bc9867d442db6a15b8d01a029700c32cf662f9"
     },
     "com.alontalmi.datahandler": {
       "version": "https://github.com/Phoder1/DataHandler.git",
