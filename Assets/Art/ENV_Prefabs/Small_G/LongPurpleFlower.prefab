@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3824024567696587619}
   - component: {fileID: 197720229158384838}
   - component: {fileID: 2691611928877596684}
+  - component: {fileID: 996404116906090445}
   m_Layer: 0
   m_Name: LongPurpleFlower
   m_TagString: Untagged
@@ -81,3 +82,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &996404116906090445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4493038517191680473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81a9ecdadb35ac4882a61826eeb50bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _workModes: 5
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
+  _partTransform: {fileID: 0}
