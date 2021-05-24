@@ -4,5 +4,6 @@ using UnityEngine;
 
 namespace Spacetaurant.Containers
 {
+    [System.Serializable]
     public class PlayerInventory : BaseInventory { }
 }
