@@ -60,6 +60,7 @@ namespace Spacetaurant.Tools
         [Button, FoldoutGroup("Manual activation")]
         private void Rotate()
         {
+            
             if (_hit == null && !CastRay(out _hit))
                 return;
 
