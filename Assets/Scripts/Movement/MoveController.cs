@@ -26,7 +26,7 @@ namespace Spacetaurant.movement
 
         public UnityEventForRefrence OnMove = default;
 
-        const int MAX_MOVE_STEPS = 20;
+        const int MAX_MOVE_STEPS = 5;
 
         #region Frame temp
         float planetRadius = default;
@@ -130,8 +130,6 @@ namespace Spacetaurant.movement
                     transform.position += Vector3.ClampMagnitude(moveVector, hitDistance);
 
                     var slopeAngle = Vector3.Angle(hit.normal, PlanetUp);
-                    if (moveSteps <= 1)
-                        Debug.Log(slopeAngle);
                     if (slopeAngle <= maxSlopeAngle)
                     {
                         nextMoveVector = (Quaternion.AngleAxis(90, Vector3.Cross(hit.normal, moveVector)) * hit.normal).normalized * distance;
