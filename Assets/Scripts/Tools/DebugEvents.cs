@@ -8,6 +8,6 @@ namespace Spacetaurant
     public class DebugEvents : MonoBehaviour
     {
         [Button]
-        public void DebugLog(string logText)
+        public void DebugLog(string logText) => Debug.Log(logText);
     }
 }

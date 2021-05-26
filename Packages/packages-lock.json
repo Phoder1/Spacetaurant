@@ -5,15 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      "hash": "d0b7ea2376477d4c99f23bff357556f037e23d61"
-=======
       "hash": "84bcd53e2b2974c49c70736d015ab5f4cf6e633e"
->>>>>>> Stashed changes
-=======
-      "hash": "d3bc9867d442db6a15b8d01a029700c32cf662f9"
->>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
     },
     "com.alontalmi.datahandler": {
       "version": "https://github.com/Phoder1/DataHandler.git",
