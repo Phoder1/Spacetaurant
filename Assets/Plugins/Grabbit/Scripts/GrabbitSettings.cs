@@ -42,7 +42,7 @@ namespace Grabbit
     [CreateAssetMenu(fileName = "Grabbit Settings", menuName = "Tools/Grabbit/Create New Settings", order = 1)]
     public class GrabbitSettings : ScriptableObject
     {
-        public static string GrabbitVersion = "2021.0.2";
+        public static string GrabbitVersion = "2021.0.3";
        
        
        

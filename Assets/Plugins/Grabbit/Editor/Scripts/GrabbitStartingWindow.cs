@@ -327,7 +327,7 @@ namespace Grabbit
             GUILayout.BeginHorizontal();
 
 
-            if (GUILayout.Button("Setup It Up!", CurrentSettings.BigButton))
+            if (GUILayout.Button("Set It Up!", CurrentSettings.BigButton))
             {
                 CurrentStep = StartingStep.SETUP_INTRO;
                 var pos = position;

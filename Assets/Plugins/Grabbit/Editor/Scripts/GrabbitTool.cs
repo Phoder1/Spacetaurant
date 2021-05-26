@@ -101,13 +101,13 @@ namespace Grabbit
 
         public void OnEnable()
         {
-            if (Active)
+            if (Active || !ToolManager.IsActiveTool(this))
                 return;
 
             if (!GrabbitEditor.IsInstanceCreated)
                 GrabbitEditor.CreateInstanceIfNeeded();
-            
-            if(!GrabbitEditor.Instance.CurrentSettings)
+
+            if (!GrabbitEditor.Instance.CurrentSettings)
                 GrabbitEditor.Instance.GetOrFetchSettings();
 
             if (GrabbitEditor.Instance.CurrentSettings.UseLimitationZone)
@@ -287,6 +287,7 @@ namespace Grabbit
 
             updateBeforeCompile = 0;
             EditorApplication.update += UnlockCompilationAfterReset;
+            CompilationPipeline.compilationStarted -= ResetToolOnCompilation;
         }
 
         private void UnlockCompilationAfterReset()
@@ -298,7 +299,8 @@ namespace Grabbit
                 GrabbitHandler.InstantDestroyFlag = false;
                 Selection.objects = new Object[0] { };
 
-                ToolManager.RestorePreviousPersistentTool();
+             /*   if (EditorTools.IsActiveTool(this))
+                    EditorTools.RestorePreviousPersistentTool();*/
                 EditorApplication.UnlockReloadAssemblies();
             }
         }
@@ -1381,6 +1383,11 @@ namespace Grabbit
                 }
             }
 
+            foreach (var handler in selectionHandlers)
+            {
+                handler.Body.constraints = settings.Constraints;
+            }
+            
             switch (settings.CurrentMode)
             {
                 case GrabbitMode.PLACE:

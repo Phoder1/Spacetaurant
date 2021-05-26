@@ -17,8 +17,10 @@ namespace Spacetaurant.movement
         private GameObject visualObject;
         [SerializeField]
         private bool _capRotationAngle = true;
-        [SerializeField, Range(0, 720), Tooltip("Max degrees in 1 second"), ShowIf("_capRotationAngle")]
-        private float maxRotationAngle = 360;
+        [SerializeField, Range(0, 720), Tooltip("Max degrees in 1 second"), SuffixLabel("d/s"), ShowIf("_capRotationAngle")]
+        private float _maxRotationAngle = 360;
+        [SerializeField, Range(0, 720), Tooltip("Maximum acceleration in unity units/second^2"), SuffixLabel("Uu/s^2"), ShowIf("_capRotationAngle")]
+        private float _maxAcceleration = 2;
         //[SerializeField]
         //float minSlopeAngle = -30;
         [SerializeField, FoldoutGroup("Offsets"), Tooltip("The offset on the Y from which the ground ray will be shot"), SuffixLabel("Uu")]
@@ -56,17 +58,21 @@ namespace Spacetaurant.movement
                 MoveVertically(vertical);
                 var forwardDirection = visualObject.transform.position - startPos;
                 var targetVisualRotation = Quaternion.FromToRotation(visualObject.transform.forward, forwardDirection);
-                Rotate(targetVisualRotation);
+                Rotate(targetVisualRotation, _maxRotationAngle);
                 //Rotate(Quaternion.RotateTowards(visualObject.transform.rotation, targetVisualRotation, maxRotationAngle * Time.deltaTime));
             }
 
             MoveVertically(0.1f);
         }
-        public void RotateTowards(Vector3 pos) 
-            => Rotate(Quaternion.FromToRotation(visualObject.transform.forward, pos - visualObject.transform.position));
-        public void Rotate(Quaternion rotation)
+        public void RotateTowards(Vector3 pos, float? maxRotationAngle = null) 
+            => Rotate(Quaternion.FromToRotation(visualObject.transform.forward, pos - visualObject.transform.position), maxRotationAngle);
+        public void Rotate(Quaternion rotation, float? maxRotationAngle = null)
         {
-            visualObject.transform.rotation = rotation * visualObject.transform.rotation;
+            if (maxRotationAngle == null)
+                visualObject.transform.rotation = rotation * visualObject.transform.rotation;
+            else
+                visualObject.transform.rotation = Quaternion.RotateTowards(visualObject.transform.rotation, rotation * visualObject.transform.rotation, maxRotationAngle.Value * Time.deltaTime);
+
             transform.rotation = Quaternion.FromToRotation(transform.up, PlanetUp) * transform.rotation;
             visualObject.transform.rotation = Quaternion.FromToRotation(visualObject.transform.up, PlanetUp) * visualObject.transform.rotation;
         }

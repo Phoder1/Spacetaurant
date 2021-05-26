@@ -70,12 +70,12 @@ namespace Spacetaurant.movement
         }
         Vector3 PlanetUp(Vector3 pos) => (pos - BlackBoard.planet.transform.position).normalized;
 
-        public void RotateTowards(Vector3 pos)
+        public void RotateTowards(Vector3 pos, float? maxRotationAngle = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Rotate(Quaternion rotation)
+        public void Rotate(Quaternion rotation, float? maxRotationAngle = null)
         {
             throw new NotImplementedException();
         }

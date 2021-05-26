@@ -71,7 +71,7 @@ namespace Grabbit
             AddedDynamicColliders.Clear();
             AddedStaticColliders.Clear();
 
-            if (WasBodyAdded)
+            if (WasBodyAdded && Body)
                 DestroyImmediate(Body);
             else
                 RestoreBody();

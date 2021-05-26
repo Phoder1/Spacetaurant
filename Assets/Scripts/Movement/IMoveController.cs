@@ -18,7 +18,7 @@ namespace Spacetaurant.movement
         /// </summary>
         /// <param name="gravity">The amount of gravity to apply.</param>
         void ApplyGravity(float gravity);
-        void RotateTowards(Vector3 pos);
-        void Rotate(Quaternion rotation);
+        void RotateTowards(Vector3 pos, float? maxRotationAngle = null);
+        void Rotate(Quaternion rotation, float? maxRotationAngle = null);
     }
 }
