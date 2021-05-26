@@ -91,7 +91,7 @@ Material:
     - _OutlineThickness: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.15
+    - _Smoothness: 0.085
     - _Smoothness1: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -103,10 +103,10 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.85423696, g: 0.2584905, b: 1, a: 0}
+    - _MainColor: {r: 0.8584906, g: 0.83285373, b: 0.7977483, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.49755287, g: 0.15063529, b: 0.582, a: 1}
+    - _SpecularColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor1: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
