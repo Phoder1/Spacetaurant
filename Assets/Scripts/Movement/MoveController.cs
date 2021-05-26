@@ -13,6 +13,13 @@ namespace Spacetaurant.movement
         private CapsuleCollider _collider = default;
         [SerializeField]
         float maxSlopeAngle = 60;
+
+        [SerializeField]
+        private GameObject visualObject;
+        [SerializeField]
+        private bool _capRotationAngle = true;
+        [SerializeField, Range(0, 720), Tooltip("Max degrees in 1 second"), ShowIf("_capRotationAngle")]
+        private float maxRotationAngle = 360;
         //[SerializeField]
         //float minSlopeAngle = -30;
         [SerializeField, FoldoutGroup("Offsets"), Tooltip("The offset on the Y from which the ground ray will be shot"), SuffixLabel("Uu")]
@@ -24,7 +31,11 @@ namespace Spacetaurant.movement
 
         private float _colliderRadius = default;
 
+        #region Events
+        public UnityEventForRefrence OnStartMove = default;
         public UnityEventForRefrence OnMove = default;
+        public UnityEventForRefrence OnEndMove = default;
+        #endregion
 
         const int MAX_MOVE_STEPS = 5;
 
@@ -42,13 +53,18 @@ namespace Spacetaurant.movement
         }
         public void Move(Vector2 direction, float distance)
         {
+            Vector3 startPos = visualObject.transform.position;
             UpdateFrameConstants(distance);
 
             if (direction != Vector2.zero)
                 MoveHorizontally(direction, distance);
 
+            var forwardDirection = visualObject.transform.position - startPos;
+            var targetVisualRotation = Quaternion.FromToRotation(visualObject.transform.forward, forwardDirection) * visualObject.transform.rotation;
+            visualObject.transform.rotation = Quaternion.RotateTowards(visualObject.transform.rotation, targetVisualRotation, maxRotationAngle * Time.deltaTime);
             MoveVertically(vertical);
 
+            visualObject.transform.rotation = Quaternion.FromToRotation(visualObject.transform.up, PlanetUp) * visualObject.transform.rotation;
             transform.rotation = Quaternion.FromToRotation(transform.up, PlanetUp) * transform.rotation;
             
             MoveVertically(0.1f);
