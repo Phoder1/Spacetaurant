@@ -93,6 +93,8 @@ namespace Spacetaurant.Player
         }
         private void FixedUpdate()
         {
+            moveVector = Vector2.zero;
+
             PlayerStateMachine.State.FixedUpdate();
 
             if (lastMoveDirection == Vector2.zero && moveVector != Vector2.zero)
@@ -254,6 +256,7 @@ namespace Spacetaurant.Player
                         if (!_interacting)
                         {
                             IInteractable interactable = ctrl.InteractableHit.interactable;
+                            ctrl._moveController.RotateTowards(interactable.Position);
                             interactable.StartInteraction();
                             ctrl.OnInteractionStart?.Invoke(interactable);
                             _interacting = true;

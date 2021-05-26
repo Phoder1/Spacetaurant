@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Spacetaurant.Interactable
 {
-    public enum GatherType { PickupLow, PickupHigh, SawLow, SawHigh, DrillLow, DrillHigh}
+    public enum InteractType { PickupLow, PickupHigh, SawLow, SawHigh, DrillLow, DrillHigh}
 
     public class Gatherable : MonoWrap, IInteractable
     {
@@ -23,8 +23,8 @@ namespace Spacetaurant.Interactable
         [SerializeField, TabGroup("Interaction settings"), PreviewField]
         private Sprite _buttonSprite = null;
         [SerializeField, TabGroup("Interaction settings")]
-        private GatherType _gatherType;
-        public GatherType GatherType => _gatherType;
+        private InteractType _interactType;
+        public InteractType InteractType => _interactType;
         #endregion
         #region Respawnable
         #endregion

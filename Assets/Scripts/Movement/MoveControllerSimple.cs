@@ -69,5 +69,15 @@ namespace Spacetaurant.movement
                 => Mathf.Abs(Mathf.Sqrt(moveChord * moveChord - horizontalMove * horizontalMove));
         }
         Vector3 PlanetUp(Vector3 pos) => (pos - BlackBoard.planet.transform.position).normalized;
+
+        public void RotateTowards(Vector3 pos)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Rotate(Quaternion rotation)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

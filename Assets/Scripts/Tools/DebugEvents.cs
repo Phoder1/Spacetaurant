@@ -9,5 +9,6 @@ namespace Spacetaurant
     {
         [Button]
         public void DebugLog(string logText) => Debug.Log(logText);
+        public void DebugLog(object input) => Debug.Log(input);
     }
 }

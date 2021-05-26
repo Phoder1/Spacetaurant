@@ -12,6 +12,7 @@ namespace Spacetaurant.Interactable
         bool IsInteractable { get; set; }
         float InteractionTime { get; }
         Sprite ButtonIcon { get; }
+        InteractType InteractType { get; }
         #region Events
         UnityEventForRefrence OnInteraction { get; }
         UnityEventForRefrence OnInteractionStart { get; }

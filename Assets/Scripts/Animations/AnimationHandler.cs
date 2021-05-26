@@ -17,26 +17,29 @@ namespace Spacetaurant.Animations
 
         #region Animator Parameters
 
+        //Walk Parameter
         [SerializeField, FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
         [OnValueChanged("@CacheWalkParameter()")]
         private string _walkParameter;
-        private void CacheWalkParameter() => CacheParameter(ref _walkID, _walkParameter);
         [SerializeField, FoldoutGroup("Parameters"), ReadOnly]
         private int _walkID;
+        private void CacheWalkParameter() => CacheParameter(ref _walkID, _walkParameter);
 
+        //Pickup Low Parameter
         [SerializeField, FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
         [OnValueChanged("@CachePickupLowParameter()")]
         private string _pickupLowParameter;
         [SerializeField, FoldoutGroup("Parameters"), ReadOnly]
         private int _pickupLowID;
-        private void CachePickupLowParameter() => CacheParameter(ref _walkID, _walkParameter);
+        private void CachePickupLowParameter() => CacheParameter(ref _pickupLowID, _pickupLowParameter);
 
+        //Pickup High Parameter
         [SerializeField, FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
         [OnValueChanged("@CachePickupHighParameter()")]
         private string _pickupHighParameter;
-        private void CachePickupHighParameter() => CacheParameter(ref _walkID, _walkParameter);
         [SerializeField, FoldoutGroup("Parameters"), ReadOnly]
         private int _pickupHighID;
+        private void CachePickupHighParameter() => CacheParameter(ref _pickupHighID, _pickupHighParameter);
         private string[] AnimatorParameters => Array.ConvertAll(_animator.parameters, (x) => x.name);
         void CacheParameter(ref int ID, string name) => ID = Array.Find(_animator.parameters, (x) => x.name == name).nameHash;
         #endregion
@@ -51,23 +54,28 @@ namespace Spacetaurant.Animations
         {
             _animator.SetBool(_walkID, false);
         }
-        public void StartGathering(Gatherable gatherable)
+        public void StartGathering(object interactable)
         {
-            switch (gatherable.GatherType)
+            if (interactable is IInteractable _interactable)
+                StartGathering(_interactable);
+        }
+        public void StartGathering(IInteractable interactable)
+        {
+            switch (interactable.InteractType)
             {
-                case GatherType.PickupLow:
+                case InteractType.PickupLow:
                     _animator.SetTrigger(_pickupLowID);
                     break;
-                case GatherType.PickupHigh:
+                case InteractType.PickupHigh:
                     _animator.SetTrigger(_pickupHighID);
                     break;
-                case GatherType.SawLow:
+                case InteractType.SawLow:
                     break;
-                case GatherType.SawHigh:
+                case InteractType.SawHigh:
                     break;
-                case GatherType.DrillLow:
+                case InteractType.DrillLow:
                     break;
-                case GatherType.DrillHigh:
+                case InteractType.DrillHigh:
                     break;
             }
         }

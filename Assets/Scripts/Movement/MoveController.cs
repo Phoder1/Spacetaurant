@@ -1,7 +1,6 @@
 using CustomAttributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Events;
 using static Spacetaurant.BlackBoard;
 
 namespace Spacetaurant.movement
@@ -31,12 +30,6 @@ namespace Spacetaurant.movement
 
         private float _colliderRadius = default;
 
-        #region Events
-        public UnityEventForRefrence OnStartMove = default;
-        public UnityEventForRefrence OnMove = default;
-        public UnityEventForRefrence OnEndMove = default;
-        #endregion
-
         const int MAX_MOVE_STEPS = 5;
 
         #region Frame temp
@@ -57,17 +50,25 @@ namespace Spacetaurant.movement
             UpdateFrameConstants(distance);
 
             if (direction != Vector2.zero)
+            {
                 MoveHorizontally(direction, distance);
 
-            var forwardDirection = visualObject.transform.position - startPos;
-            var targetVisualRotation = Quaternion.FromToRotation(visualObject.transform.forward, forwardDirection) * visualObject.transform.rotation;
-            visualObject.transform.rotation = Quaternion.RotateTowards(visualObject.transform.rotation, targetVisualRotation, maxRotationAngle * Time.deltaTime);
-            MoveVertically(vertical);
+                MoveVertically(vertical);
+                var forwardDirection = visualObject.transform.position - startPos;
+                var targetVisualRotation = Quaternion.FromToRotation(visualObject.transform.forward, forwardDirection);
+                Rotate(targetVisualRotation);
+                //Rotate(Quaternion.RotateTowards(visualObject.transform.rotation, targetVisualRotation, maxRotationAngle * Time.deltaTime));
+            }
 
-            visualObject.transform.rotation = Quaternion.FromToRotation(visualObject.transform.up, PlanetUp) * visualObject.transform.rotation;
-            transform.rotation = Quaternion.FromToRotation(transform.up, PlanetUp) * transform.rotation;
-            
             MoveVertically(0.1f);
+        }
+        public void RotateTowards(Vector3 pos) 
+            => Rotate(Quaternion.FromToRotation(visualObject.transform.forward, pos - visualObject.transform.position));
+        public void Rotate(Quaternion rotation)
+        {
+            visualObject.transform.rotation = rotation * visualObject.transform.rotation;
+            transform.rotation = Quaternion.FromToRotation(transform.up, PlanetUp) * transform.rotation;
+            visualObject.transform.rotation = Quaternion.FromToRotation(visualObject.transform.up, PlanetUp) * visualObject.transform.rotation;
         }
         public void ApplyGravity(float gravityForce)
         {
@@ -103,7 +104,7 @@ namespace Spacetaurant.movement
         {
             bool rightWasHit = Physics.Raycast(GroundRayOrigin() + transform.right * _colliderRadius, -transform.up, out var hitRight, distance + skinWidth);
             bool leftWasHit = Physics.Raycast(GroundRayOrigin() - transform.right * _colliderRadius, -transform.up, out var hitLeft, distance + skinWidth);
-            
+
             if (rightWasHit || leftWasHit)
                 distance = Mathf.Clamp(Mathf.Min(hitRight.distance, hitLeft.distance) - skinWidth, 0, distance);
 
