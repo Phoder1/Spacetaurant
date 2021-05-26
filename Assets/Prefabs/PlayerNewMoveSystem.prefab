@@ -28,11 +28,14 @@ MonoBehaviour:
   OnMove:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
   OnEndMove:
     m_PersistentCalls:
       m_Calls: []
+=======
+>>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
 --- !u!114 &965912777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +68,7 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+<<<<<<< HEAD
 --- !u!114 &527748880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +89,8 @@ MonoBehaviour:
   _pickupHighParameter: Picking_High
   _pickupHighID: -1
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
 --- !u!1001 &4900014798758338532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,6 +98,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1128895034122884814, guid: af73f770a01757b458ed994e613ecf53, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6290764543522647576, guid: af73f770a01757b458ed994e613ecf53, type: 3}
       propertyPath: m_Height
       value: 1.8
@@ -220,6 +230,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     - target: {fileID: 6290764543718048519, guid: af73f770a01757b458ed994e613ecf53, type: 3}
@@ -234,13 +245,19 @@ PrefabInstance:
       propertyPath: _maxRotationSpeed
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
     - target: {fileID: 6290764543981791269, guid: af73f770a01757b458ed994e613ecf53, type: 3}
       propertyPath: m_LocalPosition.y
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6290764543981791269, guid: af73f770a01757b458ed994e613ecf53, type: 3}
       propertyPath: m_LocalPosition.z
+<<<<<<< HEAD
       value: -8
+=======
+      value: -10
+>>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
       objectReference: {fileID: 0}
     - target: {fileID: 6290764543981791269, guid: af73f770a01757b458ed994e613ecf53, type: 3}
       propertyPath: m_LocalRotation.w
@@ -266,7 +283,10 @@ PrefabInstance:
       propertyPath: far clip plane
       value: 200
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
     m_RemovedComponents:
     - {fileID: 6290764543522647577, guid: af73f770a01757b458ed994e613ecf53, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af73f770a01757b458ed994e613ecf53, type: 3}
@@ -280,13 +300,17 @@ CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 6290764543522647576, guid: af73f770a01757b458ed994e613ecf53, type: 3}
   m_PrefabInstance: {fileID: 4900014798758338532}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
 --- !u!1 &1390785977635436484 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6290764543981791264, guid: af73f770a01757b458ed994e613ecf53, type: 3}
   m_PrefabInstance: {fileID: 4900014798758338532}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &5402663027433154278 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1079249937514887426, guid: af73f770a01757b458ed994e613ecf53, type: 3}
@@ -298,3 +322,5 @@ Animator:
   m_PrefabInstance: {fileID: 4900014798758338532}
   m_PrefabAsset: {fileID: 0}
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of ae49049 (Merge pull request #1 from Phoder1/Momo's-Branch)
