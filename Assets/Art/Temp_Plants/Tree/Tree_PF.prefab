@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4574080034928272969}
   - component: {fileID: 5937568908016669543}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Tree_PF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7326338306413262896}
   m_LocalRotation: {x: -0.43135694, y: 0, z: -0.16082487, w: 0.88773113}
   m_LocalPosition: {x: 36.48, y: 56.19, z: -70.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.98024356, y: 0.98024356, z: 0.98024356}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

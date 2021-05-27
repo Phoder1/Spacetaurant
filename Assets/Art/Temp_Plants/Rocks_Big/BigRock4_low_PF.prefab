@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6343530173609657712}
   - component: {fileID: 2243824470585387825}
   m_Layer: 0
-  m_Name: BigRock4_low
+  m_Name: BigRock4_low_PF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5523350085252307362}
   m_LocalRotation: {x: 0.30148405, y: 0.06767422, z: 0.22586392, w: 0.92385775}
   m_LocalPosition: {x: -47.56, y: 68.61, z: 50.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1161, y: 2.1161, z: 2.1161}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
