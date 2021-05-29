@@ -32,7 +32,7 @@ namespace Spacetaurant.Resources
     }
     [Serializable]
     [InlineProperty]
-    public class ResourceSlot : IDirtyData
+    public class ResourceSlot : DirtyData
     {
         [SerializeField, HorizontalGroup, HideLabel]
         private int _amount;
@@ -63,19 +63,11 @@ namespace Spacetaurant.Resources
             }
         }
 
-        private bool _isDirty;
-
         public ResourceSlot(int amount, ResourceSO resource)
         {
             _amount = amount;
             _resource = resource;
-            _isDirty = true;
+            IsDirty = true;
         }
-
-        public bool IsDirty => _isDirty;
-
-        public event Action OnDirty;
-        public void Saved() => _isDirty = false;
-        public void ValueChanged() => _isDirty = true;
     }
 }
