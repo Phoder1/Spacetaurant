@@ -1,8 +1,16 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 583534fc2be48ed4999316e35c93394f
 =======
 guid: 939a1ea08e822ed4292a8a1a5188ff98
+>>>>>>> master
+=======
+<<<<<<< HEAD:Assets/Art/UI Assets/Sprites/Imports.meta
+guid: 00e96e2c59653134a9ae4deed2e82173
+=======
+guid: 939a1ea08e822ed4292a8a1a5188ff98
+>>>>>>> master:Assets/Prefabs/Gatherables.meta
 >>>>>>> master
 folderAsset: yes
 DefaultImporter:

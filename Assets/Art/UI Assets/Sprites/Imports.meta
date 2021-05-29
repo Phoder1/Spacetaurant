@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Art/UI Assets/Sprites/Imports.meta
 guid: 00e96e2c59653134a9ae4deed2e82173
+=======
+guid: 939a1ea08e822ed4292a8a1a5188ff98
+>>>>>>> master:Assets/Prefabs/Gatherables.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
