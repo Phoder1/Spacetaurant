@@ -250,13 +250,13 @@ MonoBehaviour:
   _debug: 0
   _collider: {fileID: 6290764543522647576}
   maxSlopeAngle: 70
-  visualObject: {fileID: 0}
+  visualObject: {fileID: 4899070738324880423}
   _capRotationAngle: 1
   _maxRotationAngle: 360
   _maxAcceleration: 2
   groundRayOffset: 0
-  forwardRayOffset: 0.4
-  skinWidth: 0.3
+  forwardRayOffset: 0.5
+  skinWidth: 0.4
 --- !u!1001 &5709886137864044918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -314,6 +314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9790e65f3cf5a704e8e108bcd80fc834, type: 3}
+--- !u!1 &4899070738324880423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9790e65f3cf5a704e8e108bcd80fc834, type: 3}
+  m_PrefabInstance: {fileID: 5709886137864044918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5239707603305309853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9790e65f3cf5a704e8e108bcd80fc834, type: 3}
