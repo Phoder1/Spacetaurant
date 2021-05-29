@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scriptableobject/Planets/Planet 1/Resources.meta
 guid: a658d20a1d4ece741b57392d435a54ca
+=======
+guid: d2c622f2616ce7747888a7bfc63b9baf
+>>>>>>> Sahar:Assets/Scriptableobject/Planets/Planet 1.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

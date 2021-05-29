@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d2c622f2616ce7747888a7bfc63b9baf
+=======
+<<<<<<< HEAD:Assets/Prefabs/Gatherables.meta
+guid: 939a1ea08e822ed4292a8a1a5188ff98
+=======
+guid: d2c622f2616ce7747888a7bfc63b9baf
+>>>>>>> Sahar:Assets/Scriptableobject/Planets/Planet 1.meta
+>>>>>>> Sahar
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
