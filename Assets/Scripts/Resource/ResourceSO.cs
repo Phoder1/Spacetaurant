@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System;
 using DataSaving;
+using Spacetaurant.Planets;
 
 namespace Spacetaurant.Resources
 {
@@ -13,22 +14,34 @@ namespace Spacetaurant.Resources
         [HorizontalGroup("Title")]
         [BoxGroup("Title/Name", showLabel: false)]
         [LabelText("Name"), LabelWidth(60)]
-        public string resourceName;
+        [SerializeField]
+        private string _resourceName;
+        public string ResourceName => _resourceName;
 
         [HorizontalGroup("Title", width: 60)]
         [BoxGroup("Title/Icon")]
         [PreviewField, HideLabel]
-        public Sprite icon;
+        [SerializeField]
+        private Sprite _icon;
+        public Sprite Icon => _icon;
 
         [BoxGroup("Title/Name", showLabel: false)]
         [TextArea]
-        public string description;
+        [SerializeField]
+        private string _description;
+        public string Description => _description;
 
-        [EnumToggleButtons, HideLabel, Title("Rarity", bold: false, horizontalLine: false)]
-        public ResourceRarity rarity;
+        [SerializeField, EnumToggleButtons, HideLabel, Title("Rarity", bold: false, horizontalLine: false)]
+        private ResourceRarity _rarity;
+        public ResourceRarity Rarity => _rarity;
 
-        [EnumToggleButtons, HideLabel, Title("Type", bold: false, horizontalLine: false)]
-        public ResourceType type;
+        [SerializeField, EnumToggleButtons, HideLabel, Title("Type", bold: false, horizontalLine: false)]
+        private ResourceType _type;
+        public ResourceType Type => _type;
+
+        [SerializeField]
+        private PlanetSO _planet;
+        public PlanetSO Planet => _planet;
     }
     [Serializable]
     [InlineProperty]
