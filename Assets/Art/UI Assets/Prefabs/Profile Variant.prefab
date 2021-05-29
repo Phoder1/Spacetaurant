@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 800150465859267168, guid: 49e4eec7572a3a141a93193fba2d2d4e, type: 3}
       propertyPath: m_Name
-      value: Profile
+      value: Profile Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1721602955301487542, guid: 49e4eec7572a3a141a93193fba2d2d4e, type: 3}
       propertyPath: m_Sprite
