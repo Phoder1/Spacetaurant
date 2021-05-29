@@ -39,28 +39,14 @@ namespace Spacetaurant.Resources
         public int Amount
         {
             get => _amount;
-            set
-            {
-                if (_amount == value)
-                    return;
-
-                _amount = value;
-                ValueChanged();
-            }
+            set => Setter(ref _amount, value);
         }
         [SerializeField, HorizontalGroup, HideLabel]
         private ResourceSO _resource;
         public ResourceSO Resource
         {
             get => _resource;
-            set
-            {
-                if (_resource == value)
-                    return;
-
-                _resource = value;
-                ValueChanged();
-            }
+            set => Setter(ref _resource, value);
         }
 
         public ResourceSlot(int amount, ResourceSO resource)
