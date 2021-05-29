@@ -19,8 +19,10 @@ namespace Spacetaurant.Tools
         private Transform _partTransform;
         private void Awake()
         {
-            if(Application.isPlaying)
-            transform.SetParent(_partTransform);
+            if (Application.isPlaying)
+                transform.SetParent(_partTransform);
+            else
+                ApplyModes();
         }
 #if UNITY_EDITOR
         private Vector3 _lastPos;
@@ -29,28 +31,30 @@ namespace Spacetaurant.Tools
         private void Update()
         {
             if (!Application.isPlaying && _lastPos != transform.position)
-            {
-                if (!CastRay(out _hit))
-                    return;
+                ApplyModes();
+        }
+        public void ApplyModes()
+        {
+            if (!CastRay(out _hit))
+                return;
 
-                if (_workModes.HasFlag(Modes.AutoAssign))
-                    AssignPart();                
+            if (_workModes.HasFlag(Modes.AutoAssign))
+                AssignPart();
 
-                if (_workModes.HasFlag(Modes.AutoRotation))
-                    Rotate();
+            if (_workModes.HasFlag(Modes.AutoRotation))
+                Rotate();
 
-                if (_workModes.HasFlag(Modes.AutoFlat))
-                    Flatten();
+            if (_workModes.HasFlag(Modes.AutoFlat))
+                Flatten();
 
-                _hit = null;
+            _hit = null;
 
-                _lastPos = transform.position;
-            }
+            _lastPos = transform.position;
         }
         [Button, FoldoutGroup("Manual activation")]
         private void AssignPart()
         {
-         
+
 
             if (_hit == null && !CastRay(out _hit))
                 return;
@@ -60,7 +64,7 @@ namespace Spacetaurant.Tools
         [Button, FoldoutGroup("Manual activation")]
         private void Rotate()
         {
-            
+
             if (_hit == null && !CastRay(out _hit))
                 return;
 
@@ -77,7 +81,7 @@ namespace Spacetaurant.Tools
             {
                 mesh = GetComponentInChildren<SkinnedMeshRenderer>()?.sharedMesh;
                 if (mesh == null)
-                    _workModes &= ~Modes.AutoFlat; 
+                    _workModes &= ~Modes.AutoFlat;
             }
             var closestPoint = mesh.bounds.ClosestPoint(_hit.Value.point);
             transform.position += _hit.Value.point - (transform.position - closestPoint);
@@ -85,9 +89,9 @@ namespace Spacetaurant.Tools
         private bool CastRay(out RaycastHit? hit)
         {
             hit = default;
-            
+
             Planet planet = Array.Find(FindObjectsOfType<Planet>(), (x) => x.IsMainPlanet);
-            
+
             if (planet == null)
                 return false;
 
