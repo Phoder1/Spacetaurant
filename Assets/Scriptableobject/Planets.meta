@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Scriptableobject/Planets.meta
 guid: 4dbc14cf9eb9e6641ad89dd76132e351
+=======
+guid: 939a1ea08e822ed4292a8a1a5188ff98
+>>>>>>> master:Assets/Prefabs/Gatherables.meta
+=======
+guid: 4dbc14cf9eb9e6641ad89dd76132e351
+>>>>>>> master
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
