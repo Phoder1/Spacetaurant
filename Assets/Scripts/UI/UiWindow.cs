@@ -7,6 +7,7 @@ namespace Spacetaurant.UI
 {
     public abstract class UiWindow : MonoBehaviour
     {
+        #region Serielized
         [FoldoutGroup("Transition in")]
         [SerializeField] float transitionInDuration = 0.5f;
         [FoldoutGroup("Transition in")]
@@ -15,9 +16,10 @@ namespace Spacetaurant.UI
         [SerializeField] float transitionOutDuration = 0.5f;
         [FoldoutGroup("Transition out")]
         [SerializeField] AnimationCurve transitionOutCurve = AnimationCurve.Linear(0, 0, 1, 1);
+        #endregion
 
         #region Events
-        [SerializeField, FoldoutGroup("Events",order: 999)]
+        [SerializeField, FoldoutGroup("Events", order: 999)]
         protected UnityEvent OnTransitionIn_Start;
         [SerializeField, FoldoutGroup("Events")]
         protected UnityEvent OnTransitionIn_End;
@@ -29,12 +31,13 @@ namespace Spacetaurant.UI
         protected UnityEvent OnUiLock;
         [SerializeField, FoldoutGroup("Events")]
         protected UnityEvent OnUiUnlock;
+        #endregion
 
+        #region State
         [HideInInspector]
         public WindowGroupHandler groupHandler;
 
         public Tween transitionTween = default;
-        #endregion
         private bool _uiLocked;
         public virtual bool UiLocked
         {
@@ -48,6 +51,7 @@ namespace Spacetaurant.UI
                         OnUiUnlock?.Invoke();
                 });
         }
+        #endregion
         void Awake()
         {
             ForceTransitionedOut();
@@ -63,40 +67,56 @@ namespace Spacetaurant.UI
             }
         }
         public void SelectWindow() => groupHandler.SelectWindow(this);
-        public virtual void OnUpdate() { }
-        public virtual void OnReset() { }
-        public virtual void TransitionInEnd()
-        {
-            UiLocked = false;
-            OnTransitionIn_End?.Invoke();
-        }
-        public virtual void TransitionOutEnd()
-        {
-            gameObject.SetActive(false);
-            OnTransitionOut_End?.Invoke();
-        }
-        public abstract void ForceTransitionedOut();
+
+        #region Transition In
+        [Button]
         public abstract void ForceTransitionedIn();
-        public virtual void TransitionInStart() => OnTransitionIn_Start?.Invoke();
-        public virtual void TransitionOutStart() => OnTransitionOut_Start?.Invoke();
-        public virtual void UnlockUI() { }
         public Tween TransitionIn()
         {
             gameObject.SetActive(true);
             UiLocked = true;
             TransitionInStart();
+            
             transitionTween = OnTransitionIn(transitionInDuration, transitionInCurve);
-            transitionTween.onComplete += TransitionInEnd;
+            
+            if (transitionTween != null)
+                transitionTween.onComplete += TransitionInEnd;
+            else
+                TransitionInEnd();
+
             return transitionTween;
         }
         public abstract Tween OnTransitionIn(float duration, AnimationCurve curve);
+        public virtual void TransitionInStart() => OnTransitionIn_Start?.Invoke();
+        public virtual void TransitionInEnd()
+        {
+            UiLocked = false;
+            OnTransitionIn_End?.Invoke();
+        }
+        #endregion
+
+        #region Transition out
+        [Button]
+        public abstract void ForceTransitionedOut();
         public Tween TransitionOut()
         {
             TransitionOutStart();
             transitionTween = OnTransitionOut(transitionOutDuration, transitionOutCurve);
-            transitionTween.onComplete += TransitionOutEnd;
+            
+            if (transitionTween != null)
+                transitionTween.onComplete += TransitionOutEnd;
+            else
+                TransitionOutEnd();
+
             return transitionTween;
         }
+        public virtual void TransitionOutStart() => OnTransitionOut_Start?.Invoke();
         public abstract Tween OnTransitionOut(float duration, AnimationCurve curve);
+        public virtual void TransitionOutEnd()
+        {
+            gameObject.SetActive(false);
+            OnTransitionOut_End?.Invoke();
+        }
+        #endregion
     }
 }

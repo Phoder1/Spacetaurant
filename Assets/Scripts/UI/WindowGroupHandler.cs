@@ -40,8 +40,10 @@ namespace Spacetaurant.UI
             get => stateMachine.State;
             set
             {
-                if (CurrentState == value)
+                if (CurrentState.uiWindow == value.uiWindow)
                     return;
+
+                value.uiWindow.groupHandler = this;
 
                 stateMachine.State = value;
 
@@ -67,6 +69,7 @@ namespace Spacetaurant.UI
         private void Start()
         {
             states.ForEach((x) => x.uiWindow.groupHandler = this);
+            _defaultState.uiWindow.groupHandler = this;
             stateMachine = new StateMachine<MenuUiState>(_defaultState);
             CurrentState.uiWindow.CancelTween();
             CurrentState.uiWindow.ForceTransitionedIn();
@@ -80,8 +83,13 @@ namespace Spacetaurant.UI
         {
             UiLocked = true;
 
-            if (CurrentState != null && CurrentState.uiWindow != null && CurrentState.uiWindow.transitionTween != null)
-                CurrentState.uiWindow.transitionTween.onComplete = OnComplete;
+            if (CurrentState != null && CurrentState.uiWindow != null)
+            {
+                if (CurrentState.uiWindow.transitionTween != null)
+                    CurrentState.uiWindow.transitionTween.onComplete = OnComplete;
+                else
+                    OnComplete();
+            }
 
             void OnComplete()
             {

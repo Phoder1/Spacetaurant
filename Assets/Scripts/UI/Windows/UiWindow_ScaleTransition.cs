@@ -10,7 +10,7 @@ namespace Spacetaurant.UI
     {
             [SerializeField, FoldoutGroup("Transition in")]
             private float transitionInValue = 1;
-            [SerializeField, FoldoutGroup("Transition in")]
+            [SerializeField, FoldoutGroup("Transition out")]
             private float transitionOutValue = 0;
 
         public override void ForceTransitionedIn()
