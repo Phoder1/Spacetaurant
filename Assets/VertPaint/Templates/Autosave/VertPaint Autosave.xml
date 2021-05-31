@@ -4,10 +4,10 @@
   <togglePreview>false</togglePreview>
   <hideTransformHandle>true</hideTransformHandle>
   <brushSettings>
-    <radius>1.5</radius>
-    <maxRadius>10</maxRadius>
+    <radius>5.9</radius>
+    <maxRadius>50</maxRadius>
     <delay>0.025</delay>
-    <opacity>0.25</opacity>
+    <opacity>0.8</opacity>
     <falloff>
       <key>
         <time>0</time>
@@ -24,12 +24,12 @@
     </falloff>
     <color>
       <r>1</r>
-      <g>0</g>
+      <g>1</g>
       <b>0</b>
       <a>1</a>
     </color>
     <style>2</style>
-    <alpha>0.2</alpha>
+    <alpha>1</alpha>
     <blink>true</blink>
   </brushSettings>
   <keyBindings>

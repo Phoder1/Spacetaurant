@@ -102,6 +102,6 @@ namespace Spacetaurant.Tools
             hit = (RaycastHit?)tempHit;
             return success;
         }
-    }
 #endif
+    }
 }

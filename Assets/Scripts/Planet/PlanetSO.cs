@@ -1,10 +1,7 @@
 using Sirenix.OdinInspector;
-using Sirenix.OdinInspector.Editor;
 using Spacetaurant.Resources;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 namespace Spacetaurant.Planets
 {
