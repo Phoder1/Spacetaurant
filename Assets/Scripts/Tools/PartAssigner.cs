@@ -21,8 +21,10 @@ namespace Spacetaurant.Tools
         {
             if (Application.isPlaying)
                 transform.SetParent(_partTransform);
+#if UNITY_EDITOR
             else
                 ApplyModes();
+#endif
         }
 #if UNITY_EDITOR
         private Vector3 _lastPos;
