@@ -1,5 +1,5 @@
 using Sirenix.OdinInspector;
-using Spacetaurant.Resources;
+using Spacetaurant.Crafting;
 using System.Collections.Generic;
 using UnityEngine;
 

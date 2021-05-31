@@ -4,7 +4,7 @@ using System;
 using DataSaving;
 using Spacetaurant.Planets;
 
-namespace Spacetaurant.Resources
+namespace Spacetaurant.Crafting
 {
     public enum ResourceRarity { Common, Uncommon, Rare }
     public enum ResourceType { Cooking, Building }

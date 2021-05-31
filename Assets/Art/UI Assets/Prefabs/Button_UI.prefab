@@ -119,4 +119,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9088638638836481149}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Spacetaurant.UI.WindowGroupHandler, Assembly-CSharp
+        m_MethodName: SelectWindow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2

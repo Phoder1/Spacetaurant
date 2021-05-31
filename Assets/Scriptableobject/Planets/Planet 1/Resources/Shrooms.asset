@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa4dc5326a60be46b28fe34f4db5f25, type: 3}
   m_Name: Shrooms
   m_EditorClassIdentifier: 
-  _resourceName: 
+  _resourceName: Shrooms
   _icon: {fileID: 0}
   _description: 
   _rarity: 0
   _type: 0
+  _planet: {fileID: 11400000, guid: 05c4f07b984c9004dbb9c6cff656117a, type: 2}

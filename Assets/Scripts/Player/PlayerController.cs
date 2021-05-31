@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using Spacetaurant.Containers;
 using Spacetaurant.Interactable;
 using Spacetaurant.movement;
-using Spacetaurant.Resources;
+using Spacetaurant.Crafting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,7 +25,7 @@ namespace Spacetaurant.Player
         [SerializeField]
         private EventRefrence _onMove_vector2 = default;
 
-        public StateMachine PlayerStateMachine;
+        public StateMachine<PlayerState> PlayerStateMachine;
         private IMoveController _moveController = default;
         private PlayerState DefaultState => WalkState;
         private PlayerWalkState WalkState => new PlayerWalkState(this);
@@ -69,7 +69,7 @@ namespace Spacetaurant.Player
         private void OnEnable() => _onMove_vector2.eventRefrence += (x) => _jsDir = (Vector2)x;
         protected override void OnAwake()
         {
-            PlayerStateMachine = new StateMachine(DefaultState);
+            PlayerStateMachine = new StateMachine<PlayerState>(DefaultState);
             _moveController = GetComponent<IMoveController>();
         }
         private void Start()
