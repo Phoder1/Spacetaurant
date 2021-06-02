@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Crystal
   m_EditorClassIdentifier: 
   _resourceName: Crystal
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: ed263864aa165bd48b513ccf389ebc7e, type: 3}
   _description: 
   _rarity: 0
   _type: 0

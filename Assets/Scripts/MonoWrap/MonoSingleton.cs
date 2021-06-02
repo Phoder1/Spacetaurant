@@ -3,7 +3,7 @@ using UnityEngine;
 public class MonoSingleton<T> : MonoWrap where T : MonoSingleton<T>
 {
     [SerializeField]
-    private bool _dontDestroyOnLoad;
+    private bool _dontDestroyOnLoad = true;
 
     public static T _instance;
     public static T Instance
@@ -12,7 +12,7 @@ public class MonoSingleton<T> : MonoWrap where T : MonoSingleton<T>
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<T>();
+                _instance = FindObjectOfType<T>();
                 if (_instance == null)
                 {
                     var singletonObj = new GameObject();

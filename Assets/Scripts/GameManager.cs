@@ -5,10 +5,11 @@ using DataSaving;
 
 namespace Spacetaurant
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoSingleton<GameManager>
     {
-        private void Awake()
+        private void OnApplicationQuit()
         {
+            DataHandler.SaveAll();
         }
     }
 }
