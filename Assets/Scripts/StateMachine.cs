@@ -1,27 +1,37 @@
 ﻿namespace Assets.StateMachine
 {
-    public class StateMachine
+    public class StateMachine<T> where T : State
     {
-        State state;
-        public StateMachine(State state)
+        T state;
+        public StateMachine(T startState = null)
         {
-            State = state;
+            State = startState;
         }
-        public State State
+        public T State
         {
             get => state;
             set
             {
-                if (state != value)
-                {
-                    if (state != null)
-                        state.Disable();
-                    state = value;
-                    if (state != null)
-                        state.Enable();
-                }
+                if (state == value)
+                    return;
+
+                if (state != null)
+                    state.Disable();
+
+                state = value;
+
+                if (state != null)
+                    state.Enable();
             }
         }
+        public void Update() => State?.Update();
+        public void Reset()
+        {
+            if (State != null)
+                State.Reset();
+        }
+        ~StateMachine() => State = null;
+        public static implicit operator T(StateMachine<T> x) => x.State;
     }
     public abstract class State
     {
@@ -31,7 +41,6 @@
         {
             if (!enabled)
             {
-                Reset();
                 OnEnable();
                 enabled = true;
             }

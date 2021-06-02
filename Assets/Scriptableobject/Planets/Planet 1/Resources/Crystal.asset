@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa4dc5326a60be46b28fe34f4db5f25, type: 3}
   m_Name: Crystal
   m_EditorClassIdentifier: 
-  _resourceName: 
+  _resourceName: Crystal
   _icon: {fileID: 0}
   _description: 
   _rarity: 0
