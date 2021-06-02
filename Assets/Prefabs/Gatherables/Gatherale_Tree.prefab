@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _gatherTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _buttonSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f9c752d8bf0cbb48bf72a92cee8e2a4, type: 3}
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _interactType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _reward._amount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _reward._resource
+      value: 
+      objectReference: {fileID: 11400000, guid: 51ac6b26ab74b6949a53b6fdbd5d18c8, type: 2}
     - target: {fileID: 8260547450937873692, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
       propertyPath: m_Name
       value: Gatherale_Tree
