@@ -4891,16 +4891,52 @@ MonoBehaviour:
         m_CallState: 2
   OnStartMove:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 61811635335119052}
+        m_TargetAssemblyTypeName: Spacetaurant.Animations.AnimationHandler, Assembly-CSharp
+        m_MethodName: StartWalking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMove:
     m_PersistentCalls:
       m_Calls: []
   OnEndMove:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 61811635335119052}
+        m_TargetAssemblyTypeName: Spacetaurant.Animations.AnimationHandler, Assembly-CSharp
+        m_MethodName: StopWalking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractionStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 61811635335119052}
+        m_TargetAssemblyTypeName: Spacetaurant.Animations.AnimationHandler, Assembly-CSharp
+        m_MethodName: StartGathering
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInteractionEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -5093,6 +5129,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4706754237341358580, guid: a3da09738ae794245a4f82302153016f, type: 3}
   m_PrefabInstance: {fileID: 659318906196085944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &61811635335119052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 719949595008207988, guid: a3da09738ae794245a4f82302153016f, type: 3}
+  m_PrefabInstance: {fileID: 659318906196085944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844834896327200758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86dcbd5a47ee8494788e4414c9589e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8438472557781779625
 PrefabInstance:
   m_ObjectHideFlags: 0
