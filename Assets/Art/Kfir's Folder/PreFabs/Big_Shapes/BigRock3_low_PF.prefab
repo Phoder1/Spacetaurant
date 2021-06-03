@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6973516743528545895}
   - component: {fileID: 6298621709130854850}
   - component: {fileID: 8110354400181880072}
-  - component: {fileID: 7980698490587270378}
   - component: {fileID: 8251719439164564873}
+  - component: {fileID: 6678333358548661508}
   m_Layer: 0
   m_Name: BigRock3_low_PF
   m_TagString: Untagged
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7980698490587270378
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7749912293121565917}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7012793779351497013, guid: 3fdd92505d7ca4634b00be350b9649af, type: 3}
 --- !u!114 &8251719439164564873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +100,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _partTransform: {fileID: 0}
+--- !u!65 &6678333358548661508
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749912293121565917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.663672, y: 7.274376, z: 4.3340826}
+  m_Center: {x: 0.20012194, y: 2.4094708, z: -0.29192603}

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2201873053024762140}
   - component: {fileID: 2963725300833498809}
   - component: {fileID: 1064453959404765811}
-  - component: {fileID: 1112607674547732545}
   - component: {fileID: 1721324421374067971}
+  - component: {fileID: 931506877135199131}
   m_Layer: 0
   m_Name: Tree2_PF
   m_TagString: Untagged
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1112607674547732545
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568747236076807078}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5700080643567655694, guid: d1ad4c1691331f84483ea7dda70828ec, type: 3}
 --- !u!114 &1721324421374067971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +100,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _partTransform: {fileID: 0}
+--- !u!136 &931506877135199131
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568747236076807078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.77
+  m_Height: 9.421355
+  m_Direction: 1
+  m_Center: {x: 0.016209796, y: 4.70025, z: -0.05837158}
