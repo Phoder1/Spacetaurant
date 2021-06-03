@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Spacetaurant.UI
 {
-    public class UiWindow_SlidingTransition : UiWindow
+    public class UiWindow_SlidingTransition : UiWindow_Tween
     {
         [SerializeField]
         private GameObject _centerPosition = default;

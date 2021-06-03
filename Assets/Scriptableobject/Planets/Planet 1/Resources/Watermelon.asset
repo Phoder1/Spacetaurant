@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa4dc5326a60be46b28fe34f4db5f25, type: 3}
   m_Name: Watermelon
   m_EditorClassIdentifier: 
-  _resourceName: 
-  _icon: {fileID: 0}
-  _description: 
-  _rarity: 0
+  _resourceName: BubbleBonga
+  _icon: {fileID: 21300000, guid: 69863b5cabce3304eb4b7962b1a98daf, type: 3}
+  _description: You won't get sick I swear!
+  _rarity: 1
   _type: 0
-  _planet: {fileID: 0}
+  _planet: {fileID: 11400000, guid: 05c4f07b984c9004dbb9c6cff656117a, type: 2}

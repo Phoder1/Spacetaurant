@@ -12,14 +12,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9e7bc8d137c1e489f4a3311d3e32ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gatherable:
+    _amount: 0
+    _resource: {fileID: 0}
+  _nameText: {fileID: 293296510995939848}
   _rarityStars: {fileID: 0}
-  _amountText: {fileID: 0}
   _icon: {fileID: 5055668078591439944}
   _planetIcon: {fileID: 0}
   _descriptionText: {fileID: 9195808187606812703}
-  _resource:
-    _amount: 0
-    _resource: {fileID: 0}
+  OnWasPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  _amountText: {fileID: 0}
+--- !u!114 &7441595251018431056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104076334220735914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe7e780e46242b41b96e8bffd191a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listners:
+  - _refrence: {fileID: 11400000, guid: 68d9897442cef9f439e9902b28fa8e27, type: 2}
+    DefaultData: {fileID: 0}
+    OnTrigger:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8301758050610314930}
+          m_TargetAssemblyTypeName: Spacetaurant.GatherableUiSlot`1[[Spacetaurant.Crafting.ResourceSlot,
+            Assembly-CSharp
+          m_MethodName: LoadResource
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnTrigger_Early:
+      m_PersistentCalls:
+        m_Calls: []
+    OnTrigger_Late:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &644673691385850642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30,6 +71,14 @@ PrefabInstance:
     - target: {fileID: 549475288253439672, guid: 3ef18ec44bb89ae47bb2d71f05aca046, type: 3}
       propertyPath: m_Name
       value: IngredientInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 928771567743248666, guid: 3ef18ec44bb89ae47bb2d71f05aca046, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 928771567743248666, guid: 3ef18ec44bb89ae47bb2d71f05aca046, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2435143244136530289, guid: 3ef18ec44bb89ae47bb2d71f05aca046, type: 3}
       propertyPath: m_Sprite
@@ -194,6 +243,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 549475288253439672, guid: 3ef18ec44bb89ae47bb2d71f05aca046, type: 3}
   m_PrefabInstance: {fileID: 644673691385850642}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &293296510995939848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 928771567743248666, guid: 3ef18ec44bb89ae47bb2d71f05aca046, type: 3}
+  m_PrefabInstance: {fileID: 644673691385850642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5055668078591439944 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5682135467964669786, guid: 3ef18ec44bb89ae47bb2d71f05aca046, type: 3}

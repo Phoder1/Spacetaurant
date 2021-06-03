@@ -38,15 +38,9 @@ namespace Spacetaurant.Containers
             int index = Container.FindIndex(x => x.Resource == item.Resource);
 
             if (index == -1)
-            {
                 Container.Add(item);
-                _container.Add(item);
-            }
             else
-            {
                 Container[index].Amount += item.Amount;
-                _container[index].Amount += item.Amount;
-            }
         }
 
         public void Saved()

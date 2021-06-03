@@ -8,7 +8,7 @@ namespace UnityEngine.Events
 {
     public class EventsListner : MonoBehaviour
     {
-        [SerializeField, ListDrawerSettings(Expanded = true, ShowPaging = true, ListElementLabelName = "@ElementName")]
+        [SerializeField, ListDrawerSettings(Expanded = true, ShowPaging = true, ListElementLabelName = "@ElementName", ShowItemCount = true)]
         private List<Listner> _listners;
         private void OnEnable() => _listners.ForEach((x) => x.Enabled = true);
         private void OnDisable () => _listners.ForEach((x) => x.Enabled = false);

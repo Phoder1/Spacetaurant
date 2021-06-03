@@ -12,13 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9e7bc8d137c1e489f4a3311d3e32ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rarityStars: {fileID: 8346983983282841083}
-  _amountText: {fileID: 7559351565701896608}
-  _resourceIcon: {fileID: 7559351566964913694}
-  _planetIcon: {fileID: 7559351567193566365}
-  _resource:
+  _gatherable:
     _amount: 0
     _resource: {fileID: 11400000, guid: a891ab9ed4e1802439c3bc18cc6a48e6, type: 2}
+  _nameText: {fileID: 0}
+  _rarityStars: {fileID: 8346983983282841083}
+  _icon: {fileID: 7559351566964913694}
+  _planetIcon: {fileID: 7559351567193566365}
+  _descriptionText: {fileID: 0}
+  OnWasPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 68d9897442cef9f439e9902b28fa8e27, type: 2}
+        m_TargetAssemblyTypeName: UnityEngine.Events.EventRefrence, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _amountText: {fileID: 7559351565701896608}
 --- !u!1001 &8459386090364290533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,6 +131,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4066230167031807084, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4286499061173160494}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
 --- !u!1 &7559351566438911853 stripped

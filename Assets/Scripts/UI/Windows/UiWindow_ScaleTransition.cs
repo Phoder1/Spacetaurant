@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Spacetaurant.UI
 {
-    public class UiWindow_ScaleTransition : UiWindow
+    public class UiWindow_ScaleTransition : UiWindow_Tween
     {
             [SerializeField, FoldoutGroup("Transition in")]
             private float transitionInValue = 1;
