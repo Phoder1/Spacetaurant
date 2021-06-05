@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8083084247261078016
+--- !u!1001 &6715629030442130706
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,15 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2465600845558413640, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
       propertyPath: _typeFilter
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912075791610986847, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
-      propertyPath: _positionRoot
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912075791610986847, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
-      propertyPath: _centerPosition
-      value: 
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8360154925781538562, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
       propertyPath: m_Pivot.x
@@ -89,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360154925781538562, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2160
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 8360154925781538562, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -105,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360154925781538563, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
       propertyPath: m_Name
-      value: IngredientsWindow
+      value: ResourcesWindow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
