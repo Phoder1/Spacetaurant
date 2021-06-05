@@ -1,94 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1159306186616407961
-PrefabInstance:
+--- !u!64 &2793285903550213153
+MeshCollider:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6347097259484988539}
-    m_Modifications:
-    - target: {fileID: 5834294616546641485, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_Name
-      value: WaterMelon_PLNT_Opemn
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6610233834112605431, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6644777418414450230, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: _partTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696216061760043791, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.416926
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696216061760043791, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.245196
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696216061760043791, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.543518
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696216061760043791, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9408301
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696216061760043791, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.043273106
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696216061760043791, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000044703484
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696216061760043791, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.33610457
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c7bd8f2fbd7d193488a1091b4528606f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240630822115601586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 766207002214816160, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
 --- !u!1001 &2449368701077294045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,6 +21,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _buttonSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f9c752d8bf0cbb48bf72a92cee8e2a4, type: 3}
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _reward._amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _reward._resource
+      value: 
+      objectReference: {fileID: 11400000, guid: bed4eddb944bf21498f3b2b186b83607, type: 2}
     - target: {fileID: 8260547450937873692, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
       propertyPath: m_Name
       value: Gatherable_Watermelon
@@ -150,4 +87,74 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8784425620971540390, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
   m_PrefabInstance: {fileID: 2449368701077294045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9115789768413947465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6347097259484988539}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7577739868436781572, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 199f3313971f3a544a65d8cb1d3f2b8a, type: 2}
+    - target: {fileID: 919132149155446097, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_Name
+      value: WaterMelon_PLNT_Open_New
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313972528074351757, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74aec44242b1e2b47b30e2ec88d9a819, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+--- !u!1 &2240630822115601586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7032823420476312315, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+  m_PrefabInstance: {fileID: 9115789768413947465}
   m_PrefabAsset: {fileID: 0}
