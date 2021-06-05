@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9106900710642771344, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _partTransform
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
 --- !u!4 &8764151166515266025 stripped
@@ -111,7 +115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1212957313360245796, guid: 947494362b1df474fac4303f9c20ce41, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1212957313360245796, guid: 947494362b1df474fac4303f9c20ce41, type: 3}
       propertyPath: m_LocalRotation.y
@@ -119,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1212957313360245796, guid: 947494362b1df474fac4303f9c20ce41, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -8.2945917e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1212957313360245796, guid: 947494362b1df474fac4303f9c20ce41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -136,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 1990198043176922782, guid: 947494362b1df474fac4303f9c20ce41, type: 3}
       propertyPath: m_Name
       value: ShroomTree_PLNT_Smooth
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410029342641339728, guid: 947494362b1df474fac4303f9c20ce41, type: 3}
+      propertyPath: _partTransform
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 947494362b1df474fac4303f9c20ce41, type: 3}
