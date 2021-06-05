@@ -104,7 +104,10 @@ namespace Spacetaurant.UI
             public UiWindow uiWindow;
             public string Name => (uiWindow == null) ? "Unassigned window" : uiWindow.name.SplitCamelCase();
             protected override void OnEnable()
-                => uiWindow.TransitionIn();
+            {
+                uiWindow.gameObject.SetActive(true);
+                uiWindow.TransitionIn();
+            }
 
             protected override void OnDisable()
                 => uiWindow.TransitionOut();
