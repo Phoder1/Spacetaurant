@@ -35,7 +35,7 @@ namespace Spacetaurant.Containers
         public UnityEventForRefrence OnValueChange => _onValueChange;
         public void Add(ResourceSlot item)
         {
-            int index = Container.FindIndex(x => x.Resource == item.Resource);
+            int index = Container.FindIndex(x => x.Item == item.Item);
 
             if (index == -1)
                 Container.Add(item);
@@ -52,11 +52,11 @@ namespace Spacetaurant.Containers
         public bool TryGet(ResourceSO resource, out ResourceSO outputResource)
         {
             outputResource = default;
-            int index = Container.FindIndex(x => x.Resource == resource);
+            int index = Container.FindIndex(x => x.Item == resource);
 
             if (index != -1)
             {
-                outputResource = Container[index].Resource;
+                outputResource = Container[index].Item;
                 return true;
             }
 

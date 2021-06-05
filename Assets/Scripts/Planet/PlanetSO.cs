@@ -29,6 +29,9 @@ namespace Spacetaurant.Planets
         public string Description => _description;
 
         [SerializeField]
+        private int _planetNum = 1;
+        public int PlanetNum => _planetNum;
+
         public List<ResourceSO> possibleResources;
     }
 }

@@ -1,5 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3676899361210797941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559351566438911853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb6d95a249e7c34c98d5f51e7a16dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSlot:
+    _amount: 0
+    _item: {fileID: 0}
+  _nameText: {fileID: 0}
+  _rarityStars: {fileID: 8346983983282841083}
+  _icon: {fileID: 7559351566964913694}
+  _planetIcon: {fileID: 0}
+  _descriptionText: {fileID: 0}
+  OnWasPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7864fd0b72be74d4d9e5d775cfe7ec52, type: 2}
+        m_TargetAssemblyTypeName: UnityEngine.Events.EventRefrence, Assembly-CSharp
+        m_MethodName: TriggerEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _amountText: {fileID: 0}
+  _valueText: {fileID: 7559351565701896608}
+  _valueTextIntFormatting: 
+  _recipeCost: {fileID: 0}
 --- !u!1001 &8459386090364290533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,5 +190,55 @@ PrefabInstance:
       propertyPath: m_Name
       value: Price
       objectReference: {fileID: 0}
+    - target: {fileID: 4066230167031807084, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3676899361210797941}
+    - target: {fileID: 4066230167031807084, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WasPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066230167031807084, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Spacetaurant.ItemUiSlot`1[[Spacetaurant.Crafting.RecipeSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+--- !u!1 &7559351566438911853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2129623071729453704, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+  m_PrefabInstance: {fileID: 8459386090364290533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7559351566964913694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2129623072254669819, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+  m_PrefabInstance: {fileID: 8459386090364290533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7559351565701896608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2129623073542839365, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+  m_PrefabInstance: {fileID: 8459386090364290533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8346983983282841083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 482931213162094622, guid: 8f4590d9c103b2042a93d6acef470e5c, type: 3}
+  m_PrefabInstance: {fileID: 8459386090364290533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572a5f8fcdad1194890590ba2ca0feea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

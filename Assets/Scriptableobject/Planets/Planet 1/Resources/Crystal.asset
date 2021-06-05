@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa4dc5326a60be46b28fe34f4db5f25, type: 3}
   m_Name: Crystal
   m_EditorClassIdentifier: 
-  _resourceName: Crystal
-  _icon: {fileID: 21300000, guid: 552819c5c9b0cd947ab931e0f53faf78, type: 3}
+  _name: Crystals
   _description: The best crystals in the whole universe
+  _value: 3
+  _icon: {fileID: 21300000, guid: 552819c5c9b0cd947ab931e0f53faf78, type: 3}
   _rarity: 2
-  _type: 0
   _planet: {fileID: 11400000, guid: 05c4f07b984c9004dbb9c6cff656117a, type: 2}
+  _type: 0

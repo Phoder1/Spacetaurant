@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Spacetaurant
 {
-    public class IngredientUiSlot : GatherableUiSlot<ResourceSlot>
+    public class ResourceUiSlot : ItemUiSlot<ResourceSlot>
     {
         [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
         protected TextMeshProUGUI _amountText;
@@ -15,23 +15,25 @@ namespace Spacetaurant
 
         private void Start()
         {
-            if (_gatherable != null && _gatherable.Resource != null)
+            if (_itemSlot != null && _itemSlot.Resource != null)
             {
                 int index;
                 var playerInventory = DataHandler.GetData<PlayerInventory>();
-                if ((index = playerInventory.Container.FindIndex((x) => x.Resource == _gatherable.Resource)) >= 0)
-                    LoadResource(playerInventory.Container[index]);
+                if ((index = playerInventory.Container.FindIndex((x) => x.Resource == _itemSlot.Resource)) >= 0)
+                    LoadItem(playerInventory.Container[index]);
                 else
                 {
-                    playerInventory.Add(_gatherable);
-                    LoadResource(playerInventory.Container[playerInventory.Container.Count - 1]);
+                    playerInventory.Add(_itemSlot);
+                    LoadItem(playerInventory.Container[playerInventory.Container.Count - 1]);
                 }
             }
         }
-        public override void LoadResource(ResourceSlot resource)
+        public override void LoadItem(ResourceSlot resource)
         {
+            _itemSlot = resource;
+
             if (_nameText != null)
-                _nameText.text = resource.Resource.ResourceName;
+                _nameText.text = resource.Resource.Name;
 
             if (_rarityStars != null)
                 _rarityStars.SetRarity(resource.Resource.Rarity);
@@ -40,7 +42,10 @@ namespace Spacetaurant
                 _amountText.text = resource.Amount.ToString();
 
             if (_icon != null)
+            {
+                _icon.gameObject.SetActive(true);
                 _icon.sprite = resource.Resource.Icon;
+            }
 
             if (_planetIcon != null && resource.Resource.Planet != null)
                 _planetIcon.sprite = resource.Resource.Planet.Icon;
