@@ -11,10 +11,9 @@ using UnityEngine.UI;
 
 namespace Spacetaurant.UI
 {
-    public class RecipeUiSlot : ItemUiSlot<RecipeSlot>
+    public class RecipeUiSlot : ItemUiSlot<RecipeSlot, RecipeSO>
     {
-        [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
-        protected TextMeshProUGUI _amountText;
+
 
         [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
         protected TextMeshProUGUI _valueText;
@@ -23,56 +22,15 @@ namespace Spacetaurant.UI
 
         [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
         protected ResourceCollection _recipeCost;
-
-
-        private void Start()
+        public override void LoadItem(RecipeSlot itemSlot)
         {
-            if (_itemSlot != null && _itemSlot.Item != null)
-            {
-                int index;
-                var playerInventory = DataHandler.GetData<PlayerInventory>();
-
-                if ((index = playerInventory.Container.FindIndex((x) => x.Resource == _itemSlot.Recipe)) >= 0)
-                    LoadItem(playerInventory.Container[index]);
-                else
-                {
-                    LoadItem(_itemSlot);
-                    //LoadItem(playerInventory.Container[playerInventory.Container.Count - 1]);
-                }
-            }
-        }
-        public override void LoadItem(RecipeSlot recipe)
-        {
-            _itemSlot = recipe;
-
-            RecipeSO recipeSO = recipe.Recipe;
-
-            if (_nameText != null)
-                _nameText.text = recipeSO.Name;
-
-            if (_rarityStars != null)
-                _rarityStars.SetRarity(recipeSO.Rarity);
-
-            if (_amountText != null)
-                _amountText.text = recipe.Amount.ToString();
-
-            if (_icon != null)
-            {
-                _icon.gameObject.SetActive(true);
-                _icon.sprite = recipeSO.Icon;
-            }
-
-            if (_descriptionText != null)
-                _descriptionText.text = recipeSO.Description;
-
-            if (_planetIcon != null && recipeSO.Planet != null)
-                _planetIcon.sprite = recipeSO.Planet.Icon;
+            base.LoadItem(itemSlot);
 
             if (_recipeCost != null)
-                _recipeCost.SetCollection(recipeSO.ResourceCost);
+                _recipeCost.SetCollection(itemSlot.Item.ResourceCost);
 
             if (_valueText != null)
-                _valueText.text = recipeSO.Value.ToString(_valueTextIntFormatting);
+                _valueText.text = itemSlot.Item.Value.ToString(_valueTextIntFormatting);
         }
     }
 }

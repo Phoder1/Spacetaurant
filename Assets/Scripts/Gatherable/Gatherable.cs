@@ -6,6 +6,7 @@ using UnityEngine.Events;
 namespace Spacetaurant.Interactable
 {
     public enum InteractType { PickupLow, PickupHigh, SawLow, SawHigh, DrillLow, DrillHigh}
+    [SelectionBase]
 
     public class Gatherable : MonoWrap, IInteractable
     {

@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using DataSaving;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,12 @@ namespace Spacetaurant.UI
         Amount,
         Name
     }
+    public enum Filter
+    {
+
+    }
     public abstract class ItemCollection<TUiSlot, TSlot, T> : MonoBehaviour
-        where TUiSlot : ItemUiSlot<TSlot>
+        where TUiSlot : ItemUiSlot<TSlot,T>
         where TSlot : ItemSlot<T>
         where T : ItemSO
     {
@@ -23,31 +28,63 @@ namespace Spacetaurant.UI
         [SerializeField, SceneObjectsOnly]
         protected List<TUiSlot> _itemUiSlots;
         [SerializeField, EnumToggleButtons]
-        protected SortingType _defaultSortMethod = SortingType.Planet;
+        protected SortingType _sortMethod = SortingType.Planet;
+        [SerializeField, ValueDropdown("Filters", IsUniqueList = true)]
+        private List<Filter> _filters;
 
+        ValueDropdownItem[] Filters => Array.ConvertAll((Filter[])Enum.GetValues(typeof(Filter)), (x) => new ValueDropdownItem(x.ToString(),x));
         [SerializeField]
         protected bool _selectFirstSlotOnStart = true;
 
         private void Start()
         {
-            if (_selectFirstSlotOnStart && _itemUiSlots.Count > 0)
-                _itemUiSlots[0].WasPressed();
+            Sort(_sortMethod);
 
-            Sort(_defaultSortMethod);
+            if (_selectFirstSlotOnStart)
+                SelectFirstSlot();
         }
+
+        private void SelectFirstSlot()
+        {
+            if (_itemUiSlots.Count > 0)
+                _itemUiSlots.Find((x) => x.gameObject.activeSelf)?.WasPressed();
+        }
+
+        public void SetCollection(object resourceSlots)
+        {
+            switch (resourceSlots)
+            {
+                case List<TSlot> _list:
+                    SetCollection(_list);
+                    break;
+                case DirtyDataList<TSlot> _dirtyList:
+                    SetCollection(_dirtyList);
+                    break;
+
+            }
+        }
+        public void SetCollection(DirtyDataList<TSlot> resourceSlots)
+            => SetCollection(resourceSlots.collection);
         public void SetCollection(List<TSlot> resourceSlots)
         {
             if (_itemUiSlots == null)
                 _itemUiSlots = new List<TUiSlot>();
 
+            if (resourceSlots == null)
+                return;
+
             UpdateCollection(resourceSlots);
+
+            Sort(_sortMethod);
+
+            SelectFirstSlot();
         }
 
         private void UpdateCollection(List<TSlot> resourceSlots)
         {
             if (_itemUiSlots.Count > resourceSlots.Count)
             {
-                for (int i = resourceSlots.Count - 1; i < _itemUiSlots.Count; i++)
+                for (int i = resourceSlots.Count; i < _itemUiSlots.Count; i++)
                 {
                     _itemUiSlots[i].gameObject.SetActive(false);
                 }
@@ -167,7 +204,7 @@ namespace Spacetaurant.UI
             => a.ItemSlot.Item.Planet.PlanetNum.CompareTo(b.ItemSlot.Item.Planet.PlanetNum);
 
         protected virtual int CompareRarities(TUiSlot a, TUiSlot b)
-            => a.ItemSlot.Item.Planet.PlanetNum.CompareTo(b.ItemSlot.Item.Planet.PlanetNum);
+            => a.ItemSlot.Item.Rarity.CompareTo(b.ItemSlot.Item.Rarity);
         #endregion
     }
 }

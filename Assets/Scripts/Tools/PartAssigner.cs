@@ -8,24 +8,18 @@ namespace Spacetaurant.Tools
     public class PartAssigner : MonoBehaviour
     {
         const float RaycastExtraHeight = 5;
-        [Flags] private enum Modes { AutoRotation = 1, AutoFlat = 2, AutoAssign = 4 }
+        [Flags] private enum Modes { AutoRotation = 1, AutoFlat = 2}
         [SerializeField, EnumToggleButtons]
-        private Modes _workModes = Modes.AutoRotation | Modes.AutoAssign;
+        private Modes _workModes = Modes.AutoRotation;
 
         [SerializeField]
         private LayerMask layer;
-
-        [SerializeField, ReadOnly]
-        private Transform _partTransform;
+#if UNITY_EDITOR
         private void Awake()
         {
-            if (Application.isPlaying)
-                transform.SetParent(_partTransform);
-#if UNITY_EDITOR
-            else
                 ApplyModes();
-#endif
         }
+#endif
 #if UNITY_EDITOR
         private Vector3 _lastPos;
 
@@ -40,9 +34,6 @@ namespace Spacetaurant.Tools
             if (!CastRay(out _hit))
                 return;
 
-            if (_workModes.HasFlag(Modes.AutoAssign))
-                AssignPart();
-
             if (_workModes.HasFlag(Modes.AutoRotation))
                 Rotate();
 
@@ -52,16 +43,6 @@ namespace Spacetaurant.Tools
             _hit = null;
 
             _lastPos = transform.position;
-        }
-        [Button, FoldoutGroup("Manual activation")]
-        private void AssignPart()
-        {
-
-
-            if (_hit == null && !CastRay(out _hit))
-                return;
-
-            _partTransform = _hit.Value.transform;
         }
         [Button, FoldoutGroup("Manual activation")]
         private void Rotate()
