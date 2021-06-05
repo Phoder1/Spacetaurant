@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4443895137638604485}
   - component: {fileID: 7235045390550927668}
   - component: {fileID: 5173639649952687379}
+  - component: {fileID: 4405004391789522024}
   m_Layer: 5
   m_Name: Info_Image
   m_TagString: Untagged
@@ -77,6 +78,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4405004391789522024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800150465859267168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9e7bc8d137c1e489f4a3311d3e32ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSlot:
+    _amount: 0
+    _item: {fileID: 0}
+  _nameText: {fileID: 0}
+  _rarityStars: {fileID: 0}
+  _icon: {fileID: 1721602955301487542}
+  _planetIcon: {fileID: 0}
+  _descriptionText: {fileID: 0}
+  _amountText: {fileID: 3173188982119158806}
+  OnWasPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7119345142979076596
 GameObject:
   m_ObjectHideFlags: 0
