@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8291057219881075189}
   - component: {fileID: 4944982113460686416}
   - component: {fileID: 7153101875299809946}
-  - component: {fileID: 4763193553628151735}
   - component: {fileID: 8615770403699359325}
   - component: {fileID: 4810750248505389929}
   - component: {fileID: 4938407598635376034}
@@ -85,45 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4763193553628151735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8666069387918400335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a38b79beaeaa354690aa6f380c61275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _refrence: {fileID: 0}
-  _debug: 0
-  _interactable: 1
-  _gatherTime: 3
-  _buttonSprite: {fileID: 21300000, guid: a160efe3c5c662648897d03dc93e4744, type: 3}
-  _interactType: 0
-  _reward:
-    _amount: 1
-    _item: {fileID: 0}
-  _onInteraction:
-    m_PersistentCalls:
-      m_Calls: []
-  _onInteractionStart:
-    m_PersistentCalls:
-      m_Calls: []
-  _onInteractionFinish:
-    m_PersistentCalls:
-      m_Calls: []
-  _onInteractionCancel:
-    m_PersistentCalls:
-      m_Calls: []
-  _onInteractable:
-    m_PersistentCalls:
-      m_Calls: []
-  _onUninteractable:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!64 &8615770403699359325
 MeshCollider:
   m_ObjectHideFlags: 0
