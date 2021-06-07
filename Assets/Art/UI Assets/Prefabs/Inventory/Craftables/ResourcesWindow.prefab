@@ -1491,6 +1491,10 @@ PrefabInstance:
       propertyPath: _itemUiSlots.Array.data[17]
       value: 
       objectReference: {fileID: 5974461126834854590}
+    - target: {fileID: 8327452164221175770, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
+      propertyPath: _listners.Array.data[0]._refrence
+      value: 
+      objectReference: {fileID: 11400000, guid: 972c52cc3a0760f41bc47b48e1c41f59, type: 2}
     - target: {fileID: 8360154925179501001, guid: 6966f8ed4058773449c9b3448aa4d6c3, type: 3}
       propertyPath: m_text
       value: Craftables
