@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5013715777343237289, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
+      propertyPath: states.Array.data[1].uiWindow
+      value: 
+      objectReference: {fileID: 9085911847371913509}
     - target: {fileID: 5412804992191889128, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
@@ -477,6 +481,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7ab20c777ec8ee44ab15602b4d14491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9085911847371913509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6345217468196554722, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
+  m_PrefabInstance: {fileID: 2745252955604664007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deca4a323831154e911926f3f02bcd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3460693686668535143 stripped

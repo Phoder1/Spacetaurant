@@ -1,5 +1,6 @@
 ﻿using DataSaving;
 using Sirenix.OdinInspector;
+using Spacetaurant.Crafting;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,21 @@ namespace Spacetaurant.UI
         Amount,
         Name
     }
-    public enum Filter
+    [Flags]
+    public enum TypeFilter
     {
-
+        CookingResources = 1,
+        BuildingResources = 2,
+    }
+    [Flags]
+    public enum RarityFilter
+    {
+        Rares = 1,
+        Uncommon = 2,
+        Common = 4,
     }
     public abstract class ItemCollection<TUiSlot, TSlot, T> : MonoBehaviour
-        where TUiSlot : ItemUiSlot<TSlot,T>
+        where TUiSlot : ItemUiSlot<TSlot, T>
         where TSlot : ItemSlot<T>
         where T : ItemSO
     {
@@ -29,19 +39,19 @@ namespace Spacetaurant.UI
         protected List<TUiSlot> _itemUiSlots;
         [SerializeField, EnumToggleButtons]
         protected SortingType _sortMethod = SortingType.Planet;
-        [SerializeField, ValueDropdown("Filters", IsUniqueList = true)]
-        private List<Filter> _filters;
 
-        ValueDropdownItem[] Filters => Array.ConvertAll((Filter[])Enum.GetValues(typeof(Filter)), (x) => new ValueDropdownItem(x.ToString(),x));
+        [SerializeField, EnumToggleButtons, BoxGroup("Filters")]
+        private RarityFilter _rarityFilter = (RarityFilter)~0;
+
         [SerializeField]
         protected bool _selectFirstSlotOnStart = true;
 
         private void Start()
         {
-            Sort(_sortMethod);
+            if (_itemUiSlots == null)
+                _itemUiSlots = new List<TUiSlot>();
 
-            if (_selectFirstSlotOnStart)
-                SelectFirstSlot();
+            SetCollection(_itemUiSlots.ConvertAll((x) => x.ItemSlot), _selectFirstSlotOnStart);
         }
 
         private void SelectFirstSlot()
@@ -55,17 +65,16 @@ namespace Spacetaurant.UI
             switch (resourceSlots)
             {
                 case List<TSlot> _list:
-                    SetCollection(_list);
+                    SetCollection(_list, true);
                     break;
                 case DirtyDataList<TSlot> _dirtyList:
-                    SetCollection(_dirtyList);
+                    SetCollection(_dirtyList, true);
                     break;
-
             }
         }
-        public void SetCollection(DirtyDataList<TSlot> resourceSlots)
-            => SetCollection(resourceSlots.collection);
-        public void SetCollection(List<TSlot> resourceSlots)
+        public void SetCollection(DirtyDataList<TSlot> resourceSlots, bool selectFirstSlot)
+            => SetCollection(resourceSlots.collection, selectFirstSlot);
+        public void SetCollection(List<TSlot> resourceSlots, bool selectFirstSlot)
         {
             if (_itemUiSlots == null)
                 _itemUiSlots = new List<TUiSlot>();
@@ -77,7 +86,8 @@ namespace Spacetaurant.UI
 
             Sort(_sortMethod);
 
-            SelectFirstSlot();
+            if (selectFirstSlot)
+                SelectFirstSlot();
         }
 
         private void UpdateCollection(List<TSlot> resourceSlots)
@@ -90,8 +100,16 @@ namespace Spacetaurant.UI
                 }
             }
 
+            if (resourceSlots.Count == 0)
+                return;
+
             for (int i = 0; i < resourceSlots.Count; i++)
             {
+                if (resourceSlots[i]?.Item == null || !CheckFilters(resourceSlots[i]))
+                {
+                    _itemUiSlots[i].gameObject.SetActive(false);
+                    continue;
+                }
 
                 var currentItemSlot = resourceSlots[i];
 
@@ -108,7 +126,45 @@ namespace Spacetaurant.UI
             }
         }
 
-        #region sorting
+        #region Filtering
+        protected virtual bool CheckFilters(TSlot slot)
+        {
+            if (!CheckRarityFilters(slot))
+                return false;
+
+            return true;
+        }
+
+        private bool CheckRarityFilters(TSlot slot)
+        {
+            bool correctRarity = false;
+            foreach (var filter in (RarityFilter[])Enum.GetValues(typeof(RarityFilter)))
+                if (_rarityFilter.HasFlag(filter) && CheckFilter(slot, filter))
+                {
+                    correctRarity = true;
+                    break;
+                }
+
+            return correctRarity;
+
+            bool CheckFilter(TSlot slot, RarityFilter filter)
+            {
+                switch (filter)
+                {
+                    case RarityFilter.Rares:
+                        return slot.Item.Rarity == ResourceRarity.Rare;
+                    case RarityFilter.Uncommon:
+                        return slot.Item.Rarity == ResourceRarity.Uncommon;
+                    case RarityFilter.Common:
+                        return slot.Item.Rarity == ResourceRarity.Common;
+                    default:
+                        return false;
+                }
+            }
+        }
+        #endregion
+
+        #region Sorting
         public void Sort(SortingType sortingType)
         {
             _itemUiSlots.Sort((a, b) => SortByOrder(a, b, GetSortingOrder(sortingType)));
