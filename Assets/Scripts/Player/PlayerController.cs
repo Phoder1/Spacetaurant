@@ -43,8 +43,8 @@ namespace Spacetaurant.Player
 
         private Vector2 _jsDir = default;
         public Vector2 JoystickDirection => _jsDir;
-        public void SetJoystickDiresction(Vector2 direction) => _jsDir = direction;
-        public void SetJoystickDiresction(object direction) => SetJoystickDiresction((Vector2)direction);
+        public void SetJoystickDirection(Vector2 direction) => _jsDir = direction;
+        public void SetJoystickDirection(object direction) => SetJoystickDirection((Vector2)direction);
         #endregion
         [HideInInspector]
         public Vector2 moveVector = Vector2.zero;

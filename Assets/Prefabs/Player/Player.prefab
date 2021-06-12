@@ -5087,7 +5087,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 6290764543522647580}
           m_TargetAssemblyTypeName: Spacetaurant.Player.PlayerController, Assembly-CSharp
-          m_MethodName: SetJoystickDiresction
+          m_MethodName: SetJoystickDirection
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5276,6 +5276,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3315671900243195424, guid: a3da09738ae794245a4f82302153016f, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4706754237341358580, guid: a3da09738ae794245a4f82302153016f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5366,6 +5370,18 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 6290764543522647581}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: minMovement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _maxMoveSpeed
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _maxRotationSpeed
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: m_RootOrder
       value: 0
