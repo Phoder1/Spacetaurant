@@ -128,7 +128,7 @@ namespace Spacetaurant.Player
 
 
         #region ICharacterInput interface
-        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform, targetPos));
+        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform.position, targetPos, BlackBoard.ingameCamera.transform));
         private void MoveTowards(Vector2 direction) => moveVector = direction;
         public float GetHorizontalMovementInput() => moveVector.x;
         public float GetVerticalMovementInput() => moveVector.y;
