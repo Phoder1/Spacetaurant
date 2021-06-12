@@ -1,15 +1,26 @@
 using CustomAttributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
+using static Misc;
 using static Spacetaurant.BlackBoard;
 
 namespace Spacetaurant.movement
 {
-    [RequireComponent(typeof(CapsuleCollider))]
+    [RequireComponent(typeof(CapsuleCollider), typeof(SphereCollider))]
     public class MoveController : MonoWrap, IMoveController
     {
+        #region Serielized
         [SerializeField, LocalComponent]
-        private CapsuleCollider _collider = default;
+        private CapsuleCollider _rigidbodyCollider = default;
+        [SerializeField, LocalComponent]
+        private CapsuleCollider _groundcheckCollider = default;
+        [SerializeField]
+        private LayerMask _groundLayers;
+
+
+
+
         [SerializeField]
         float maxSlopeAngle = 60;
 
@@ -29,7 +40,17 @@ namespace Spacetaurant.movement
         private float forwardRayOffset = default;
         [SerializeField, SuffixLabel("Uu")]
         private float skinWidth = default;
+        #endregion
 
+        #region Events
+        [SerializeField, FoldoutGroup("Events", Order = 99)]
+        private UnityEvent OnGrounded;
+        [SerializeField, FoldoutGroup("Events")]
+        private UnityEvent OnNoLongerGrounded;
+        #endregion
+
+        #region State
+        private bool _grounded = false;
         private float _colliderRadius = default;
 
         const int MAX_MOVE_STEPS = 5;
@@ -42,9 +63,11 @@ namespace Spacetaurant.movement
         float horizontal = default;
         float vertical = default;
         #endregion
+
+        #endregion
         private void Start()
         {
-            _colliderRadius = _collider.radius;
+            _colliderRadius = _rigidbodyCollider.radius;
         }
         public void Move(Vector2 direction, float distance)
         {
@@ -64,7 +87,7 @@ namespace Spacetaurant.movement
 
             MoveVertically(0.1f);
         }
-        public void RotateTowards(Vector3 pos, float? maxRotationAngle = null) 
+        public void RotateTowards(Vector3 pos, float? maxRotationAngle = null)
             => Rotate(Quaternion.FromToRotation(visualObject.transform.forward, pos - visualObject.transform.position), maxRotationAngle);
         public void Rotate(Quaternion rotation, float? maxRotationAngle = null)
         {

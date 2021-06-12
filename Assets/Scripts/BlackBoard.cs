@@ -7,5 +7,6 @@ namespace Spacetaurant
     public static class BlackBoard
     {
         public static Planet planet;
+        public static Camera ingameCamera;
     }
 }
