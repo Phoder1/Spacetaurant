@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2583324747117881049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474221192536337545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8070c5f7d9dbb4e981a6893c7f6529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2474221192800159657
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,7 +36,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2474221192800159657}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -46,9 +58,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cam: {fileID: 2474221192536337551}
   _target: {fileID: 0}
-  _maxMoveSpeed: 1
-  _maxRotationSpeed: 1
-  minMovement: 0.000001
+  _ctrl: {fileID: 0}
+  _maxMoveSpeed: 999
+  _maxRotationSpeed: 999
+  minMovement: 0
 --- !u!1001 &2270046596879653834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104,8 +117,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7681919747964614570, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+--- !u!1 &2474221192536337545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4455995492081841987, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+  m_PrefabInstance: {fileID: 2270046596879653834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2474221192536337548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4455995492081841990, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}

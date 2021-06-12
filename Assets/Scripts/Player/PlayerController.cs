@@ -1,9 +1,11 @@
 using Assets.StateMachine;
 using CMF;
+using CustomAttributes;
 using PowerGamers.Misc;
 using Sirenix.OdinInspector;
 using Spacetaurant.Interactable;
 using Spacetaurant.movement;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +18,13 @@ namespace Spacetaurant.Player
         private float _interactionRange = default;
         [SerializeField, GUIColor("@Color.yellow")]
         private float _detectionRange = default;
+
+        [SerializeField]
+        private float _maxRotationSpeed = Mathf.Infinity;
+        [SerializeField]
+        private GameObject _vfx;
+        [SerializeField, LocalComponent]
+        private AdvancedWalkerController _ctrl;
         #endregion
 
         #region Events
@@ -35,10 +44,6 @@ namespace Spacetaurant.Player
         #endregion
 
         #region State
-        public StateMachine<PlayerState> PlayerStateMachine;
-        private IMoveController _moveController = default;
-        private PlayerState DefaultState => WalkState;
-        private PlayerWalkState WalkState => new PlayerWalkState(this);
         #region Joystick
 
         private Vector2 _jsDir = default;
@@ -46,6 +51,11 @@ namespace Spacetaurant.Player
         public void SetJoystickDirection(Vector2 direction) => _jsDir = direction;
         public void SetJoystickDirection(object direction) => SetJoystickDirection((Vector2)direction);
         #endregion
+        public StateMachine<PlayerState> PlayerStateMachine;
+        private IMoveController _moveController = default;
+        private PlayerState DefaultState => WalkState;
+        private PlayerWalkState WalkState => new PlayerWalkState(this);
+
         [HideInInspector]
         public Vector2 moveVector = Vector2.zero;
         [HideInInspector]
@@ -56,6 +66,7 @@ namespace Spacetaurant.Player
 
         private InteractableHit _closestInteractableHit = InteractableHit.Clean;
         public InteractableHit InteractableHit => _closestInteractableHit;
+        private Vector3 _lastPos;
         #endregion
 
         #region UnityCallbacks
@@ -63,6 +74,7 @@ namespace Spacetaurant.Player
         {
             PlayerStateMachine = new StateMachine<PlayerState>(DefaultState);
             _moveController = GetComponent<IMoveController>();
+            _lastPos = transform.position;
         }
         private void Start()
         {
@@ -74,9 +86,7 @@ namespace Spacetaurant.Player
 
             if (wasd != Vector2.zero)
                 _jsDir = wasd;
-        }
-        private void FixedUpdate()
-        {
+
             moveVector = Vector2.zero;
 
             PlayerStateMachine.State.FixedUpdate();
@@ -89,6 +99,22 @@ namespace Spacetaurant.Player
                 OnMove?.Invoke(moveVector);
 
             lastMoveDirection = moveVector;
+
+            ApplyRotation();
+
+            _lastPos = transform.position; 
+        }
+
+        private void ApplyRotation()
+        {
+            var direction = _ctrl.GetVelocity().normalized;
+            if (direction == Vector3.zero)
+                return;
+
+            var planetUp = (transform.position - BlackBoard.planet.transform.position).normalized;
+
+            var targetRotation = Quaternion.LookRotation(direction, planetUp);
+            _vfx.transform.rotation = Quaternion.RotateTowards(_vfx.transform.rotation, targetRotation, _maxRotationSpeed * Time.deltaTime);
         }
 
         private void OnDisable()

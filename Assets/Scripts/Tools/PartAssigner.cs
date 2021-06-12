@@ -73,7 +73,7 @@ namespace Spacetaurant.Tools
         {
             hit = default;
 
-            Planet planet = Array.Find(FindObjectsOfType<Planet>(), (x) => x.IsMainPlanet);
+            PlanetAssigner planet = FindObjectOfType<PlanetAssigner>();
 
             if (planet == null)
                 return false;

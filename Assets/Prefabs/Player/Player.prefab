@@ -4907,12 +4907,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6290764543522647581}
   - component: {fileID: 6290764543522647580}
-  - component: {fileID: 6290764543522647570}
-  - component: {fileID: 6290764543522647576}
-  - component: {fileID: 4009122474958078270}
   - component: {fileID: 7354184514691677587}
   - component: {fileID: 7144739901038483534}
+  - component: {fileID: 6290764543522647570}
   - component: {fileID: 2720853484612168996}
+  - component: {fileID: 6290764543522647576}
+  - component: {fileID: 4009122474958078270}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4953,6 +4953,9 @@ MonoBehaviour:
   _debug: 1
   _interactionRange: 1.5
   _detectionRange: 4.5
+  _maxRotationSpeed: Infinity
+  _vfx: {fileID: 4844834896327200758}
+  _ctrl: {fileID: 7354184514691677587}
   OnNewClosestInteractable:
     m_PersistentCalls:
       m_Calls:
@@ -5021,6 +5024,51 @@ MonoBehaviour:
       m_Calls: []
   moveVector: {x: 0, y: 0}
   lastMoveDirection: {x: 0, y: 0}
+--- !u!114 &7354184514691677587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290764543522647578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5e44db14072ea4c964da3b192181c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 7
+  airControlRate: 2
+  jumpSpeed: 10
+  jumpDuration: 0.2
+  airFriction: 0.5
+  groundFriction: 100
+  gravity: 30
+  slideGravity: 5
+  slopeLimit: 80
+  useLocalMomentum: 0
+  cameraTransform: {fileID: 6290764543981791269}
+--- !u!114 &7144739901038483534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290764543522647578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ace8715c2a184ca85247b18eb0853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepHeightRatio: 0.25
+  colliderHeight: 2
+  colliderThickness: 1
+  colliderOffset: {x: 0, y: 0, z: 0}
+  sensorType: 0
+  isInDebugMode: 0
+  sensorArrayRows: 1
+  sensorArrayRayCount: 6
+  sensorArrayRowsAreOffset: 0
+  raycastArrayPreviewPositions: []
 --- !u!114 &6290764543522647570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5103,6 +5151,20 @@ MonoBehaviour:
     OnTrigger_Late:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &2720853484612168996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290764543522647578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fbfeac8ae3a154cba7dfa104aee5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planet: {fileID: 0}
+  r: {fileID: 4009122474958078270}
 --- !u!136 &6290764543522647576
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5133,77 +5195,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7354184514691677587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6290764543522647578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5e44db14072ea4c964da3b192181c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 7
-  airControlRate: 2
-  jumpSpeed: 10
-  jumpDuration: 0.2
-  airFriction: 0.5
-  groundFriction: 100
-  gravity: 30
-  slideGravity: 5
-  slopeLimit: 80
-  useLocalMomentum: 0
-  cameraTransform: {fileID: 6290764543981791269}
---- !u!114 &7144739901038483534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6290764543522647578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98ace8715c2a184ca85247b18eb0853, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stepHeightRatio: 0.25
-  colliderHeight: 2
-  colliderThickness: 1
-  colliderOffset: {x: 0, y: 0, z: 0}
-  sensorType: 0
-  isInDebugMode: 0
-  sensorArrayRows: 1
-  sensorArrayRayCount: 6
-  sensorArrayRowsAreOffset: 0
-  raycastArrayPreviewPositions: []
---- !u!114 &2720853484612168996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6290764543522647578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70fbfeac8ae3a154cba7dfa104aee5f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planet: {fileID: 0}
-  r: {fileID: 4009122474958078270}
---- !u!114 &2583324747117881049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6290764543981791264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea8070c5f7d9dbb4e981a6893c7f6529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &450525401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5334,6 +5325,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3da09738ae794245a4f82302153016f, type: 3}
+--- !u!1 &4844834896327200758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5339598613410186062, guid: a3da09738ae794245a4f82302153016f, type: 3}
+  m_PrefabInstance: {fileID: 659318906196085944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5221817148934952268 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4706754237341358580, guid: a3da09738ae794245a4f82302153016f, type: 3}
@@ -5344,7 +5340,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 719949595008207988, guid: a3da09738ae794245a4f82302153016f, type: 3}
   m_PrefabInstance: {fileID: 659318906196085944}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4844834896327200758}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86dcbd5a47ee8494788e4414c9589e48, type: 3}
@@ -5367,20 +5363,40 @@ PrefabInstance:
       value: CameraJoint
       objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _ctrl
+      value: 
+      objectReference: {fileID: 7354184514691677587}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: _target
       value: 
-      objectReference: {fileID: 6290764543522647581}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: minMovement
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5221817148934952268}
     - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: _maxMoveSpeed
-      value: 999
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: _maxRotationSpeed
-      value: 999
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].outSlope
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: m_RootOrder
@@ -5426,20 +5442,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8438472558174907488, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
 --- !u!4 &6290764543718048518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-  m_PrefabInstance: {fileID: 8438472557781779625}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6290764543981791264 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2474221192536337545, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
   m_PrefabInstance: {fileID: 8438472557781779625}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6290764543981791269 stripped
