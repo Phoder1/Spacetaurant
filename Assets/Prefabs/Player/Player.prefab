@@ -4953,7 +4953,8 @@ MonoBehaviour:
   _debug: 1
   _interactionRange: 1.5
   _detectionRange: 4.5
-  _maxRotationSpeed: Infinity
+  _maxAcceleration: 30
+  _maxRotationSpeed: 220
   _vfx: {fileID: 4844834896327200758}
   _ctrl: {fileID: 7354184514691677587}
   OnNewClosestInteractable:
@@ -5022,7 +5023,6 @@ MonoBehaviour:
   OnInteractionEnd:
     m_PersistentCalls:
       m_Calls: []
-  moveVector: {x: 0, y: 0}
   lastMoveDirection: {x: 0, y: 0}
 --- !u!114 &7354184514691677587
 MonoBehaviour:
@@ -5036,7 +5036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5e44db14072ea4c964da3b192181c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 7
+  movementSpeed: 5
   airControlRate: 2
   jumpSpeed: 10
   jumpDuration: 0.2
