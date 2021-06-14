@@ -69,8 +69,6 @@ namespace Spacetaurant.Player
                 accelerationVector = Vector3.ClampMagnitude(accelerationVector, _maxAcceleration * Time.deltaTime);
 
                 moveVector = lastMoveDirection + accelerationVector;
-
-                Debug.Log(moveVector.magnitude);
             }
         }
         [HideInInspector]
@@ -104,7 +102,7 @@ namespace Spacetaurant.Player
             if (wasd != Vector2.zero)
                 _jsDir = wasd;
 
-            MoveVector = Vector2.zero;
+            moveVector = Vector2.zero;
 
             PlayerStateMachine.State.FixedUpdate();
 

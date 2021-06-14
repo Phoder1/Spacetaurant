@@ -5046,7 +5046,7 @@ MonoBehaviour:
   slideGravity: 5
   slopeLimit: 80
   useLocalMomentum: 0
-  cameraTransform: {fileID: 6290764543981791269}
+  cameraTransform: {fileID: 0}
 --- !u!114 &7144739901038483534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5447,10 +5447,5 @@ PrefabInstance:
 --- !u!4 &6290764543718048518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-  m_PrefabInstance: {fileID: 8438472557781779625}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6290764543981791269 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2474221192536337548, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
   m_PrefabInstance: {fileID: 8438472557781779625}
   m_PrefabAsset: {fileID: 0}

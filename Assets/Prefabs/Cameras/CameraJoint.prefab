@@ -40,7 +40,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2474221192536337548}
+  - {fileID: 4042110350005157588}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58,10 +58,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cam: {fileID: 2474221192536337551}
   _target: {fileID: 0}
-  _ctrl: {fileID: 0}
   _maxMoveSpeed: 999
+  _minRotationSpeed: 2
   _maxRotationSpeed: 999
-  minMovement: 0
+  _rotationSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _maxRotationAcceleration: 5
 --- !u!1001 &2270046596879653834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +141,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnDrag.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnStopDrag.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnDrag.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnDrag.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2474221192800159662}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnStopDrag.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnDrag.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnDrag.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DragOffset
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnStopDrag.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2474221192800159662}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnStopDrag.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnStopDrag.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopDrag
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnDrag.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Spacetaurant.CameraPivotController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnStopDrag.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Spacetaurant.CameraPivotController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnDrag.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7206237060449841210, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+      propertyPath: OnStopDrag.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7681919747964614570, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
@@ -128,9 +208,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4455995492081841987, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
   m_PrefabInstance: {fileID: 2270046596879653834}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2474221192536337548 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4455995492081841990, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
+--- !u!224 &4042110350005157588 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2853213607718823198, guid: ed507b12a4df83b4db9d6462cd51429a, type: 3}
   m_PrefabInstance: {fileID: 2270046596879653834}
   m_PrefabAsset: {fileID: 0}
 --- !u!20 &2474221192536337551 stripped
