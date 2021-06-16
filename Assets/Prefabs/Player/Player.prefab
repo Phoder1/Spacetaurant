@@ -5046,7 +5046,7 @@ MonoBehaviour:
   slideGravity: 5
   slopeLimit: 80
   useLocalMomentum: 0
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 5549296653204961917}
 --- !u!114 &7144739901038483534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5363,41 +5363,9 @@ PrefabInstance:
       value: CameraJoint
       objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _ctrl
-      value: 
-      objectReference: {fileID: 7354184514691677587}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: _target
       value: 
       objectReference: {fileID: 5221817148934952268}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _maxMoveSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _maxRotationSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].outSlope
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5447,5 +5415,10 @@ PrefabInstance:
 --- !u!4 &6290764543718048518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+  m_PrefabInstance: {fileID: 8438472557781779625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5549296653204961917 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4042110350005157588, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
   m_PrefabInstance: {fileID: 8438472557781779625}
   m_PrefabAsset: {fileID: 0}

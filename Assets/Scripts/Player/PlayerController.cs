@@ -5,7 +5,6 @@ using PowerGamers.Misc;
 using Sirenix.OdinInspector;
 using Spacetaurant.Interactable;
 using Spacetaurant.movement;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,7 +25,7 @@ namespace Spacetaurant.Player
         private GameObject _vfx;
         [SerializeField, LocalComponent]
         private AdvancedWalkerController _ctrl;
-        
+
         #endregion
 
         #region Events
@@ -60,9 +59,9 @@ namespace Spacetaurant.Player
 
         [HideInInspector]
         private Vector2 moveVector = Vector2.zero;
-        public Vector2 MoveVector 
-        { 
-            get => moveVector; 
+        public Vector2 MoveVector
+        {
+            get => moveVector;
             set
             {
                 var accelerationVector = value - lastMoveDirection;
@@ -104,7 +103,7 @@ namespace Spacetaurant.Player
 
             moveVector = Vector2.zero;
 
-            PlayerStateMachine.State.FixedUpdate();
+            PlayerStateMachine?.State?.FixedUpdate();
 
             if (lastMoveDirection == Vector2.zero && MoveVector != Vector2.zero)
                 OnStartMove?.Invoke(MoveVector);
@@ -117,7 +116,7 @@ namespace Spacetaurant.Player
 
             ApplyRotation();
 
-            _lastPos = transform.position; 
+            _lastPos = transform.position;
         }
 
         private void ApplyRotation()
@@ -134,7 +133,8 @@ namespace Spacetaurant.Player
 
         private void OnDisable()
         {
-            PlayerStateMachine.State = null;
+            if (PlayerStateMachine != null)
+                PlayerStateMachine.State = null;
 
             StopInteraction();
         }
