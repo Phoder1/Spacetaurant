@@ -5,7 +5,6 @@ using PowerGamers.Misc;
 using Sirenix.OdinInspector;
 using Spacetaurant.Interactable;
 using Spacetaurant.movement;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,13 +17,15 @@ namespace Spacetaurant.Player
         private float _interactionRange = default;
         [SerializeField, GUIColor("@Color.yellow")]
         private float _detectionRange = default;
-
+        [SerializeField]
+        private float _maxAcceleration = Mathf.Infinity;
         [SerializeField]
         private float _maxRotationSpeed = Mathf.Infinity;
         [SerializeField]
         private GameObject _vfx;
         [SerializeField, LocalComponent]
         private AdvancedWalkerController _ctrl;
+
         #endregion
 
         #region Events
@@ -57,7 +58,18 @@ namespace Spacetaurant.Player
         private PlayerWalkState WalkState => new PlayerWalkState(this);
 
         [HideInInspector]
-        public Vector2 moveVector = Vector2.zero;
+        private Vector2 moveVector = Vector2.zero;
+        public Vector2 MoveVector
+        {
+            get => moveVector;
+            set
+            {
+                var accelerationVector = value - lastMoveDirection;
+                accelerationVector = Vector3.ClampMagnitude(accelerationVector, _maxAcceleration * Time.deltaTime);
+
+                moveVector = lastMoveDirection + accelerationVector;
+            }
+        }
         [HideInInspector]
         public Vector2 lastMoveDirection = Vector2.zero;
 
@@ -66,6 +78,8 @@ namespace Spacetaurant.Player
 
         private InteractableHit _closestInteractableHit = InteractableHit.Clean;
         public InteractableHit InteractableHit => _closestInteractableHit;
+
+
         private Vector3 _lastPos;
         #endregion
 
@@ -89,20 +103,20 @@ namespace Spacetaurant.Player
 
             moveVector = Vector2.zero;
 
-            PlayerStateMachine.State.FixedUpdate();
+            PlayerStateMachine?.State?.FixedUpdate();
 
-            if (lastMoveDirection == Vector2.zero && moveVector != Vector2.zero)
-                OnStartMove?.Invoke(moveVector);
-            else if (lastMoveDirection != Vector2.zero && moveVector == Vector2.zero)
-                OnEndMove?.Invoke(moveVector);
-            else if (moveVector != Vector2.zero)
-                OnMove?.Invoke(moveVector);
+            if (lastMoveDirection == Vector2.zero && MoveVector != Vector2.zero)
+                OnStartMove?.Invoke(MoveVector);
+            else if (lastMoveDirection != Vector2.zero && MoveVector == Vector2.zero)
+                OnEndMove?.Invoke(MoveVector);
+            else if (MoveVector != Vector2.zero)
+                OnMove?.Invoke(MoveVector);
 
-            lastMoveDirection = moveVector;
+            lastMoveDirection = MoveVector;
 
             ApplyRotation();
 
-            _lastPos = transform.position; 
+            _lastPos = transform.position;
         }
 
         private void ApplyRotation()
@@ -119,7 +133,8 @@ namespace Spacetaurant.Player
 
         private void OnDisable()
         {
-            PlayerStateMachine.State = null;
+            if (PlayerStateMachine != null)
+                PlayerStateMachine.State = null;
 
             StopInteraction();
         }
@@ -128,10 +143,10 @@ namespace Spacetaurant.Player
 
 
         #region ICharacterInput interface
-        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform, targetPos));
-        private void MoveTowards(Vector2 direction) => moveVector = direction;
-        public float GetHorizontalMovementInput() => moveVector.x;
-        public float GetVerticalMovementInput() => moveVector.y;
+        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform.position, targetPos, BlackBoard.ingameCamera.transform));
+        private void MoveTowards(Vector2 direction) => MoveVector = direction;
+        public float GetHorizontalMovementInput() => MoveVector.x;
+        public float GetVerticalMovementInput() => MoveVector.y;
         public bool IsJumpKeyPressed() => false;
         #endregion
 
