@@ -16,50 +16,52 @@ namespace Spacetaurant
         private Transform _target;
 
         #region Movement
-        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement")]
+        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement"), MinValue(0)]
         private float _minMoveSpeed = 2;
-        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement")]
+        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement"),MinValue(0)]
         private float _maxMoveSpeed = 5;
         [InfoBox("X axis is the distance from the target, Y axis is the speed", InfoMessageType.None)]
         [SerializeField, FoldoutGroup("Movement")]
         private AnimationCurve _movementSpeedCurve = AnimationCurve.Linear(0,0,1,1);
         [InfoBox("The distance from the target, Y axis is the speed", InfoMessageType.None)]
-        [SerializeField, SuffixLabel("Uu"), FoldoutGroup("Movement")]
+        [SerializeField, SuffixLabel("Uu"), FoldoutGroup("Movement"), MinValue(0)]
         private float _maxMoveSpeedDistance = 5;
+        [SerializeField, SuffixLabel("Uu/s^2"), FoldoutGroup("Movement"), MinValue(0)]
+        private float _maxMoveAcceleration = 2;
         #endregion
 
         #region Rotation to target
         [InfoBox("The rotation speed at 0 degrees", InfoMessageType = InfoMessageType.None)]
-        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Rotation")]
+        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Rotation"), MinValue(0)]
         private float _minRotationSpeed = 2;
 
         [InfoBox("The rotation speed at 180 degrees", InfoMessageType = InfoMessageType.None)]
-        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Rotation")]
+        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Rotation"), MinValue(0)]
         private float _maxRotationSpeed = 15;
 
         [InfoBox("X axis is degrees from target rotation, Y axis is rotation speed", InfoMessageType.None)]
         [SerializeField, FoldoutGroup("Player Rotation")]
         private AnimationCurve _rotationSpeedCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-        [SerializeField, FoldoutGroup("Player Rotation")]
+        [SerializeField, FoldoutGroup("Player Rotation"), MinValue(0)]
         private float _maxRotationAcceleration = 5;
         #endregion
 
         #region Touch control
         [InfoBox("In degress per screen width drag.", InfoMessageType.None)]
-        [SerializeField, FoldoutGroup("Touch control")]
+        [SerializeField, FoldoutGroup("Touch control"), MinValue(0)]
         private float _touchRotationSensetivity = 90;
-        [SerializeField, FoldoutGroup("Touch control")]
+        [SerializeField, FoldoutGroup("Touch control"), MinValue(0)]
         private bool _mirrorDragControl = false;
-        [SerializeField, FoldoutGroup("Touch control")]
+        [SerializeField, FoldoutGroup("Touch control"), MinValue(0)]
         private float _maxHorizontalTouchRotation = 90;
-        [SerializeField, FoldoutGroup("Touch control")]
+        [SerializeField, FoldoutGroup("Touch control"), MinValue(0)]
         private float _maxVerticalTouchRotation = 30;
-        [SerializeField, FoldoutGroup("Touch control")]
+        [SerializeField, FoldoutGroup("Touch control"), MinValue(0)]
         private float _dragRotationDecayDelay = 0;
         [SerializeField, FoldoutGroup("Touch control")]
         private AnimationCurve _decayCurve;
-        [SerializeField, FoldoutGroup("Touch control")]
+        [SerializeField, FoldoutGroup("Touch control"), MinValue(0)]
         private float _maxDecaySpeed = 5;
         #endregion
         #endregion
@@ -85,6 +87,7 @@ namespace Spacetaurant
                 _totalDragOffset = new Vector2(dragX, dragY);
             }
         }
+        float _speed = 0;
         #endregion
 
         private void Awake()
@@ -144,9 +147,10 @@ namespace Spacetaurant
         {
             float distance = Vector3.Distance(transform.position, _target.position);
             float curveValue = Mathf.Clamp01(_movementSpeedCurve.Evaluate(distance / _maxMoveSpeedDistance));
-            float speed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, curveValue);
+            float frameAcceleration = _maxMoveAcceleration * Time.deltaTime;
+            _speed = Mathf.Min(Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, curveValue), _speed + frameAcceleration);
 
-            Vector3 _movement = Vector3.ClampMagnitude(_target.position - transform.position, speed * Time.deltaTime);
+            Vector3 _movement = Vector3.ClampMagnitude(_target.position - transform.position, _speed * Time.deltaTime);
             transform.position += _movement;
         }
         public void DragOffset(Vector2 dragDelta)
