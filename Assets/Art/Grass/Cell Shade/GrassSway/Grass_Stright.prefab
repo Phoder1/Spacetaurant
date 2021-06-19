@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6538373374550910799
 Transform:
@@ -371,6 +371,10 @@ PrefabInstance:
     - target: {fileID: 7480218601648355606, guid: 1c3e98495f3965a44b43d30c5210a18f, type: 3}
       propertyPath: m_Name
       value: Plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 7480218601648355606, guid: 1c3e98495f3965a44b43d30c5210a18f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8350841414173476629, guid: 1c3e98495f3965a44b43d30c5210a18f, type: 3}
       propertyPath: m_RootOrder
