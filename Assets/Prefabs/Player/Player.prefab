@@ -5200,39 +5200,39 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 22293820004337227}
+    m_TransformParent: {fileID: 5398070043225268936}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.06907305
+      value: -0.026941612
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.023756381
+      value: -0.21769758
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.49703887
+      value: -0.5090936
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9960909
+      value: 0.99809927
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.035998367
+      value: 0.04705879
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.08023491
+      value: 0.039763946
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.008333294
+      value: -0.0014398152
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7fd21ad8bc768d8438ae763166a377c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5346,9 +5346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86dcbd5a47ee8494788e4414c9589e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &22293820004337227 stripped
+--- !u!4 &5398070043225268936 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 678190940653865715, guid: a3da09738ae794245a4f82302153016f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4886285851649830512, guid: a3da09738ae794245a4f82302153016f, type: 3}
   m_PrefabInstance: {fileID: 659318906196085944}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8438472557781779625
