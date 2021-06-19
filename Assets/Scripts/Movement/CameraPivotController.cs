@@ -38,10 +38,10 @@ namespace Spacetaurant
         private float _maxRotationSpeed = 15;
 
         [InfoBox("X axis is degrees from target rotation, Y axis is rotation speed", InfoMessageType.None)]
-        [SerializeField, FoldoutGroup("Player Follow")]
+        [SerializeField, FoldoutGroup("Player Rotation")]
         private AnimationCurve _rotationSpeedCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-        [SerializeField, FoldoutGroup("Player Follow")]
+        [SerializeField, FoldoutGroup("Player Rotation")]
         private float _maxRotationAcceleration = 5;
         #endregion
 
