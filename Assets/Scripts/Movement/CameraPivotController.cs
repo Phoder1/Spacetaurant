@@ -16,6 +16,8 @@ namespace Spacetaurant
         private Transform _target;
 
         #region Movement
+        [SerializeField, SuffixLabel("Uu/s^2"), FoldoutGroup("Movement"), MinValue(0)]
+        private float _minMoveDistance = 0.05f;
         [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement"), MinValue(0)]
         private float _minMoveSpeed = 2;
         [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement"),MinValue(0)]
@@ -87,7 +89,7 @@ namespace Spacetaurant
                 _totalDragOffset = new Vector2(dragX, dragY);
             }
         }
-        float _speed = 0;
+        Vector3 _speed = Vector3.zero;
         #endregion
 
         private void Awake()
@@ -125,7 +127,24 @@ namespace Spacetaurant
 
             RotateToTarget(planetUp);
         }
+        private void MoveToTarget()
+        {
+            float distance = Vector3.Distance(transform.position, _target.position);
+            if (distance < _minMoveDistance)
+                return;
 
+            float curveValue = Mathf.Clamp01(_movementSpeedCurve.Evaluate(distance / _maxMoveSpeedDistance));
+            float frameAcceleration = _maxMoveAcceleration * Time.deltaTime;
+
+            Vector3 vectorToTarget = _target.position - transform.position;
+            Vector3 targetSpeed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, curveValue) * Time.deltaTime * vectorToTarget.normalized;
+            Vector3 acceleration = Vector3.ClampMagnitude(targetSpeed - _speed, frameAcceleration);
+
+            _speed += acceleration;
+            Vector3 _movement = Vector3.ClampMagnitude(_speed, distance);
+
+            transform.position += _movement;
+        }
         private void AlignToPlanet(Vector3 planetUp)
             => transform.rotation = Quaternion.FromToRotation(transform.up, planetUp) * transform.rotation;
 
@@ -143,16 +162,6 @@ namespace Spacetaurant
             _savedRotationSpeed = _rotationSpeed;
         }
 
-        private void MoveToTarget()
-        {
-            float distance = Vector3.Distance(transform.position, _target.position);
-            float curveValue = Mathf.Clamp01(_movementSpeedCurve.Evaluate(distance / _maxMoveSpeedDistance));
-            float frameAcceleration = _maxMoveAcceleration * Time.deltaTime;
-            _speed = Mathf.Min(Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, curveValue), _speed + frameAcceleration);
-
-            Vector3 _movement = Vector3.ClampMagnitude(_target.position - transform.position, _speed * Time.deltaTime);
-            transform.position += _movement;
-        }
         public void DragOffset(Vector2 dragDelta)
         {
             if (_decayRoutine != null)
