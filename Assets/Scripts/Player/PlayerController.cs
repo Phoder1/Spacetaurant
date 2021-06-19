@@ -11,6 +11,7 @@ using UnityEngine.Events;
 
 namespace Spacetaurant.Player
 {
+    [SelectionBase]
     public class PlayerController : MonoWrap, ICharacterInput
     {
         #region Serielized
@@ -42,10 +43,12 @@ namespace Spacetaurant.Player
         public UnityEventForRefrence OnEndMove = default;
 
         [FoldoutGroup("Events"), SuffixLabel("Interactable")]
+        public UnityEventForRefrence OnEnterInteractState = default;
+        [FoldoutGroup("Events"), SuffixLabel("Interactable")]
         public UnityEventForRefrence OnInteractionStart = default;
         [FoldoutGroup("Events"), SuffixLabel("Interactable")]
         public UnityEventForRefrence OnInteractionEnd = default;
-        [FoldoutGroup("Events"), SuffixLabel("Interactable")]
+        [FoldoutGroup("Events"), SuffixLabel("Vector3")]
         public UnityEvent<Vector3> OnVelocityChange = default;
         #endregion
 
@@ -277,6 +280,8 @@ namespace Spacetaurant.Player
             {
                 if (!(ctrl.InteractableHit.interactable != null && ctrl.InteractableHit.interactable.IsInteractable && ctrl.InteractableHit.distance <= ctrl._detectionRange))
                     SetStateToWalk();
+                else
+                    ctrl.OnEnterInteractState?.Invoke(ctrl.InteractableHit.interactable);
             }
             protected override void OnFixedUpdate()
             {

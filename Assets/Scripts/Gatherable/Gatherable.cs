@@ -1,11 +1,14 @@
+using DataSaving;
 using Sirenix.OdinInspector;
+using Spacetaurant.Containers;
 using Spacetaurant.Crafting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Spacetaurant.Interactable
 {
-    public enum InteractType { PickupLow, PickupHigh, SawLow, SawHigh, DrillLow, DrillHigh}
+    public enum InteractType { PickupLow, PickupHigh, SawLow, SawHigh, DrillLow, DrillHigh }
     [SelectionBase]
 
     public class Gatherable : MonoWrap, IInteractable
@@ -69,13 +72,41 @@ namespace Spacetaurant.Interactable
             {
                 _gatherProgressTime = Mathf.Clamp(value, 0, _gatherTime);
 
-                UpdateProgress();
+                _progress = Mathf.Clamp01(_gatherProgressTime / _gatherTime);
+
+                if (_progress >= 1)
+                    FinishInteraction();
             }
         }
         private float _progress = 0;
         public float Progress => _progress;
 
         private bool _beingInteracted = false;
+        public bool BeingInteracted
+        {
+            get => _beingInteracted;
+            set
+            {
+                if (value == _beingInteracted)
+                    return;
+
+                _beingInteracted = value;
+
+                if (_beingInteracted)
+                {
+                    OnInteractionStart?.Invoke(this);
+
+                    StopAllCoroutines();
+                    StartCoroutine(InteractRoutine());
+                }
+                else if (GatherProgressTime > 0)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(ProgressDecayRoutine());
+                }
+
+            }
+        }
 
         public Sprite ButtonIcon => _buttonSprite;
 
@@ -109,41 +140,53 @@ namespace Spacetaurant.Interactable
                     OnUninteractable?.Invoke(this);
             }
         }
+
+
         public void StartInteraction()
         {
-            OnInteractionStart?.Invoke(this);
-
-            _beingInteracted = true;
 
             if (InteractionTime == 0)
                 FinishInteraction();
+            else
+                BeingInteracted = true;
+
         }
-        void Update()
+        IEnumerator InteractRoutine()
         {
-            if (_beingInteracted)
+            while (BeingInteracted)
+            {
+                yield return null;
                 GatherProgressTime += Time.deltaTime;
-            else if (GatherProgressTime > 0)
+            }
+        }
+        IEnumerator ProgressDecayRoutine()
+        {
+            while (GatherProgressTime > 0)
+            {
+                yield return null;
                 GatherProgressTime -= ProgressDecay * Time.deltaTime;
+            }
         }
         public void CancelInteraction()
         {
             OnInteractionCancel?.Invoke(this);
-            _beingInteracted = false;
+            BeingInteracted = false;
         }
-        private void UpdateProgress()
-        {
-            _progress = Mathf.Clamp(GatherProgressTime / _gatherTime, 0, 1);
 
-            if (_progress >= 1)
-                FinishInteraction();
-        }
         void FinishInteraction()
         {
-            _beingInteracted = false;
-            OnInteractionFinish?.Invoke(this);
+            StopAllCoroutines();
+
+            BeingInteracted = false;
             _interactable = false;
 
             gameObject.SetActive(false);
+
+            GatherProgressTime = 0;
+
+            DataHandler.GetData<PlayerInventory>().Add(Reward);
+            
+            OnInteractionFinish?.Invoke(this);
         }
     }
 }
