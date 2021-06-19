@@ -9773,6 +9773,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _gatherTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
       propertyPath: _buttonSprite
       value: 
       objectReference: {fileID: 21300000, guid: 0f9c752d8bf0cbb48bf72a92cee8e2a4, type: 3}
@@ -9923,14 +9927,26 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 766207002214816160, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+    - target: {fileID: -2978583046365166472, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
       propertyPath: m_Name
       value: WaterMelon_PLNT_Open_New
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5313972528074351757, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 74aec44242b1e2b47b30e2ec88d9a819, type: 2}
+    - target: {fileID: 7032823420476312315, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
 --- !u!1 &2240630822115601586 stripped

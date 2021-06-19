@@ -2141,6 +2141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal_PLNTnew1
       objectReference: {fileID: 0}
+    - target: {fileID: 8666069387918400335, guid: d7098cb5d34f8e640ae699d0a19d8395, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7098cb5d34f8e640ae699d0a19d8395, type: 3}
 --- !u!1001 &4357290069159635398
@@ -2150,6 +2154,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
+      propertyPath: _gatherTime
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
       propertyPath: _buttonSprite
       value: 
