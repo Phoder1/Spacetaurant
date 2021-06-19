@@ -5,6 +5,7 @@ using PowerGamers.Misc;
 using Sirenix.OdinInspector;
 using Spacetaurant.Interactable;
 using Spacetaurant.movement;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -89,6 +90,8 @@ namespace Spacetaurant.Player
             PlayerStateMachine = new StateMachine<PlayerState>(DefaultState);
             _moveController = GetComponent<IMoveController>();
             _lastPos = transform.position;
+
+            StartCoroutine(RealTimeHandler.UpdateStartTime());
         }
         private void Start()
         {
@@ -96,6 +99,17 @@ namespace Spacetaurant.Player
         }
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                float currentTime = Time.time;
+                StartCoroutine(RealTimeHandler.UpdateStartTime(Print));
+
+
+                void Print(DateTime time)
+                {
+                    Debug.Log((Time.time - currentTime)*1000);
+                }
+            }
             var wasd = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
             if (wasd != Vector2.zero)

@@ -86,7 +86,6 @@ namespace Spacetaurant
 
         private void StartDrag(Touch touch)
         {
-            Debug.Log("Drag start");
             dragDelta = Vector2.zero;
             totalDragDelta = Vector2.zero;
         }
@@ -104,7 +103,6 @@ namespace Spacetaurant
         }
         private void DragStop()
         {
-            Debug.Log("Drag stop");
             ResetDrag();
             OnStopDrag?.Invoke();
 

@@ -1,5 +1,6 @@
 using CustomAttributes;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,41 +12,42 @@ namespace Spacetaurant
         [SerializeField, LocalComponent(getComponentFromChildrens: true)]
         private Camera _cam;
         [SerializeField]
+        private Transform _cameraPivot;
+        [SerializeField]
         private Transform _target;
 
         [SerializeField, SuffixLabel("Uu")]
         private float _maxMoveSpeed = 10;
 
-        [FoldoutGroup("Rotation")]
         [InfoBox("The rotation speed at 0 degrees", InfoMessageType = InfoMessageType.None)]
-        [SerializeField, SuffixLabel("angles/sec")]
+        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Follow")]
         private float _minRotationSpeed = 2;
 
-        [FoldoutGroup("Rotation")]
         [InfoBox("The rotation speed at 180 degrees", InfoMessageType = InfoMessageType.None)]
-        [SerializeField, SuffixLabel("angles/sec")]
+        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Follow")]
         private float _maxRotationSpeed = 15;
 
-        [FoldoutGroup("Rotation")]
         [InfoBox("X axis is degrees from target rotation, Y axis is rotation speed", InfoMessageType.None)]
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Player Follow")]
         private AnimationCurve _rotationSpeedCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-        [SerializeField, FoldoutGroup("Rotation")]
+        [SerializeField, FoldoutGroup("Player Follow")]
         private float _maxRotationAcceleration = 5;
 
         [InfoBox("In degress per screen width drag.", InfoMessageType.None)]
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Touch control")]
         private float _touchRotationSensetivity = 90;
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Touch control")]
+        private bool _mirrorDragControl = false;
+        [SerializeField, FoldoutGroup("Touch control")]
         private float _maxHorizontalTouchRotation = 90;
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Touch control")]
         private float _maxVerticalTouchRotation = 30;
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Touch control")]
         private float _dragRotationDecayDelay = 0;
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Touch control")]
         private AnimationCurve _decayCurve;
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Touch control")]
         private float _maxDecaySpeed = 5;
         #endregion
 
@@ -113,17 +115,15 @@ namespace Spacetaurant
 
         private void RotateToTarget(Vector3 planetUp)
         {
-            Quaternion offsetRotation = Quaternion.Euler(planetUp * TotalDragOffset.x);
-            Quaternion targetRotation = offsetRotation * Quaternion.LookRotation(_target.forward, planetUp);
+            Quaternion targetRotation = Quaternion.LookRotation(_target.forward, planetUp);
 
             var _targetRotationSpeed = Mathf.Lerp(_minRotationSpeed, _maxRotationSpeed, _rotationSpeedCurve.Evaluate(Quaternion.Angle(transform.rotation, targetRotation) / 180));
             var _frameAccel = _maxRotationAcceleration * Time.deltaTime;
             var _rotationSpeed = Mathf.Clamp(_targetRotationSpeed, _savedRotationSpeed - _frameAccel, _savedRotationSpeed + _frameAccel);
 
-
-
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
+            _cameraPivot.localRotation = Quaternion.Euler(Vector3.up * TotalDragOffset.x);
             _savedRotationSpeed = _rotationSpeed;
         }
 
@@ -137,7 +137,7 @@ namespace Spacetaurant
             if (_decayRoutine != null)
                 StopCoroutine(_decayRoutine);
 
-            TotalDragOffset += -(dragDelta / Screen.width) * _touchRotationSensetivity;
+            TotalDragOffset += (_mirrorDragControl ? -1 : 1) * -(dragDelta / Screen.width) * _touchRotationSensetivity;
         }
         public void StopDrag()
         {
@@ -157,7 +157,7 @@ namespace Spacetaurant
                 if (_totalDragOffset.x != 0f)
                     curveValueX = _decayCurve.Evaluate(xRotationDelta / _maxHorizontalTouchRotation);
 
-                var decaySpeedX = -Mathf.Sign(_totalDragOffset.x) * Mathf.Min(curveValueX * _maxDecaySpeed,xRotationDelta);
+                var decaySpeedX = -Mathf.Sign(_totalDragOffset.x) * Mathf.Min(curveValueX * _maxDecaySpeed, xRotationDelta);
 
                 var yRotationDelta = Mathf.Abs(_totalDragOffset.y);
                 var curveValueY = 0f;

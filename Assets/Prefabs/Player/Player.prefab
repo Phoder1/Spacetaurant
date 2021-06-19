@@ -5046,7 +5046,7 @@ MonoBehaviour:
   slideGravity: 5
   slopeLimit: 80
   useLocalMomentum: 0
-  cameraTransform: {fileID: 5549296653204961917}
+  cameraTransform: {fileID: 4114526245540240062}
 --- !u!114 &7144739901038483534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5366,6 +5366,30 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 5221817148934952268}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _minRotationSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _mirrorDragControl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5417,8 +5441,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
   m_PrefabInstance: {fileID: 8438472557781779625}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &5549296653204961917 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4042110350005157588, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+--- !u!4 &4114526245540240062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5477153157295742487, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
   m_PrefabInstance: {fileID: 8438472557781779625}
   m_PrefabAsset: {fileID: 0}
