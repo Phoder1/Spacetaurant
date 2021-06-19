@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Spacetaurant
 {
+    [SelectionBase]
     public class CameraPivotController : MonoBehaviour
     {
         #region Serielized
@@ -16,15 +17,13 @@ namespace Spacetaurant
         private Transform _target;
 
         #region Movement
-        [SerializeField, SuffixLabel("Uu/s^2"), FoldoutGroup("Movement"), MinValue(0)]
-        private float _minMoveDistance = 0.05f;
         [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement"), MinValue(0)]
         private float _minMoveSpeed = 2;
-        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement"),MinValue(0)]
+        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement"), MinValue(0)]
         private float _maxMoveSpeed = 5;
         [InfoBox("X axis is the distance from the target, Y axis is the speed", InfoMessageType.None)]
         [SerializeField, FoldoutGroup("Movement")]
-        private AnimationCurve _movementSpeedCurve = AnimationCurve.Linear(0,0,1,1);
+        private AnimationCurve _movementSpeedCurve = AnimationCurve.Linear(0, 0, 1, 1);
         [InfoBox("The distance from the target, Y axis is the speed", InfoMessageType.None)]
         [SerializeField, SuffixLabel("Uu"), FoldoutGroup("Movement"), MinValue(0)]
         private float _maxMoveSpeedDistance = 5;
@@ -89,7 +88,7 @@ namespace Spacetaurant
                 _totalDragOffset = new Vector2(dragX, dragY);
             }
         }
-        Vector3 _speed = Vector3.zero;
+        Vector3 _savedMoveSpeed = Vector3.zero;
         #endregion
 
         private void Awake()
@@ -126,40 +125,57 @@ namespace Spacetaurant
             AlignToPlanet(planetUp);
 
             RotateToTarget(planetUp);
+
+            RotateByOffset();
         }
+
+
+
         private void MoveToTarget()
         {
             float distance = Vector3.Distance(transform.position, _target.position);
-            if (distance < _minMoveDistance)
-                return;
-
             float curveValue = Mathf.Clamp01(_movementSpeedCurve.Evaluate(distance / _maxMoveSpeedDistance));
             float frameAcceleration = _maxMoveAcceleration * Time.deltaTime;
 
             Vector3 vectorToTarget = _target.position - transform.position;
-            Vector3 targetSpeed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, curveValue) * Time.deltaTime * vectorToTarget.normalized;
-            Vector3 acceleration = Vector3.ClampMagnitude(targetSpeed - _speed, frameAcceleration);
+            Vector3 targetSpeed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, curveValue) * vectorToTarget.normalized;
+            Vector3 deltaSpeed = Vector3.ClampMagnitude(targetSpeed - _savedMoveSpeed, frameAcceleration);
 
-            _speed += acceleration;
-            Vector3 _movement = Vector3.ClampMagnitude(_speed, distance);
+            Vector3 speed = _savedMoveSpeed + deltaSpeed;
+            Vector3 _movement = speed * Time.deltaTime;
+
+            Debug.DrawLine(transform.position, transform.position + _savedMoveSpeed / Time.deltaTime, Color.blue);
 
             transform.position += _movement;
+
+            _savedMoveSpeed = speed;
         }
         private void AlignToPlanet(Vector3 planetUp)
             => transform.rotation = Quaternion.FromToRotation(transform.up, planetUp) * transform.rotation;
 
         private void RotateToTarget(Vector3 planetUp)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(_target.forward, planetUp);
+            //Quaternion targetRotation = Quaternion.LookRotation(_target.forward, planetUp);
+            float angle = Vector3.SignedAngle(transform.forward, _target.forward, transform.up);
+            float curveValue = _rotationSpeedCurve.Evaluate(Mathf.Abs(angle) / 180);
+            float frameAcceleration = _maxRotationAcceleration * Time.deltaTime;
 
-            var _targetRotationSpeed = Mathf.Lerp(_minRotationSpeed, _maxRotationSpeed, _rotationSpeedCurve.Evaluate(Quaternion.Angle(transform.rotation, targetRotation) / 180));
-            var _frameAccel = _maxRotationAcceleration * Time.deltaTime;
-            var _rotationSpeed = Mathf.Clamp(_targetRotationSpeed, _savedRotationSpeed - _frameAccel, _savedRotationSpeed + _frameAccel);
+            float targetSpeed = Mathf.Sign(angle) * Mathf.Lerp(_minRotationSpeed, _maxRotationSpeed, curveValue);
+            float deltaSpeed = Mathf.Clamp(targetSpeed - _savedRotationSpeed, -frameAcceleration, frameAcceleration);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            float speed = _savedRotationSpeed + deltaSpeed;
+            Quaternion rotation = Quaternion.Euler(speed * Time.deltaTime * transform.up);
 
+            Debug.DrawLine(transform.position, transform.position + transform.right * speed / Time.deltaTime, Color.red);
+
+            transform.rotation = rotation * transform.rotation;
+
+            _savedRotationSpeed = speed;
+        }
+
+        private void RotateByOffset()
+        {
             _cameraPivot.localRotation = Quaternion.Euler(Vector3.up * TotalDragOffset.x);
-            _savedRotationSpeed = _rotationSpeed;
         }
 
         public void DragOffset(Vector2 dragDelta)
