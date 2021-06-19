@@ -1,6 +1,5 @@
 using PlayFab;
 using PlayFab.ClientModels;
-using PlayFab.PfEditor.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -266,8 +265,10 @@ public class PlayfabController : MonoBehaviour
     private static void OnCloudUpdateState(ExecuteCloudScriptResult result)
     {
         // CloudScript returns arbitrary results, so you have to evaluate them one step and one parameter at a time
-        Debug.Log(JsonWrapper.SerializeObject(result.FunctionResult));
-        JsonObject jsonResult = (JsonObject)result.FunctionResult;
+        
+        Debug.Log(PlayFab.Json.PlayFabSimpleJson.SerializeObject(result.FunctionResult));
+
+        PlayFab.Json.JsonObject jsonResult = (PlayFab.Json.JsonObject)result.FunctionResult;
         object messageValue;
         jsonResult.TryGetValue("messageValue", out messageValue); // note how "messageValue" directly corresponds to the JSON values set in CloudScript
         Debug.Log((string)messageValue);
