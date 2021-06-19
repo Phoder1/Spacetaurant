@@ -29,6 +29,9 @@ namespace Spacetaurant.Animations
 
         [SerializeField, AnimatorParameter]
         private string _movementSpeed;
+
+        [SerializeField, AnimatorParameter]
+        private string _goingToPickUp;
         private string[] AnimatorParameters => Array.ConvertAll(_animator.parameters, (x) => x.name);
         #endregion
         #endregion
@@ -39,10 +42,14 @@ namespace Spacetaurant.Animations
             _animator.SetBool(_walkParameter, true);
         }
         public void StopWalking() =>  _animator.SetBool(_walkParameter, false);
+        public void SetPickupState(bool state) => _animator.SetBool(_goingToPickUp, state);
         public void StartGathering(object interactable)
         {
             if (interactable is IInteractable _interactable)
+            {
                 StartGathering(_interactable);
+                SetPickupState(true);
+            }
         }
         public void SetSpeed(Vector3 speed) => SetSpeed(speed.magnitude);
         public void SetSpeed(float speed) => _animator.SetFloat(_movementSpeed, speed);
@@ -73,7 +80,7 @@ namespace Spacetaurant.Animations
         [IncludeMyAttributes]
         [FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
 
-        public class AnimatorParameter : Attribute
+        public class AnimatorParameterAttribute : Attribute
         {
         }
 

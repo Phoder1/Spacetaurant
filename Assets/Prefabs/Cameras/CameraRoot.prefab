@@ -90,7 +90,7 @@ MonoBehaviour:
   _cam: {fileID: 2474221192536337551}
   _cameraPivot: {fileID: 6651841747264211735}
   _target: {fileID: 0}
-  _minMoveSpeed: 0
+  _minMoveSpeed: 0.1
   _maxMoveSpeed: 7
   _movementSpeedCurve:
     serializedVersion: 2
@@ -117,9 +117,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _maxMoveSpeedDistance: 5
-  _maxMoveAcceleration: 6
-  _minRotationSpeed: 0
-  _maxRotationSpeed: 30
+  _maxMoveAcceleration: 5
+  _minRotationSpeed: 0.1
+  _maxRotationSpeed: 15
   _rotationSpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -144,7 +144,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxRotationAcceleration: 40
+  _maxRotationAcceleration: 30
   _touchRotationSensetivity: 180
   _mirrorDragControl: 0
   _maxHorizontalTouchRotation: 90

@@ -2400,10 +2400,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029748, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 272.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029748, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 272.7056
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029748, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -286.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029748, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 236.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029749, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029749, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029749, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2030292107239029751, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2030292107239029754, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ded660e4ecead8b4db7b5c9d09b1148a, type: 3}
     - target: {fileID: 2306301059347797312, guid: fa2ced6d1f8e19c4b92e3f78ae719ed9, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
