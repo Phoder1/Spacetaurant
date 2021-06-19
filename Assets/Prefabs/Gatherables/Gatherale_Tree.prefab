@@ -4790,7 +4790,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
       propertyPath: _gatherTime
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5338491432732427224, guid: bfc09031dc376b14c87fd856f8a27ac5, type: 3}
       propertyPath: _buttonSprite

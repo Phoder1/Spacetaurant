@@ -5367,12 +5367,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5221817148934952268}
     - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _maxMoveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _minMoveSpeed
+      value: 0.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _maxRotationSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: _minRotationSpeed
-      value: 2
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: _mirrorDragControl
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
+      propertyPath: _maxRotationAcceleration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: _rotationSpeedCurve.m_Curve.Array.data[0].inSlope
