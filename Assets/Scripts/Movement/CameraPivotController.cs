@@ -129,7 +129,7 @@ namespace Spacetaurant
 
         private void MoveToTarget()
         {
-            Vector3 _movement = Vector3.ClampMagnitude(_target.position - transform.position, _maxMoveSpeed);
+            Vector3 _movement = Vector3.ClampMagnitude(_target.position - transform.position, _maxMoveSpeed*Time.deltaTime);
             transform.position += _movement;
         }
         public void DragOffset(Vector2 dragDelta)
