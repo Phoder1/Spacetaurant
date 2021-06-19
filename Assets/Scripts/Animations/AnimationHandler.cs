@@ -1,10 +1,8 @@
 using CustomAttributes;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
 using Sirenix.OdinInspector;
 using Spacetaurant.Interactable;
+using System;
+using UnityEngine;
 
 namespace Spacetaurant.Animations
 {
@@ -18,56 +16,45 @@ namespace Spacetaurant.Animations
         #region Animator Parameters
 
         //Walk Parameter
-        [SerializeField, FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
-        [OnValueChanged("@CacheWalkParameter()")]
+        [SerializeField, AnimatorParameter]
         private string _walkParameter;
-        [SerializeField, FoldoutGroup("Parameters"), ReadOnly]
-        private int _walkID;
-        private void CacheWalkParameter() => CacheParameter(ref _walkID, _walkParameter);
 
         //Pickup Low Parameter
-        [SerializeField, FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
-        [OnValueChanged("@CachePickupLowParameter()")]
+        [SerializeField, AnimatorParameter]
         private string _pickupLowParameter;
-        [SerializeField, FoldoutGroup("Parameters"), ReadOnly]
-        private int _pickupLowID;
-        private void CachePickupLowParameter() => CacheParameter(ref _pickupLowID, _pickupLowParameter);
 
         //Pickup High Parameter
-        [SerializeField, FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
-        [OnValueChanged("@CachePickupHighParameter()")]
+        [SerializeField, AnimatorParameter]
         private string _pickupHighParameter;
-        [SerializeField, FoldoutGroup("Parameters"), ReadOnly]
-        private int _pickupHighID;
-        private void CachePickupHighParameter() => CacheParameter(ref _pickupHighID, _pickupHighParameter);
+
+        [SerializeField, AnimatorParameter]
+        private string _movementSpeed;
         private string[] AnimatorParameters => Array.ConvertAll(_animator.parameters, (x) => x.name);
-        void CacheParameter(ref int ID, string name) => ID = Array.Find(_animator.parameters, (x) => x.name == name).nameHash;
         #endregion
         #endregion
 
         #region Interface
         public void StartWalking()
         {
-            _animator.SetBool(_walkID, true);
+            _animator.SetBool(_walkParameter, true);
         }
-        public void StopWalking()
-        {
-            _animator.SetBool(_walkID, false);
-        }
+        public void StopWalking() =>  _animator.SetBool(_walkParameter, false);
         public void StartGathering(object interactable)
         {
             if (interactable is IInteractable _interactable)
                 StartGathering(_interactable);
         }
+        public void SetSpeed(Vector3 speed) => SetSpeed(speed.magnitude);
+        public void SetSpeed(float speed) => _animator.SetFloat(_movementSpeed, speed);
         public void StartGathering(IInteractable interactable)
         {
             switch (interactable.InteractType)
             {
                 case InteractType.PickupLow:
-                    _animator.SetTrigger(_pickupLowID);
+                    _animator.SetTrigger(_pickupLowParameter);
                     break;
                 case InteractType.PickupHigh:
-                    _animator.SetTrigger(_pickupHighID);
+                    _animator.SetTrigger(_pickupHighParameter);
                     break;
                 case InteractType.SawLow:
                     break;
@@ -80,6 +67,16 @@ namespace Spacetaurant.Animations
             }
         }
         #endregion
+        /// <summary>
+        /// A dropdown attribute for animator parameters, requires a function called AnimatorParameters that returns a string array with all the animator parameter names.
+        /// </summary>
+        [IncludeMyAttributes]
+        [FoldoutGroup("Parameters"), Required, ValueDropdown("@AnimatorParameters")]
+
+        public class AnimatorParameter : Attribute
+        {
+        }
 
     }
+
 }

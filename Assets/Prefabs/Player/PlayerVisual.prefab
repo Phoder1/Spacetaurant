@@ -6055,11 +6055,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1707406172458713998}
   _walkParameter: IsWalking
-  _walkID: 1282839668
   _pickupLowParameter: Picking_Down
-  _pickupLowID: -1362649315
   _pickupHighParameter: Picking_Up
-  _pickupHighID: 581603106
+  _movementSpeed: PlayerSpeed
 --- !u!1 &5623467945251166839
 GameObject:
   m_ObjectHideFlags: 0

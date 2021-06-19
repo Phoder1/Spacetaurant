@@ -26,6 +26,8 @@ namespace Spacetaurant.Player
         private GameObject _vfx;
         [SerializeField, LocalComponent]
         private AdvancedWalkerController _ctrl;
+        [SerializeField]
+        private Transform _cameraTransform;
 
         #endregion
 
@@ -43,6 +45,8 @@ namespace Spacetaurant.Player
         public UnityEventForRefrence OnInteractionStart = default;
         [FoldoutGroup("Events"), SuffixLabel("Interactable")]
         public UnityEventForRefrence OnInteractionEnd = default;
+        [FoldoutGroup("Events"), SuffixLabel("Interactable")]
+        public UnityEvent<Vector3> OnVelocityChange = default;
         #endregion
 
         #region State
@@ -82,6 +86,20 @@ namespace Spacetaurant.Player
 
 
         private Vector3 _lastPos;
+        private Vector3 _velocity;
+        public Vector3 Velocity 
+        { 
+            get => _velocity; 
+            set
+            {
+                if (_velocity == value)
+                    return;
+
+                _velocity = value;
+
+                OnVelocityChange?.Invoke(_velocity);
+            } 
+        }
         #endregion
 
         #region UnityCallbacks
@@ -99,6 +117,8 @@ namespace Spacetaurant.Player
         }
         private void Update()
         {
+            Velocity = _ctrl.GetVelocity();
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 float currentTime = Time.time;
@@ -135,7 +155,7 @@ namespace Spacetaurant.Player
 
         private void ApplyRotation()
         {
-            var direction = _ctrl.GetVelocity().normalized;
+            var direction = Velocity.normalized;
             if (direction == Vector3.zero)
                 return;
 
@@ -157,7 +177,7 @@ namespace Spacetaurant.Player
 
 
         #region ICharacterInput interface
-        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform.position, targetPos, BlackBoard.ingameCamera.transform));
+        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform.position, targetPos, _cameraTransform));
         private void MoveTowards(Vector2 direction) => MoveVector = direction;
         public float GetHorizontalMovementInput() => MoveVector.x;
         public float GetVerticalMovementInput() => MoveVector.y;

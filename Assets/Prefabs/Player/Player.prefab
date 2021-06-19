@@ -4957,6 +4957,7 @@ MonoBehaviour:
   _maxRotationSpeed: 220
   _vfx: {fileID: 4844834896327200758}
   _ctrl: {fileID: 7354184514691677587}
+  _cameraTransform: {fileID: 4114526245540240062}
   OnNewClosestInteractable:
     m_PersistentCalls:
       m_Calls:
@@ -5023,6 +5024,21 @@ MonoBehaviour:
   OnInteractionEnd:
     m_PersistentCalls:
       m_Calls: []
+  OnVelocityChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 61811635335119052}
+        m_TargetAssemblyTypeName: Spacetaurant.Animations.AnimationHandler, Assembly-CSharp
+        m_MethodName: SetSpeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   lastMoveDirection: {x: 0, y: 0}
 --- !u!114 &7354184514691677587
 MonoBehaviour:
@@ -5366,46 +5382,6 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 5221817148934952268}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _maxMoveSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _minMoveSpeed
-      value: 0.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _maxRotationSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _minRotationSpeed
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _mirrorDragControl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _maxRotationAcceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474221192800159662, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
-      propertyPath: _rotationSpeedCurve.m_Curve.Array.data[1].outSlope
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2474221192800159663, guid: 591d5a81ba9b3c24c967975481354d37, type: 3}
       propertyPath: m_RootOrder
       value: 0

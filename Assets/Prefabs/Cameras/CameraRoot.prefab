@@ -90,10 +90,9 @@ MonoBehaviour:
   _cam: {fileID: 2474221192536337551}
   _cameraPivot: {fileID: 6651841747264211735}
   _target: {fileID: 0}
-  _maxMoveSpeed: 30
-  _minRotationSpeed: 10
-  _maxRotationSpeed: 30
-  _rotationSpeedCurve:
+  _minMoveSpeed: 0.00001
+  _maxMoveSpeed: 6
+  _movementSpeedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -108,8 +107,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 1
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -117,8 +116,37 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxRotationAcceleration: 5
+  _maxMoveSpeedDistance: 5
+  _maxMoveAcceleration: 2
+  _minRotationSpeed: 0.0001
+  _maxRotationSpeed: 15
+  _rotationSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _maxRotationAcceleration: 10
   _touchRotationSensetivity: 90
+  _mirrorDragControl: 1
   _maxHorizontalTouchRotation: 90
   _maxVerticalTouchRotation: 30
   _dragRotationDecayDelay: 1.5
