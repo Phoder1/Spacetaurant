@@ -1,6 +1,5 @@
 using CustomAttributes;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,15 +15,26 @@ namespace Spacetaurant
         [SerializeField]
         private Transform _target;
 
-        [SerializeField, SuffixLabel("Uu")]
-        private float _maxMoveSpeed = 10;
+        #region Movement
+        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement")]
+        private float _minMoveSpeed = 2;
+        [SerializeField, SuffixLabel("Uu/s"), FoldoutGroup("Movement")]
+        private float _maxMoveSpeed = 5;
+        [InfoBox("X axis is the distance from the target, Y axis is the speed", InfoMessageType.None)]
+        [SerializeField, FoldoutGroup("Movement")]
+        private AnimationCurve _movementSpeedCurve = AnimationCurve.Linear(0,0,1,1);
+        [InfoBox("The distance from the target, Y axis is the speed", InfoMessageType.None)]
+        [SerializeField, SuffixLabel("Uu"), FoldoutGroup("Movement")]
+        private float _maxMoveSpeedDistance = 5;
+        #endregion
 
+        #region Rotation to target
         [InfoBox("The rotation speed at 0 degrees", InfoMessageType = InfoMessageType.None)]
-        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Follow")]
+        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Rotation")]
         private float _minRotationSpeed = 2;
 
         [InfoBox("The rotation speed at 180 degrees", InfoMessageType = InfoMessageType.None)]
-        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Follow")]
+        [SerializeField, SuffixLabel("angles/sec"), FoldoutGroup("Player Rotation")]
         private float _maxRotationSpeed = 15;
 
         [InfoBox("X axis is degrees from target rotation, Y axis is rotation speed", InfoMessageType.None)]
@@ -33,7 +43,9 @@ namespace Spacetaurant
 
         [SerializeField, FoldoutGroup("Player Follow")]
         private float _maxRotationAcceleration = 5;
+        #endregion
 
+        #region Touch control
         [InfoBox("In degress per screen width drag.", InfoMessageType.None)]
         [SerializeField, FoldoutGroup("Touch control")]
         private float _touchRotationSensetivity = 90;
@@ -49,6 +61,7 @@ namespace Spacetaurant
         private AnimationCurve _decayCurve;
         [SerializeField, FoldoutGroup("Touch control")]
         private float _maxDecaySpeed = 5;
+        #endregion
         #endregion
 
         #region State
@@ -129,7 +142,11 @@ namespace Spacetaurant
 
         private void MoveToTarget()
         {
-            Vector3 _movement = Vector3.ClampMagnitude(_target.position - transform.position, _maxMoveSpeed*Time.deltaTime);
+            float distance = Vector3.Distance(transform.position, _target.position);
+            float curveValue = Mathf.Clamp01(_movementSpeedCurve.Evaluate(distance / _maxMoveSpeedDistance));
+            float speed = Mathf.Lerp(_minMoveSpeed, _maxMoveSpeed, curveValue);
+
+            Vector3 _movement = Vector3.ClampMagnitude(_target.position - transform.position, speed * Time.deltaTime);
             transform.position += _movement;
         }
         public void DragOffset(Vector2 dragDelta)
