@@ -41,15 +41,12 @@ namespace Spacetaurant.Animations
         {
             _animator.SetBool(_walkParameter, true);
         }
-        public void StopWalking() =>  _animator.SetBool(_walkParameter, false);
+        public void StopWalking() => _animator.SetBool(_walkParameter, false);
         public void SetPickupState(bool state) => _animator.SetBool(_goingToPickUp, state);
         public void StartGathering(object interactable)
         {
             if (interactable is IInteractable _interactable)
-            {
                 StartGathering(_interactable);
-                SetPickupState(true);
-            }
         }
         public void SetSpeed(Vector3 speed) => SetSpeed(speed.magnitude);
         public void SetSpeed(float speed) => _animator.SetFloat(_movementSpeed, speed);

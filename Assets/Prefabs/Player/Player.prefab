@@ -4930,9 +4930,6 @@ MonoBehaviour:
         m_CallState: 2
   OnInteractionStart:
     m_PersistentCalls:
-      m_Calls: []
-  OnInteractionEnd:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 61811635335119052}
         m_TargetAssemblyTypeName: Spacetaurant.Animations.AnimationHandler, Assembly-CSharp
@@ -4946,6 +4943,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnInteractionEnd:
+    m_PersistentCalls:
+      m_Calls: []
   OnVelocityChange:
     m_PersistentCalls:
       m_Calls:
