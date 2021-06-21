@@ -49,7 +49,6 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
-  _partTransform: {fileID: 0}
 --- !u!114 &3568490366929388494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +69,7 @@ MonoBehaviour:
   _interactType: 0
   _reward:
     _amount: 5
-    _resource: {fileID: 11400000, guid: bed4eddb944bf21498f3b2b186b83607, type: 2}
+    _item: {fileID: 0}
   _onInteraction:
     m_PersistentCalls:
       m_Calls: []
@@ -5016,12 +5015,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7577739868436781572, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7577739868436781572, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7577739868436781572, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7577739868436781572, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 199f3313971f3a544a65d8cb1d3f2b8a, type: 2}
     - target: {fileID: 919132149155446097, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
       propertyPath: m_Name
       value: WaterMelon_PLNT_Open_New
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313972528074351757, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313972528074351757, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313972528074351757, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313972528074351757, guid: 5ac97a02f7530b14aaff04fc668aa18c, type: 3}
       propertyPath: m_Materials.Array.data[0]
