@@ -11,6 +11,7 @@ using UnityEngine.Events;
 
 namespace Spacetaurant.Player
 {
+    [SelectionBase]
     public class PlayerController : MonoWrap, ICharacterInput
     {
         #region Serielized
@@ -26,7 +27,9 @@ namespace Spacetaurant.Player
         private GameObject _vfx;
         [SerializeField, LocalComponent]
         private AdvancedWalkerController _ctrl;
-        
+        [SerializeField]
+        private Transform _cameraTransform;
+
         #endregion
 
         #region Events
@@ -40,9 +43,13 @@ namespace Spacetaurant.Player
         public UnityEventForRefrence OnEndMove = default;
 
         [FoldoutGroup("Events"), SuffixLabel("Interactable")]
+        public UnityEventForRefrence OnEnterInteractState = default;
+        [FoldoutGroup("Events"), SuffixLabel("Interactable")]
         public UnityEventForRefrence OnInteractionStart = default;
         [FoldoutGroup("Events"), SuffixLabel("Interactable")]
         public UnityEventForRefrence OnInteractionEnd = default;
+        [FoldoutGroup("Events"), SuffixLabel("Vector3")]
+        public UnityEvent<Vector3> OnVelocityChange = default;
         #endregion
 
         #region State
@@ -60,17 +67,15 @@ namespace Spacetaurant.Player
 
         [HideInInspector]
         private Vector2 moveVector = Vector2.zero;
-        public Vector2 MoveVector 
-        { 
-            get => moveVector; 
+        public Vector2 MoveVector
+        {
+            get => moveVector;
             set
             {
                 var accelerationVector = value - lastMoveDirection;
                 accelerationVector = Vector3.ClampMagnitude(accelerationVector, _maxAcceleration * Time.deltaTime);
 
                 moveVector = lastMoveDirection + accelerationVector;
-
-                Debug.Log(moveVector.magnitude);
             }
         }
         [HideInInspector]
@@ -84,6 +89,20 @@ namespace Spacetaurant.Player
 
 
         private Vector3 _lastPos;
+        private Vector3 _velocity;
+        public Vector3 Velocity 
+        { 
+            get => _velocity; 
+            set
+            {
+                if (_velocity == value)
+                    return;
+
+                _velocity = value;
+
+                OnVelocityChange?.Invoke(_velocity);
+            } 
+        }
         #endregion
 
         #region UnityCallbacks
@@ -92,6 +111,8 @@ namespace Spacetaurant.Player
             PlayerStateMachine = new StateMachine<PlayerState>(DefaultState);
             _moveController = GetComponent<IMoveController>();
             _lastPos = transform.position;
+
+            StartCoroutine(RealTimeHandler.UpdateStartTime());
         }
         private void Start()
         {
@@ -99,14 +120,27 @@ namespace Spacetaurant.Player
         }
         private void Update()
         {
+            Velocity = _ctrl.GetVelocity();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                float currentTime = Time.time;
+                StartCoroutine(RealTimeHandler.UpdateStartTime(Print));
+
+
+                void Print(DateTime time)
+                {
+                    Debug.Log((Time.time - currentTime)*1000);
+                }
+            }
             var wasd = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
             if (wasd != Vector2.zero)
                 _jsDir = wasd;
 
-            MoveVector = Vector2.zero;
+            moveVector = Vector2.zero;
 
-            PlayerStateMachine.State.FixedUpdate();
+            PlayerStateMachine?.State?.FixedUpdate();
 
             if (lastMoveDirection == Vector2.zero && MoveVector != Vector2.zero)
                 OnStartMove?.Invoke(MoveVector);
@@ -119,12 +153,12 @@ namespace Spacetaurant.Player
 
             ApplyRotation();
 
-            _lastPos = transform.position; 
+            _lastPos = transform.position;
         }
 
         private void ApplyRotation()
         {
-            var direction = _ctrl.GetVelocity().normalized;
+            var direction = Velocity.normalized;
             if (direction == Vector3.zero)
                 return;
 
@@ -136,7 +170,8 @@ namespace Spacetaurant.Player
 
         private void OnDisable()
         {
-            PlayerStateMachine.State = null;
+            if (PlayerStateMachine != null)
+                PlayerStateMachine.State = null;
 
             StopInteraction();
         }
@@ -145,7 +180,7 @@ namespace Spacetaurant.Player
 
 
         #region ICharacterInput interface
-        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform.position, targetPos, BlackBoard.ingameCamera.transform));
+        private void MoveTo(Vector3 targetPos) => MoveTowards(SphereTools.LocalDirectionToPoint(transform.position, targetPos, _cameraTransform));
         private void MoveTowards(Vector2 direction) => MoveVector = direction;
         public float GetHorizontalMovementInput() => MoveVector.x;
         public float GetVerticalMovementInput() => MoveVector.y;
@@ -245,6 +280,8 @@ namespace Spacetaurant.Player
             {
                 if (!(ctrl.InteractableHit.interactable != null && ctrl.InteractableHit.interactable.IsInteractable && ctrl.InteractableHit.distance <= ctrl._detectionRange))
                     SetStateToWalk();
+                else
+                    ctrl.OnEnterInteractState?.Invoke(ctrl.InteractableHit.interactable);
             }
             protected override void OnFixedUpdate()
             {

@@ -38,3 +38,4 @@ sysinfo.txt
 *.unitypackage
 *.log
 Assets/ThirdParty/Sisus/Hierarchy Folders/Code/Editor/PowerInspectorIntegration/PowerInspectorIntegrationPackage.unitypackage.meta
+Assets/PlayFabEditorExtensions/Editor/Resources/PlayFabUnitySdk.unitypackage.meta
