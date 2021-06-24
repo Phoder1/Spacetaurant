@@ -10,9 +10,9 @@ Material:
   m_Name: Shader Graphs_4-Way Vertex Color Blending (Simple)
   m_Shader: {fileID: -6465566751694194690, guid: 7b6f53dace946bb4a96bca54d9b65067, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
