@@ -35,8 +35,6 @@ namespace Spacetaurant.UI
         [SerializeField, AssetsOnly]
         protected TUiSlot _itemSlotPrefab;
 
-        [SerializeField, SceneObjectsOnly]
-        protected List<TUiSlot> _itemUiSlots;
         [SerializeField, EnumToggleButtons]
         protected SortingType _sortMethod = SortingType.Planet;
 
@@ -46,6 +44,12 @@ namespace Spacetaurant.UI
         [SerializeField]
         protected bool _selectFirstSlotOnStart = true;
 
+        protected List<TUiSlot> _itemUiSlots;
+        private void Awake()
+        {
+            _itemUiSlots = new List<TUiSlot>();
+            GetComponentsInChildren(true, _itemUiSlots);
+        }
         private void Start()
         {
             if (_itemUiSlots == null)

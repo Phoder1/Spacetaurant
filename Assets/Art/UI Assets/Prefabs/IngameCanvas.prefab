@@ -648,6 +648,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3111548308396587757, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
+      propertyPath: _updateOnEnable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3142513642299302458, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -1224,6 +1228,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5483891592113089010, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 808ad62d31be84c41ade8f72d41ba480, type: 3}
     - target: {fileID: 5512674750962423259, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -1343,6 +1351,10 @@ PrefabInstance:
     - target: {fileID: 5947689366256529464, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996157539455604866, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
+      propertyPath: _updateOnEnable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6073559381298284598, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1608,6 +1620,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 7320753781416817438, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d12fb6590d808d74d8740a417f454951, type: 3}
     - target: {fileID: 7365540626902258769, guid: 2de373b186d93584f9a1290181ab7ea0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
