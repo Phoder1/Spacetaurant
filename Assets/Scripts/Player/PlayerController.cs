@@ -29,7 +29,7 @@ namespace Spacetaurant.Player
         private AdvancedWalkerController _ctrl;
         [SerializeField]
         private Transform _cameraTransform;
-
+     
         #endregion
 
         #region Events
