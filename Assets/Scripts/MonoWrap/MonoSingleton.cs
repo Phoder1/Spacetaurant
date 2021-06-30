@@ -1,8 +1,9 @@
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class MonoSingleton<T> : MonoWrap where T : MonoSingleton<T>
+public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
 {
-    [SerializeField]
+    [SerializeField, PropertyOrder(999)]
     private bool _dontDestroyOnLoad = true;
 
     public static T _instance;
@@ -25,7 +26,7 @@ public class MonoSingleton<T> : MonoWrap where T : MonoSingleton<T>
             return _instance;
         }
     }
-    protected override void Awake()
+    protected void Awake()
     {
         if (_instance == null)
         {
@@ -35,7 +36,5 @@ public class MonoSingleton<T> : MonoWrap where T : MonoSingleton<T>
         }
         else if (_instance != this as T)
             Destroy(gameObject);
-
-        base.Awake();
     }
 }

@@ -43,9 +43,9 @@ namespace Spacetaurant.Containers
                 Container[index].Amount += item.Amount;
         }
 
-        public void Saved()
+        public void Clean()
         {
-            Container.Saved();
+            Container.Clean();
             _isDirty = false;
         }
         public void Sort(Comparison<ResourceSlot> comparison) => Container.Sort(comparison);
