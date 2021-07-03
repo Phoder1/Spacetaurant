@@ -38,14 +38,15 @@ Material:
     m_Floats:
     - BOOLEAN_6AF826D9D21A415C8D0B6E1A63BEA7A2: 1
     - SunSize: 0.0005
-    - Vector1_1: 4.09
+    - Vector1_1: 1.8
     - Vector1_208a262020f04271aa15f079d9303ee1: 20.34
-    - Vector1_5b31dd9c4b5444e3b4549bcccf6ca88a: 1.78
+    - Vector1_5b31dd9c4b5444e3b4549bcccf6ca88a: 10
     - Vector1_6d469145d7e34019a8198ed51e6b4d04: 0
     - WindSpeed: 1
     m_Colors:
     - Color_1ddef38b07fb4b369da3d5140e12b252: {r: 0.2792914, g: 1.2432972, b: 1.036081, a: 0.9843137}
     - HorizonColor: {r: 0.008543955, g: 0.15771624, b: 0.3773585, a: 1}
     - SkyColor: {r: 0, g: 0.031853482, b: 0.1981132, a: 1}
+    - Vector4_7ac9fe8728a743579e9aebc59d3a45d7: {r: 0, g: 0, b: 0, a: 0}
     - _MoonDirection: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
