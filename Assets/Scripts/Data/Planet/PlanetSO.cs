@@ -2,6 +2,8 @@ using Sirenix.OdinInspector;
 using Spacetaurant.Crafting;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.Serialization;
 
 namespace Spacetaurant.Planets
 {
@@ -32,6 +34,18 @@ namespace Spacetaurant.Planets
         private int _planetNum = 1;
         public int PlanetNum => _planetNum;
 
-        public List<ResourceSO> possibleResources;
+        [FormerlySerializedAs("possibleResources")]
+        [ListDrawerSettings(Expanded = true)]
+        public List<ResourceSO> resources;
+        [ListDrawerSettings(Expanded = true)]
+        public List<RecipeSO> recipes;
+        [ListDrawerSettings(Expanded = true)]
+        public List<CustomerSO> customers;
+
+        public void FillRandomizerWithCustomers(ref Randomizer<CustomerSO> randomizer)
+        {
+            foreach (var customer in customers)
+                randomizer.Add(new Option<CustomerSO>(customer, customer.ChanceWeight));
+        }
     }
 }

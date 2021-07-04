@@ -1,5 +1,6 @@
 using DataSaving;
-using Spacetaurant.Crafting;
+using Sirenix.OdinInspector;
+using Spacetaurant.Planets;
 using System;
 using UnityEngine;
 
@@ -7,12 +8,26 @@ namespace Spacetaurant.Restaurant
 {
     public class RestaurantManager : MonoSingleton<RestaurantManager>
     {
+        private const int IntervalRandomResolution = 20;
         #region Serielized
+        [FoldoutGroup("Customer arrival intrerval")]
+        [InfoBox("In minutes", InfoMessageType.None)]
         [SerializeField]
-        private Randomizer<ResourceSO> randomFloat;
+        private float _minimumArrivalInterval = 3;
+        [FoldoutGroup("Customer arrival intrerval")]
+        [SerializeField]
+        private float _maximumArrivalInterval = 6;
+        [FoldoutGroup("Customer arrival intrerval")]
+        [SerializeField]
+        private AnimationCurve _intervalChanceWeight;
+        [SerializeField]
+        private PlanetSO _planet;
         #endregion
         #region State
-        private DateTime _logoutTime;
+        private LogOutTime _logoutTime;
+        private ParkingLot _parkingLot;
+        private readonly FloatRandomizer _intervalRandomizer = new FloatRandomizer();
+        private Randomizer<CustomerSO> _customerRandomizer = new Randomizer<CustomerSO>();
         #endregion
         #region Unity callbacks
 
@@ -22,20 +37,46 @@ namespace Spacetaurant.Restaurant
         #region Private actions
         private void Start()
         {
-            StartCoroutine(RealTimeHandler.UpdateStartTime());
+            _logoutTime = DataHandler.Load<LogOutTime>();
+            _parkingLot = DataHandler.Load<ParkingLot>();
+            _planet.FillRandomizerWithCustomers(ref _customerRandomizer);
+            _intervalRandomizer.FillWithRange(_minimumArrivalInterval, _maximumArrivalInterval, _intervalChanceWeight, IntervalRandomResolution);
+            GenerateOfflineCustomers();
+            GenerateCustomer(CurrentTime)?.AddArrivalTimeEvent();
+            //Debug.Log("Next customer time: " + nextCustomerArrivalTime + ", MinutesFromNow: " + arrivalInterval);
         }
+
+        private void GenerateOfflineCustomers()
+        {
+            var offlineTimeSpan = CurrentTime - LogOutTime;
+            if (!_parkingLot.Full)
+            {
+                //var customer = GenerateNextCustomer(CurrentTime);
+            }
+        }
+
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                var test = DataHandler.GetData<LogOutTime>();
-                test.Date = CurrentTime;
-                test.Save();
-            }
+            TimedEventsHandler.CheckEvents();
+        }
+
+        private void OnDestroy()
+        {
+            _logoutTime.Date = CurrentTime;
+            _logoutTime.Save();
+        }
+        private CustomerSlot GenerateCustomer(DateTime fromTime)
+        {
+            var nextCustomer = _customerRandomizer.GetRandomOption();
+
+            var arrivalInterval = TimeSpan.FromMinutes(_intervalRandomizer.GetRandomOption());
+
+            var nextCustomerArrivalTime = fromTime + arrivalInterval;
+
+            return new CustomerSlot(nextCustomer, nextCustomerArrivalTime);
         }
         public void OnLogin()
         {
-            TimeSpan _timePassed = CurrentTime - _logoutTime;
         }
         public void OnLogOut()
         {
@@ -44,21 +85,16 @@ namespace Spacetaurant.Restaurant
         #endregion
         #region Private Utillities
         private DateTime CurrentTime => RealTimeHandler.GetTime();
+        private DateTime LogOutTime => _logoutTime.Date;
         #endregion
 
     }
-    public static class RestaurantUtillities
-    {
-        public static DateTime ToDate(this string date) => DateTime.Parse(date);
-    }
 
     [Serializable]
-    public class LogOutTime : DirtyData, ISaveable
+    public class LogOutTime : DirtyTime, ISaveable
     {
-        [SerializeField]
-        private string date = default;
+        static LogOutTime() => LoadingManager.CacheAllData += Cache;
+        private static void Cache() => DataHandler.Load<LogOutTime>();
 
-        public string DateString { get => date; set => Setter(ref date, value); }
-        public DateTime Date { get => DateString.ToDate(); set => DateString = value.ToString(); }
     }
 }

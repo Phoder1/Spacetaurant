@@ -15,7 +15,13 @@ MonoBehaviour:
   _planetName: First planet
   _icon: {fileID: 21300000, guid: 2d156ca7561a7174e8480adc6595f317, type: 3}
   _description: The absolute best planet for an awesome GnG!
-  possibleResources:
+  _planetNum: 1
+  resources:
   - {fileID: 11400000, guid: a891ab9ed4e1802439c3bc18cc6a48e6, type: 2}
   - {fileID: 11400000, guid: 51ac6b26ab74b6949a53b6fdbd5d18c8, type: 2}
   - {fileID: 11400000, guid: bed4eddb944bf21498f3b2b186b83607, type: 2}
+  recipes:
+  - {fileID: 11400000, guid: 377bc34163025e4438d35e1dfdfe3f4d, type: 2}
+  - {fileID: 11400000, guid: a45d4b5933d189f45a109565086f52f8, type: 2}
+  customers:
+  - {fileID: 11400000, guid: 0441bbf92fb1d29498b5355fb4f02b3c, type: 2}

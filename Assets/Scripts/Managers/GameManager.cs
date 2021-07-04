@@ -1,8 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DataSaving;
 
-public class GameManager : MonoBehaviour
+namespace Spacetaurant
 {
-
+    public class GameManager : MonoSingleton<GameManager>
+    {
+        private void OnApplicationQuit()
+        {
+            DataHandler.SaveAll();
+        }
+    }
 }

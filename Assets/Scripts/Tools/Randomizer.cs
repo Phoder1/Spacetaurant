@@ -9,12 +9,16 @@ namespace Spacetaurant
     public class Randomizer<T>
     {
         [SerializeField, ListDrawerSettings(Expanded = true, AlwaysAddDefaultValue = true)]
-        private List<Option<T>> options = new List<Option<T>>();
+        protected List<Option<T>> options = new List<Option<T>>();
         public Option<T> this[T content] => options.Find(OptionMatch(content));
+        private bool _isSorted = false;
+        public int Count => options.Count;
 #if UNITY_EDITOR
         [Button]
+        [ResponsiveButtonGroup(DefaultButtonSize = ButtonSizes.Small, UniformLayout = true, Order = 999)]
         private void DebugRandomOption() => Debug.Log(GetRandomOption()?.ToString() ?? "Null");
         [Button]
+        [ResponsiveButtonGroup]
         private void DebugTotalWeight() => Debug.Log(GetTotalWeight());
 #endif
         public float GetTotalWeight()
@@ -27,8 +31,12 @@ namespace Spacetaurant
         }
         public T GetRandomOption()
         {
+
             if (options.Count == 0)
                 throw new ArgumentNullException();
+
+            if (!_isSorted)
+                SortOptions();
 
             var value = UnityEngine.Random.Range(0, GetTotalWeight());
 
@@ -40,6 +48,47 @@ namespace Spacetaurant
             }
             return options[0].Content;
         }
+        public T[] GetRandomOptions(int count)
+        {
+            if (options.Count == 0)
+                throw new ArgumentNullException();
+
+            if (count == 0)
+                return new T[0];
+
+            if (!_isSorted)
+                SortOptions();
+
+            T[] newOptions = new T[count];
+            float[] values = new float[count];
+
+            float TotalWeight = GetTotalWeight();
+
+            int optionsFound = 0;
+
+            for (int i = 0; i < values.Length; i++)
+                values[i] = UnityEngine.Random.Range(0, TotalWeight);
+
+            for (int i = 0; i < options.Count; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if (values[j] > 0)
+                    {
+                        values[j] -= options[i].Weight;
+                        if (values[j] <= 0)
+                        {
+                            newOptions[j] = options[i].Content;
+                            optionsFound++;
+
+                            if (optionsFound == count)
+                                return newOptions;
+                        }
+                    }
+                }
+            }
+            return newOptions;
+        }
         /// <summary>
         /// Adding an option to the randomizer.
         /// </summary>
@@ -48,11 +97,35 @@ namespace Spacetaurant
         /// <param name="additive">If true, in case of duplication, where the option already exists in the options pool, it will combine the options weights.</param>
         public void Add(Option<T> newOption, bool additive = true)
         {
-            var option = this[newOption.Content];
-            if (option == null)
-                options.Add(newOption);
-            else if (additive)
-                option.Weight += newOption.Weight;
+            if (newOption.Content == null || newOption.Weight <= 0)
+                return;
+
+            //Whether I can take into account the randomizer is sorted or not, if it's not I'll just insert the option at the end and sort when first pulling a new option.
+            if (!_isSorted)
+            {
+                var option = this[newOption.Content];
+                if (option == null)
+                    options.Add(newOption);
+                else if (additive)
+                    option.Weight += newOption.Weight;
+            }
+            else
+            {
+                for (int i = 0; i < options.Count; i++)
+                {
+                    if (additive && options[i].Content.Equals(newOption.Content))
+                    {
+                        options[i].Weight += newOption.Weight;
+                        return;
+                    }
+
+                    if (options[i].Weight <= newOption.Weight)
+                    {
+                        options.Insert(i, newOption);
+                        return;
+                    }
+                }
+            }
         }
         /// <summary>
         /// Removing an option from the randomizer.
@@ -87,6 +160,13 @@ namespace Spacetaurant
         }
         private Predicate<IOption<T>> OptionMatch(T option)
             => (x) => x.Content.Equals(option);
+        //[Button, PropertyTooltip("Sorrted randomizers increase option pooling performance.")]
+        [ResponsiveButtonGroup]
+        private void SortOptions()
+        {
+            options.Sort((a, b) => b.Weight.CompareTo(a.Weight));
+            _isSorted = true;
+        }
 
 
     }
@@ -111,10 +191,10 @@ namespace Spacetaurant
     [Serializable]
     public class Option<T> : IOption<T>
     {
-        [HorizontalGroup(LabelWidth = 70)]
-        public T content = default;
-        [HorizontalGroup(LabelWidth = 70)]
-        public float weight = 1;
+        [SerializeField, HorizontalGroup(LabelWidth = 70)]
+        private T content = default;
+        [SerializeField, HorizontalGroup(LabelWidth = 70)]
+        private float weight = 1;
 
         public Option(T content, float weight = 1)
         {

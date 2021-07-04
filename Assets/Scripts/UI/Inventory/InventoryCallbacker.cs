@@ -18,7 +18,7 @@ namespace Spacetaurant
 
         private void Awake()
         {
-            _playerInventory = DataHandler.GetData<PlayerInventory>();
+            _playerInventory = DataHandler.Load<PlayerInventory>();
 
             UpdateInventory();
         }

@@ -54,7 +54,7 @@ namespace Spacetaurant
             if (_itemSlot != null && _itemSlot.Item != null)
             {
                 int index;
-                var playerInventory = DataHandler.GetData<PlayerInventory>();
+                var playerInventory = DataHandler.Load<PlayerInventory>();
 
                 if ((index = playerInventory.Container.FindIndex((x) => x.Resource == _itemSlot.Item)) >= 0)
                     LoadItem(playerInventory.Container[index]);
