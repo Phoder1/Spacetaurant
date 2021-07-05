@@ -35,6 +35,18 @@ PrefabInstance:
       propertyPath: OnWasPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7559351565424628509, guid: a76b67b39c8448c4a8717b7c63aab86a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a91e9d546ccb6f4d886a6bb8e65fcfb, type: 3}
+    - target: {fileID: 7559351566188036626, guid: a76b67b39c8448c4a8717b7c63aab86a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a91e9d546ccb6f4d886a6bb8e65fcfb, type: 3}
+    - target: {fileID: 7559351566340142445, guid: a76b67b39c8448c4a8717b7c63aab86a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a91e9d546ccb6f4d886a6bb8e65fcfb, type: 3}
     - target: {fileID: 7559351566438911852, guid: a76b67b39c8448c4a8717b7c63aab86a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
