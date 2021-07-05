@@ -184,7 +184,8 @@ namespace Spacetaurant.Interactable
 
             GatherProgressTime = 0;
 
-            DataHandler.GetData<PlayerInventory>().Add(Reward);
+            DataHandler.Load<PlayerInventory>().Add(Reward);
+            Debug.Log("Added to inventory");
             
             OnInteractionFinish?.Invoke(this);
         }

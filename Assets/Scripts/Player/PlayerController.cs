@@ -216,9 +216,6 @@ namespace Spacetaurant.Player
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            if (!_debug)
-                return;
-
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, _interactionRange);
             Gizmos.color = Color.yellow;

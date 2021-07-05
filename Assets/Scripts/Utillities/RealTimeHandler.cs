@@ -1,3 +1,4 @@
+using DataSaving;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,6 +45,7 @@ namespace Spacetaurant
         {
             Debug.Log(GetTime());
         }
+        public static DateTime ToDate(this string date) => DateTime.Parse(date);
         public static DateTime GetTime() => _realStartTime + TimeSpan.FromSeconds(Time.time - _lastUpdateTime);
         public class TimeResultWorldTime
         {
@@ -75,5 +77,19 @@ namespace Spacetaurant
             public string ordinalDate;
             public object serviceResponse;
         }
+    }
+    public class DirtyTime : DirtyData
+    {
+        [SerializeField]
+        private string date = default;
+
+        public DirtyTime(bool isDirty = true) : base(isDirty) { }
+
+        public string DateString { get => date; set => Setter(ref date, value); }
+        public DateTime Date { get => DateString.ToDate(); set => DateString = value.ToString(); }
+
+        public static implicit operator DateTime(DirtyTime dirtyTime) => dirtyTime.Date;
+        public static implicit operator string(DirtyTime dirtyTime) => dirtyTime.DateString;
+
     }
 }

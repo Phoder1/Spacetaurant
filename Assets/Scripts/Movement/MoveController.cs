@@ -13,8 +13,6 @@ namespace Spacetaurant.movement
         #region Serielized
         [SerializeField, LocalComponent]
         private CapsuleCollider _rigidbodyCollider = default;
-        [SerializeField, LocalComponent]
-        private CapsuleCollider _groundcheckCollider = default;
         [SerializeField]
         private LayerMask _groundLayers;
 

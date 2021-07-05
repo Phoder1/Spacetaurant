@@ -1,15 +1,15 @@
 using DataSaving;
-using Spacetaurant.Containers;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Sirenix.OdinInspector;
+using Spacetaurant.Containers;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Spacetaurant
 {
     public class InventoryCallbacker : MonoBehaviour
     {
+        [SerializeField]
+        private bool _updateOnEnable = true;
         private PlayerInventory _playerInventory;
 
         [SerializeField, FoldoutGroup("Events")]
@@ -18,13 +18,15 @@ namespace Spacetaurant
 
         private void Awake()
         {
-            _playerInventory = DataHandler.GetData<PlayerInventory>();
+            _playerInventory = DataHandler.Load<PlayerInventory>();
 
             UpdateInventory();
         }
         private void OnEnable()
         {
-            UpdateInventory();
+            if (_updateOnEnable)
+                UpdateInventory();
+
             _playerInventory.Container.OnValueChange += UpdateInventory;
         }
         private void OnDisable()
