@@ -9,6 +9,7 @@ namespace Spacetaurant.Restaurant
     public class RestaurantManager : MonoSingleton<RestaurantManager>
     {
         private const int IntervalRandomResolution = 20;
+        private const int CustomerStayTime = 60;
         #region Serielized
         [FoldoutGroup("Customer arrival intrerval")]
         [InfoBox("In minutes", InfoMessageType.None)]
@@ -48,10 +49,18 @@ namespace Spacetaurant.Restaurant
 
         private void GenerateOfflineCustomers()
         {
-            var offlineTimeSpan = CurrentTime - LogOutTime;
+            float averageInterval = _intervalRandomizer.GetAverageResult();
             if (!_parkingLot.Full)
             {
-                //var customer = GenerateNextCustomer(CurrentTime);
+                DateTime firstCustomerArrivalTime = _parkingLot.Customers[0].ArrivalTime;
+                DateTime lastCustomerArrivalTime = _parkingLot.Customers[_parkingLot.Customers.Count - 1].ArrivalTime;
+                double timeSinceFirstCustomer = (CurrentTime - firstCustomerArrivalTime).TotalMinutes;
+                double timeSinceLastCustomer = (CurrentTime - lastCustomerArrivalTime).TotalMinutes;
+
+                int customersLeft = Mathf.FloorToInt((1f / (float)CustomerStayTime) * (float)timeSinceFirstCustomer);
+                int customersArrived = Mathf.FloorToInt((1f / averageInterval) * (float)timeSinceLastCustomer);
+                var numOfCustomers = customersArrived - customersLeft;
+                var customer = _customerRandomizer.GetRandomOptions(numOfCustomers);
             }
         }
 

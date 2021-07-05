@@ -87,5 +87,9 @@ namespace Spacetaurant
 
         public string DateString { get => date; set => Setter(ref date, value); }
         public DateTime Date { get => DateString.ToDate(); set => DateString = value.ToString(); }
+
+        public static implicit operator DateTime(DirtyTime dirtyTime) => dirtyTime.Date;
+        public static implicit operator string(DirtyTime dirtyTime) => dirtyTime.DateString;
+
     }
 }
