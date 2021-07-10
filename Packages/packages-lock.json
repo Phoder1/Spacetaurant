@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d521b4ee6fc169f4683fd400537c31d5882160e5"
+      "hash": "c71f928459f5fb37961ee46fe55839080a9cd528"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -56,7 +56,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.9",
+      "version": "2.0.11",
       "depth": 0,
       "source": "registry",
       "dependencies": {

@@ -1,40 +1,44 @@
-using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
+namespace Spacetaurant
 {
-    [SerializeField, PropertyOrder(999)]
-    private bool _dontDestroyOnLoad = true;
-
-    public static T _instance;
-    public static T Instance
+    public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
-        get
+        [SerializeField, PropertyOrder(OdinUtillities.SingletonPropertyOrder)]
+        private bool _dontDestroyOnLoad = true;
+
+        public static T _instance;
+        public static T Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<T>();
+                    if (_instance == null)
+                    {
+                        var singletonObj = new GameObject();
+                        singletonObj.name = typeof(T).ToString();
+                        _instance = singletonObj.AddComponent<T>();
+
+                        Debug.LogWarning("Singleton was loaded automatically, manual refrencing in scene is prefered.");
+                    }
+                }
+                return _instance;
+            }
+        }
+        protected virtual void Awake()
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<T>();
-                if (_instance == null)
-                {
-                    var singletonObj = new GameObject();
-                    singletonObj.name = typeof(T).ToString();
-                    _instance = singletonObj.AddComponent<T>();
-
-                    Debug.LogWarning("Singleton was loaded automatically, manual refrencing in scene is prefered.");
-                }
+                _instance = this as T;
+                if (_dontDestroyOnLoad)
+                    DontDestroyOnLoad(this);
             }
-            return _instance;
+            else if (_instance != this as T)
+                Destroy(gameObject);
         }
     }
-    protected void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this as T;
-            if (_dontDestroyOnLoad)
-                DontDestroyOnLoad(this);
-        }
-        else if (_instance != this as T)
-            Destroy(gameObject);
-    }
+
 }
