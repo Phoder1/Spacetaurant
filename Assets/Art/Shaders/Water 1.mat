@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
+  m_Name: Water 1
   m_Shader: {fileID: -6465566751694194690, guid: 7c47ef6eb90bd094ea6e7a915c282fb3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -32,20 +32,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Foam_Amount: 5
-    - Foam_Cutoff: 3.5
-    - Foam_Evolution_Speed: 1.25
-    - Foam_Scale: 5
+    - Foam_Amount: 8.09
+    - Foam_Cutoff: 7.52
+    - Foam_Evolution_Speed: 2.48
+    - Foam_Scale: 9.83
     - Global_Fading: 30
-    - Light_Probe_Contribution: 2.5
-    - Refaction_Scale: 1
-    - Refraction_Evolution_Speed: 1.5
-    - Refraction_Height: 0.2
-    - Vector1_77A997E: 0.5
-    - Water_Depth: 1.5
-    - Wave_Height: 0.15
+    - Light_Probe_Contribution: 2.1
+    - Refaction_Scale: 5.64
+    - Refraction_Evolution_Speed: 5
+    - Refraction_Height: 0.698
+    - Vector1_77A997E: 0.55
+    - Water_Depth: 1.55
+    - Wave_Height: 1.97
     - Wave_Scale: 7.2
-    - Wave_Speed: 1.55
+    - Wave_Speed: 4.87
     m_Colors:
     - Foam_Color: {r: 1, g: 1, b: 1, a: 0.5450981}
     - Shallow_Water_Color: {r: 0.44313726, g: 0.8750768, b: 0.8980392, a: 0.3176471}
