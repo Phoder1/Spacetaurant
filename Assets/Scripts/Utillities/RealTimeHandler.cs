@@ -16,7 +16,7 @@ namespace Spacetaurant
 
         public static IEnumerator UpdateStartTime(Action<DateTime> callback = null)
         {
-            var _startTryTime = Time.time;
+            var _startTryTime = Time.realtimeSinceStartup;
             var _tryCount = 0;
             yield return TryGetTime();
 
@@ -28,7 +28,7 @@ namespace Spacetaurant
 
                 void OnSuccess(HttpResponse<TimeResultWorldClock> response)
                 {
-                    _lastUpdateTime = Time.time;
+                    _lastUpdateTime = Time.realtimeSinceStartup;
                     _realStartTime = DateTime.Parse(response.body.currentDateTime);
                     _initiated = true;
                     OnUpdate();
@@ -45,8 +45,19 @@ namespace Spacetaurant
         {
             Debug.Log(GetTime());
         }
-        public static DateTime ToDate(this string date) => DateTime.Parse(date);
-        public static DateTime GetTime() => _realStartTime + TimeSpan.FromSeconds(Time.time - _lastUpdateTime);
+        public static DateTime? ToDate(this string dateString)
+        {
+            if (string.IsNullOrEmpty(dateString))
+                return null;
+
+            var success = DateTime.TryParse(dateString, out var date);
+            if (!success)
+                return null;
+            else
+                return date;
+
+        }
+        public static DateTime GetTime() => _realStartTime + TimeSpan.FromSeconds(Time.realtimeSinceStartup - _lastUpdateTime);
         public class TimeResultWorldTime
         {
             public string abbreviation;
@@ -78,17 +89,18 @@ namespace Spacetaurant
             public object serviceResponse;
         }
     }
+    [Serializable]
     public class DirtyTime : DirtyData
     {
         [SerializeField]
-        private string date = default;
+        private string date = string.Empty;
 
         public DirtyTime(bool isDirty = true) : base(isDirty) { }
 
         public string DateString { get => date; set => Setter(ref date, value); }
-        public DateTime Date { get => DateString.ToDate(); set => DateString = value.ToString(); }
+        public DateTime? Date { get => DateString.ToDate(); set => DateString = value.ToString(); }
 
-        public static implicit operator DateTime(DirtyTime dirtyTime) => dirtyTime.Date;
+        public static implicit operator DateTime?(DirtyTime dirtyTime) => dirtyTime.Date;
         public static implicit operator string(DirtyTime dirtyTime) => dirtyTime.DateString;
 
     }

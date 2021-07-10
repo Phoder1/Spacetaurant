@@ -1,4 +1,5 @@
 using Spacetaurant.Crafting;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,10 @@ namespace Spacetaurant
                         return 0;
                 }
             }
+        }
+
+        internal void Left()
+        {
         }
     }
 }

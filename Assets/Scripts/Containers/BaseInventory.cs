@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Spacetaurant.Containers
 {
@@ -30,9 +31,11 @@ namespace Spacetaurant.Containers
         public void ValueChanged() => _isDirty = true;
 
         public event Action OnDirty;
+        public event Action OnValueChange;
 
-        private UnityEventForRefrence _onValueChange;
-        public UnityEventForRefrence OnValueChange => _onValueChange;
+        [FormerlySerializedAs("_onValueChange")]
+        private UnityEventForRefrence _onValueChangeEvent;
+        public UnityEventForRefrence OnValueChangeEvent => _onValueChangeEvent;
         public void Add(ResourceSlot item)
         {
             int index = Container.FindIndex(x => x.Item == item.Item);
