@@ -4,21 +4,21 @@
   <togglePreview>false</togglePreview>
   <hideTransformHandle>true</hideTransformHandle>
   <brushSettings>
-    <radius>29.2</radius>
+    <radius>6.3</radius>
     <maxRadius>50</maxRadius>
-    <delay>0.53</delay>
-    <opacity>0.22</opacity>
+    <delay>0.001</delay>
+    <opacity>0.453</opacity>
     <falloff>
       <key>
         <time>0</time>
         <value>1</value>
         <inTangent>0</inTangent>
-        <outTangent>0</outTangent>
+        <outTangent>-1</outTangent>
       </key>
       <key>
         <time>1</time>
-        <value>1</value>
-        <inTangent>0</inTangent>
+        <value>0</value>
+        <inTangent>-1</inTangent>
         <outTangent>0</outTangent>
       </key>
     </falloff>
@@ -28,8 +28,8 @@
       <b>0</b>
       <a>1</a>
     </color>
-    <style>1</style>
-    <alpha>0.01</alpha>
+    <style>2</style>
+    <alpha>0.356</alpha>
     <blink>true</blink>
   </brushSettings>
   <keyBindings>
