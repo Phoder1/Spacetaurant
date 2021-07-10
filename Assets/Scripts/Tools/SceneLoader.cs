@@ -80,22 +80,28 @@ namespace Spacetaurant
         private void LoadSceneByIndex() => LoadSceneByIndex(_sceneIndex, _loadSceneMode);
         public void LoadSceneByIndex(int buildIndex, LoadSceneMode loadSceneMode)
         {
-            if (!_locked)
-                StartCoroutine(LoadSceneRoutine(buildIndex, loadSceneMode));
+            if (_locked)
+                return;
+            var scene = SceneManager.GetSceneByBuildIndex(buildIndex);
+            StartCoroutine(LoadSceneRoutine(scene.name, loadSceneMode));
         }
         private void LoadSceneByName() => LoadSceneByName(_sceneName, _loadSceneMode);
         public void LoadSceneByName(string sceneName, LoadSceneMode loadSceneMode)
         {
-            if (!_locked)
-                StartCoroutine(LoadSceneRoutine(SceneManager.GetSceneByName(sceneName).buildIndex, loadSceneMode));
+            if (_locked)
+                return;
+
+            StartCoroutine(LoadSceneRoutine(sceneName, loadSceneMode));
         }
         private void LoadNextScene() => LoadNextScene(_loadSceneMode);
         public void LoadNextScene(LoadSceneMode loadSceneMode)
         {
-            if (!_locked)
-                StartCoroutine(LoadSceneRoutine(SceneManager.GetActiveScene().buildIndex + 1, loadSceneMode));
+            if (_locked)
+                return;
+
+            StartCoroutine(LoadSceneRoutine(SceneManager.GetActiveScene().buildIndex + 1, loadSceneMode));
         }
-        private IEnumerator LoadSceneRoutine(int index, LoadSceneMode loadSceneMode)
+        private IEnumerator LoadSceneRoutine(string sceneName, LoadSceneMode loadSceneMode)
         {
             if (!_locked)
             {
@@ -106,7 +112,26 @@ namespace Spacetaurant
                 if (_lockAtLoad)
                     _locked = true;
 
-                yield return SceneManager.LoadSceneAsync(index, loadSceneMode);
+                yield return SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
+
+                OnFinishedLoadingScene?.Invoke();
+
+                if (loadSceneMode == LoadSceneMode.Additive && _sceneUnloadMode != SceneUnloadMode.Manually)
+                    UnloadScene();
+            }
+        }
+        private IEnumerator LoadSceneRoutine(int sceneIndex, LoadSceneMode loadSceneMode)
+        {
+            if (!_locked)
+            {
+                yield return null;
+
+                OnStartLoadingScene?.Invoke();
+
+                if (_lockAtLoad)
+                    _locked = true;
+
+                yield return SceneManager.LoadSceneAsync(sceneIndex, loadSceneMode);
 
                 OnFinishedLoadingScene?.Invoke();
 
@@ -132,7 +157,10 @@ namespace Spacetaurant
                     break;
                 case SceneUnloadMode.IReadyable:
                     if (_readyable != null && _readyable is IReadyable readyable)
-                        readyable.OnReady += UnloadActiveScene;
+                        if (readyable.Ready)
+                            UnloadActiveScene();
+                        else
+                            readyable.OnReady += UnloadActiveScene;
                     else
                         UnloadActiveScene();
                     break;

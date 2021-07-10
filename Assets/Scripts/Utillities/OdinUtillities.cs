@@ -9,7 +9,8 @@ namespace Spacetaurant
 {
     public static class OdinUtillities
     {
-        public const int EventsPropertyOrder = 9998;
+        public const int EventsPropertyOrder = 999;
+        public const int SingletonPropertyOrder = 9998;
         public const int DebugPropertyOrder = 9999;
     }
     #region Ordering

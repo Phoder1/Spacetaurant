@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5830868166137963854}
   - component: {fileID: 310594038035353818}
+  - component: {fileID: 9213253009791363774}
   - component: {fileID: 4696859579913889433}
   - component: {fileID: 6594901351705503036}
-  - component: {fileID: 9213253009791363774}
   m_Layer: 0
   m_Name: BackendManagers
   m_TagString: Untagged
@@ -61,6 +61,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9213253009791363774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690307525693217139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b7bc6c976270b49a2259a179ac6b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loadSceneMode: 1
+  _loadMode: 0
+  _lockAtLoad: 1
+  _sceneName: Restaurant
+  _sceneIndex: 0
+  _sceneUnloadMode: 2
+  _delay: 0
+  _readyable: {fileID: 310594038035353818}
+  _unlockAfterUnload: 1
+  OnStartLoadingScene:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedLoadingScene:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartUnloadingScene:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFinishedUnloadingScene:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4696859579913889433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,30 +162,5 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnCustomerDepartue:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &9213253009791363774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690307525693217139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b7bc6c976270b49a2259a179ac6b5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _loadSceneMode: 0
-  _loadMode: 0
-  _sceneName: LoadScreen
-  _sceneIndex: 0
-  _sceneUnloadMode: 0
-  _delay: 0
-  _readyable: {fileID: 0}
-  OnStartLoadingScene:
-    m_PersistentCalls:
-      m_Calls: []
-  OnFinishedLoadingScene:
     m_PersistentCalls:
       m_Calls: []

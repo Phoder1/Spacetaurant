@@ -22,11 +22,17 @@ namespace Spacetaurant
         private void Awake() => CacheAllData?.Invoke();
         private void Start()
         {
+            CacheReadyables();
+
+            StartReadyCheck();
+        }
+        private void CacheReadyables()
+        {
             GetComponents(ReadyCheck);
             ReadyCheck.Remove(this);
-
-            DontDestroyOnLoad(gameObject);
-
+        }
+        private void StartReadyCheck()
+        {
             StartCoroutine(WaitForReady());
         }
         private IEnumerator WaitForReady()
@@ -37,9 +43,6 @@ namespace Spacetaurant
             _ready = true;
             OnReady?.Invoke();
             OnReadyEvent?.Invoke();
-
-
-            Destroy(gameObject);
         }
         private void OnDestroy() => StopAllCoroutines();
     }

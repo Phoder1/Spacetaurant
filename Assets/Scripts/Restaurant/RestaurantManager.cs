@@ -34,9 +34,9 @@ namespace Spacetaurant.Restaurant
 #endif
         #endregion
         #region Events
-        [SerializeField]
+        [SerializeField, EventsGroup]
         private UnityEvent<CustomerSlot> OnCustomerArrival;
-        [SerializeField]
+        [SerializeField, EventsGroup]
         private UnityEvent<CustomerSlot> OnCustomerDepartue;
 
         #endregion
