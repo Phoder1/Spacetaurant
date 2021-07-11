@@ -2213,6 +2213,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7091317180437594451, guid: dad93f7a3bd30e74584149322b1ffb46, type: 3}
+      propertyPath: _loadOnStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8949357938276439792, guid: dad93f7a3bd30e74584149322b1ffb46, type: 3}
       propertyPath: m_Name
       value: Upgrades holder

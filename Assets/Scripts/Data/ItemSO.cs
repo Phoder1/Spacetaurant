@@ -36,7 +36,7 @@ namespace Spacetaurant
 
     [Serializable]
     [InlineProperty]
-    public abstract class ItemSlot<T> : DirtyData where T : ItemSO
+    public abstract class ItemSlot<T> : DirtyData where T : EntitySO
     {
         [SerializeField, HorizontalGroup, HideLabel]
         private int _amount;

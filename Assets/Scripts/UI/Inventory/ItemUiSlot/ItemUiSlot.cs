@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Spacetaurant
 {
-    public abstract class ItemUiSlot<TSlot,T> : MonoBehaviour 
+    public abstract class ItemUiSlot<TSlot,T> : MonoBehaviour, IUiItem<TSlot>
         where TSlot : ItemSlot<T>
         where T : ItemSO
     {
