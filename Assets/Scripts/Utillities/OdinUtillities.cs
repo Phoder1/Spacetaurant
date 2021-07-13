@@ -27,7 +27,7 @@ namespace Spacetaurant
     public class DebugGroup : Attribute { }
 
     [IncludeMyAttributes]
-    [GUIColor(1f, 1f, 1f, 0.7f)]
+    [GUIColor(1f, 0.95f, 0.95f, 0.85f)]
     [ColoredFoldoutGroup("Events",1,0.2f, 0.2f, Expanded = false, AnimateVisibility = false, Order = OdinUtillities.EventsPropertyOrder + 1)]
     public class EventsGroup : Attribute { }
     public class ColoredFoldoutGroupAttribute : PropertyGroupAttribute

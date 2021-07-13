@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Spacetaurant
 {
+    public enum UpgradeType { Restaurant, Stuff, Garage, Decoration }
     [CreateAssetMenu(menuName = SoUtillities.SoMenuName + "Upgrade")]
     [InlineEditor]
     public class UpgradeSO : EntitySO
@@ -17,11 +18,14 @@ namespace Spacetaurant
 
         [HorizontalGroup("Title", width: 60)]
         [BoxGroup("Title/Icon")]
-        [PreviewField, HideLabel] 
+        [PreviewField, HideLabel]
         [SerializeField]
         private Sprite _icon;
         public Sprite Icon => _icon;
 
+        [BoxGroup("Title/Info")]
+        [SerializeField]
+        private UpgradeType _type;
 
         [SerializeField, ListDrawerSettings(Expanded = true)]
         private UpgradeSO[] _prerequisites;
@@ -29,5 +33,6 @@ namespace Spacetaurant
 
         public bool Available => Prerequisites == null || Prerequisites.Length == 0 || Array.TrueForAll(Prerequisites, (x) => x.Unlocked);
         public bool Unlocked => true;
+        public UpgradeType Type => _type;
     }
 }

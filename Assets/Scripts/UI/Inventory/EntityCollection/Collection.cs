@@ -20,7 +20,7 @@ namespace Spacetaurant
                 ReloadCollection();
         }
         [Button]
-        public void ReloadCollection()
+        public virtual void ReloadCollection()
         {
             if (_collection == null || _collection.Count == 0)
                 return;
@@ -51,6 +51,18 @@ namespace Spacetaurant
     }
     public abstract class ComponentCollection<T> : Collection<T> where T : Component
     {
+        public void InstantiateCollection(List<T> collection)
+        {
+            foreach (var item in collection)
+            {
+                var newItem = Instantiate(item, transform);
+                _collection.Add(newItem);
+                OnInstantiation(newItem);
+            }
+
+            ReloadCollection();
+        }
+        protected virtual void OnInstantiation(T item) { }
         [Button]
         protected override void Sort()
         {

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5009ed5f59a3c1746a74a0d01f50e568, type: 3}
+  m_Name: TestDecoration
+  m_EditorClassIdentifier: 
+  _name: Awesomest decoration
+  _description: "The most awesomest decoration in the whole planet! \nAt least on
+    this one..."
+  _price: 6
+  _icon: {fileID: 21300000, guid: da5cd231c6b70484fba2c15edf907d23, type: 3}
+  _type: 0
+  _prerequisites: []

@@ -4,9 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.Events;
 
 namespace Spacetaurant
 {
+    [RequireComponent(typeof(Button))]
     public class UpgradeButton : MonoBehaviour
     {
         [SerializeField]
@@ -15,11 +18,21 @@ namespace Spacetaurant
         private bool _loadOnStart = false;
 
         #region Refrences
-        [SerializeField, FoldoutGroup("Refrences")]
-        private Image _icon;
+
+        #endregion
+
+        #region Events
+        [SerializeField, EventsGroup]
+        private UnityEvent<UpgradeSO> OnLoad;
+
+        public event Action<UpgradeSO> OnPress;
         #endregion
 
         public UpgradeSO UpgradeSO => _upgradeSO;
+        private void Awake()
+        {
+            GetComponent<Button>().onClick.AddListener(() => OnPress?.Invoke(_upgradeSO));
+        }
 
         private void Start()
         {
@@ -35,11 +48,7 @@ namespace Spacetaurant
 
             gameObject.name = UpgradeSO.name;
 
-            if (_icon != null)
-                _icon.sprite = UpgradeSO.Icon;
-
-
-
+            OnLoad?.Invoke(UpgradeSO);
         }
     }
 }
