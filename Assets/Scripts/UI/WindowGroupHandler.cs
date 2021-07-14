@@ -34,7 +34,7 @@ namespace Spacetaurant.UI
                 if (CurrentState != null && value != null && CurrentState.uiWindow == value.uiWindow)
                     return;
 
-                value.uiWindow.groupHandler = this;
+                value.uiWindow.GroupHandler = this;
 
                 stateMachine.State = value;
 
@@ -46,20 +46,20 @@ namespace Spacetaurant.UI
         #region Unity callbacks
         private void Awake()
         {
-            if (groupHandler == null)
+            if (GroupHandler == null)
                 Init();
         }
         public override void Init()
         {
-            if (groupHandler != null)
+            if (GroupHandler != null)
                 base.Init();
 
             foreach (var state in states)
             {
-                state.uiWindow.groupHandler = this;
+                state.uiWindow.GroupHandler = this;
                 state.uiWindow.Init();
             }
-            _defaultState.uiWindow.groupHandler = this;
+            _defaultState.uiWindow.GroupHandler = this;
             stateMachine = new StateMachine<MenuUiState>(_defaultState);
             CurrentState.uiWindow.CancelTween();
             CurrentState.uiWindow.ForceTransitionedIn();
@@ -69,7 +69,7 @@ namespace Spacetaurant.UI
         #region State select
         public void SelectWindow(UiWindow window)
         {
-            if (groupHandler != null && !Selected)
+            if (GroupHandler != null && !Selected)
                 SelectWindow();
 
             CurrentState = states.Find((x) => x.uiWindow == window);

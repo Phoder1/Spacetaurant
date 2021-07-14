@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using System;
 
 namespace Spacetaurant
@@ -23,12 +19,12 @@ namespace Spacetaurant
     /// Debug group requires a bool property named "_debug" which controls the group visibility.
     /// </summary>
     [IncludeMyAttributes]
-    [ColoredFoldoutGroup("Debug",1,1,0,Expanded = false, VisibleIf = "_debug", Order = OdinUtillities.DebugPropertyOrder+1)]
+    [ColoredFoldoutGroup("Debug", 1, 1, 0, Expanded = false, VisibleIf = "_debug", Order = OdinUtillities.DebugPropertyOrder + 1)]
     public class DebugGroup : Attribute { }
 
     [IncludeMyAttributes]
     [GUIColor(1f, 0.95f, 0.95f, 0.85f)]
-    [ColoredFoldoutGroup("Events",1,0.2f, 0.2f, Expanded = false, AnimateVisibility = false, Order = OdinUtillities.EventsPropertyOrder + 1)]
+    [ColoredFoldoutGroup("Events", 1, 0.2f, 0.2f, Expanded = false, AnimateVisibility = false, Order = OdinUtillities.EventsPropertyOrder + 1)]
     public class EventsGroup : Attribute { }
     public class ColoredFoldoutGroupAttribute : PropertyGroupAttribute
     {

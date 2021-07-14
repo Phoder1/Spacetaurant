@@ -16,9 +16,9 @@ namespace Spacetaurant.UI
         #endregion
 
         #region Events
-        [SerializeField, FoldoutGroup("Events", order: 999)]
+        [SerializeField, EventsGroup]
         private UnityEvent OnUiLock;
-        [SerializeField, FoldoutGroup("Events")]
+        [SerializeField, EventsGroup]
         private UnityEvent OnUiUnlock;
         #endregion
 

@@ -7,29 +7,40 @@ namespace Spacetaurant.UI
 {
     public abstract class UiWindow : MonoBehaviour
     {
+        [LabelWidth(200)]
         public bool disableWhenNotActive = true;
         #region Events
-        [SerializeField, FoldoutGroup("Events", order: 999)]
+        [SerializeField, EventsGroup]
         protected UnityEvent OnTransitionIn_Start;
-        [SerializeField, FoldoutGroup("Events")]
+        [SerializeField, EventsGroup]
         protected UnityEvent OnTransitionIn_End;
-        [SerializeField, FoldoutGroup("Events")]
+        [SerializeField, EventsGroup]
         protected UnityEvent OnTransitionOut_Start;
-        [SerializeField, FoldoutGroup("Events")]
+        [SerializeField, EventsGroup]
         protected UnityEvent OnTransitionOut_End;
-        [SerializeField, FoldoutGroup("Events")]
+        [SerializeField, EventsGroup]
         protected UnityEvent OnUiLock;
-        [SerializeField, FoldoutGroup("Events")]
+        [SerializeField, EventsGroup]
         protected UnityEvent OnUiUnlock;
         #endregion
 
         #region State
         [HideInInspector]
-        public WindowGroupHandler groupHandler;
+        private WindowGroupHandler groupHandler;
+        public WindowGroupHandler GroupHandler 
+        { 
+            get => groupHandler; 
+            set
+            {
+                if (groupHandler != null)
+                    Debug.LogError("UiWindow is refrenced in multiple managers! Previous manager: " + groupHandler.name + ", New manager: " + value.name);
+                groupHandler = value;
+            } 
+        }
 
         public Tween transitionTween = default;
         private bool _uiLocked;
-        public bool Selected => groupHandler != null && groupHandler.CurrentState.uiWindow == this;
+        public bool Selected => GroupHandler != null && GroupHandler.CurrentState.uiWindow == this;
         public virtual bool UiLocked
         {
             get => _uiLocked;
@@ -56,7 +67,7 @@ namespace Spacetaurant.UI
                 transitionTween.Kill();
             }
         }
-        public void SelectWindow() => groupHandler.SelectWindow(this);
+        public void SelectWindow() => GroupHandler.SelectWindow(this);
 
         #region Transition In
         [Button]
