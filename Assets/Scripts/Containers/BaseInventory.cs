@@ -28,7 +28,12 @@ namespace Spacetaurant.Containers
                     OnDirty?.Invoke();
             }
         }
-        public void ValueChanged() => _isDirty = true;
+        public void ValueChanged()
+        {
+            IsDirty = true;
+            OnValueChange?.Invoke();
+            OnValueChangeEvent?.Invoke(this);
+        }
 
         public event Action OnDirty;
         public event Action OnValueChange;
@@ -36,6 +41,11 @@ namespace Spacetaurant.Containers
         [FormerlySerializedAs("_onValueChange")]
         private UnityEventForRefrence _onValueChangeEvent;
         public UnityEventForRefrence OnValueChangeEvent => _onValueChangeEvent;
+        protected BaseInventory()
+        {
+
+        }
+
         public void Add(ResourceSlot item)
         {
             int index = Container.FindIndex(x => x.Item == item.Item);

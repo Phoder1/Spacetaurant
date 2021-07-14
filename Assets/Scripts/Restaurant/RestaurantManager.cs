@@ -222,11 +222,13 @@ namespace Spacetaurant.Restaurant
     public class LogOutTime : DirtyTime, ISaveable
     {
         static LogOutTime() => LoadingHandler.CacheAllData += Cache;
+
+        public event Action OnSaveStarted;
+        public event Action OnSaveFinished;
+
         private static void Cache() => DataHandler.Load<LogOutTime>();
 
-        public void BeforeSave()
-        {
-           Date = RealTimeHandler.GetTime();
-        }
+        public void BeforeSave() => OnSaveStarted?.Invoke();
+        public void AfterSave() => OnSaveFinished?.Invoke();
     }
 }

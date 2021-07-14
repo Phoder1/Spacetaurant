@@ -23,6 +23,9 @@ namespace Spacetaurant
         private int _size = 2;
         public int Size { get => _size; set => Setter(ref _size, value, (x) => OnSizeChanged?.Invoke(x)); }
         public event Action<int> OnSizeChanged;
+        public event Action OnSaveStarted;
+        public event Action OnSaveFinished;
+
         [SerializeField]
         private DirtyDataList<CustomerSlot> _customers = new DirtyDataList<CustomerSlot>(false);
         public DirtyDataList<CustomerSlot> Customers { get => _customers; set => Setter(ref _customers, value); }
@@ -69,9 +72,8 @@ namespace Spacetaurant
             protected set => base.IsDirty = value;
         }
         #endregion
-        public void BeforeSave()
-        {
-        }
+        public void BeforeSave() => OnSaveStarted?.Invoke();
+        public void AfterSave() => OnSaveFinished?.Invoke();
     }
     [Serializable]
     public class CustomerSlot : DirtyData, IEquatable<CustomerSlot>
