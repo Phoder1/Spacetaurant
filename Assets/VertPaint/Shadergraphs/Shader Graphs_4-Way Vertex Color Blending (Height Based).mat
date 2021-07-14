@@ -83,7 +83,7 @@ Material:
     - _Height1Shift: -1.13
     - _Height2Shift: 0
     - _Height3Shift: 0
-    - _Height4Shift: 0
+    - _Height4Shift: -3
     - _NormalMap1Strength: 0.1
     - _NormalMap2Strength: 0.1
     - _NormalMap3Strength: 3
