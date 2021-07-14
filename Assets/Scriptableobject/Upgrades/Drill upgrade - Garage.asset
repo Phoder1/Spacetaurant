@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe8291ac1c546494187ad619456a7586, type: 3}
-  m_Name: 5
+  m_Name: Drill upgrade - Garage
   m_EditorClassIdentifier: 
-  _name: Five
-  _description: Default description
-  _price: 5
-  _icon: {fileID: 21300000, guid: 224a630888779d642b58182c4bb133e4, type: 3}
+  _name: Drill upgrade
+  _description: you can drill throw harder objects. drrrr!
+  _price: 500
+  _icon: {fileID: 21300000, guid: 66ad4c99f3096b3459b29f9ca7d8e16a, type: 3}
+  _type: 0
   _prerequisites: []

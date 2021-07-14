@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8291ac1c546494187ad619456a7586, type: 3}
-  m_Name: 4
+  m_Script: {fileID: 11500000, guid: 5009ed5f59a3c1746a74a0d01f50e568, type: 3}
+  m_Name: Decoration Dog - Staff
   m_EditorClassIdentifier: 
-  _name: Four
-  _description: Default description
-  _price: 4
-  _icon: {fileID: 21300000, guid: 2d156ca7561a7174e8480adc6595f317, type: 3}
+  _name: Decoration Dod
+  _description: These things are fun and fun is good.
+  _price: 150
+  _icon: {fileID: 21300000, guid: 8111c6fc024578f479402b8a2a16b612, type: 3}
+  _type: 3
   _prerequisites: []

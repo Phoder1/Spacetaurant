@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe8291ac1c546494187ad619456a7586, type: 3}
-  m_Name: 3
+  m_Name: cuisinier - Staff
   m_EditorClassIdentifier: 
-  _name: Three
-  _description: Default description
-  _price: 3
-  _icon: {fileID: 21300000, guid: 35b2ade9456a05b48877f4368c9a20ae, type: 3}
+  _name: cuisinier
+  _description: Increase the proficiency of your cheff. chances to spoile a dish
+    decrease by 1%.
+  _price: 600
+  _icon: {fileID: 21300000, guid: 2357a7b5a718499468d41916ccb9b4ba, type: 3}
+  _type: 1
   _prerequisites: []
