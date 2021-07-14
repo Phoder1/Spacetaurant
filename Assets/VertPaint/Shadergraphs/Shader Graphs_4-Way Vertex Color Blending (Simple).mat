@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo2:
-        m_Texture: {fileID: 2800000, guid: cc4320fe524231c41be00497cb3661b3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 267c961a6ffb84055afa432e6dda1f87, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo3:
@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo4:
-        m_Texture: {fileID: 2800000, guid: f2acf72fc057e714ebe3158edcf70ec3, type: 3}
+        m_Texture: {fileID: 2800000, guid: fe41345dbcafcec4583177e18bc684c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO1:
@@ -52,11 +52,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap1:
-        m_Texture: {fileID: 2800000, guid: 0ced93bf6dbeea84bb0ab109803c9fc2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3f4c1813e714ea34c84b881628113436, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap2:
-        m_Texture: {fileID: 2800000, guid: 0ced93bf6dbeea84bb0ab109803c9fc2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 758b1fc63752a1e44957111d5af9b00c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap3:
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap4:
-        m_Texture: {fileID: 2800000, guid: 39c338dc3c9121247bc4fda9479a0095, type: 3}
+        m_Texture: {fileID: 2800000, guid: f3fefa73a0dc6b944a0f8c5b2e7f7b60, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_a3da0c8384374c899313b0b3bc67229f_Texture_1:
@@ -88,26 +88,26 @@ Material:
     - _Height2Shift: 0
     - _Height3Shift: 0
     - _Height4Shift: 0
-    - _NormalMap1Strength: 1.58
-    - _NormalMap2Strength: 2.45
-    - _NormalMap3Strength: 2.18
-    - _NormalMap4Strength: 0
+    - _NormalMap1Strength: 2
+    - _NormalMap2Strength: 5
+    - _NormalMap3Strength: 5
+    - _NormalMap4Strength: 5
     - _Smoothness1: 0
     - _Smoothness2: 0
     - _Smoothness3: 0.308
     - _Smoothness4: 0
     - _TransitionSmoothness: 0.05
     m_Colors:
-    - _Color1: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 0}
-    - _Color3: {r: 1, g: 1, b: 1, a: 0}
-    - _Color4: {r: 1, g: 1, b: 1, a: 0}
+    - _Color1: {r: 0.81509435, g: 0.8629978, b: 1, a: 1}
+    - _Color2: {r: 0.1860261, g: 0, b: 1, a: 0}
+    - _Color3: {r: 1, g: 0.76792455, b: 0.76792455, a: 0}
+    - _Color4: {r: 0.60754716, g: 1, b: 0.9960306, a: 0}
     - _Offset1: {r: 0, g: 0, b: 0, a: 0}
     - _Offset2: {r: 0, g: 0, b: 0, a: 0}
     - _Offset3: {r: 0, g: 0, b: 0, a: 0}
     - _Offset4: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiling1: {r: 100, g: 100, b: 1, a: 1}
-    - _Tiling2: {r: 100, g: 100, b: 1, a: 1}
+    - _Tiling1: {r: 50, g: 50, b: 1, a: 1}
+    - _Tiling2: {r: 50, g: 50, b: 1, a: 1}
     - _Tiling3: {r: 100, g: 100, b: 1, a: 1}
-    - _Tiling4: {r: 100, g: 100, b: 1, a: 1}
+    - _Tiling4: {r: 15, g: 15, b: 1, a: 1}
   m_BuildTextureStacks: []
