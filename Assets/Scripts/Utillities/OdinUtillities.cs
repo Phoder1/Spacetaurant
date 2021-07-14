@@ -6,6 +6,7 @@ namespace Spacetaurant
     public static class OdinUtillities
     {
         public const int EventsPropertyOrder = 999;
+        public const int RefrencesPropertyOrder = 9997;
         public const int SingletonPropertyOrder = 9998;
         public const int DebugPropertyOrder = 9999;
     }
@@ -26,6 +27,11 @@ namespace Spacetaurant
     [GUIColor(1f, 0.95f, 0.95f, 0.85f)]
     [ColoredFoldoutGroup("Events", 1, 0.2f, 0.2f, Expanded = false, AnimateVisibility = false, Order = OdinUtillities.EventsPropertyOrder + 1)]
     public class EventsGroup : Attribute { }
+    
+    [IncludeMyAttributes]
+    [GUIColor(0.95f, 0.95f, 1f, 0.85f)]
+    [ColoredFoldoutGroup("Refrences", 0.2f, 0.2f, 1f, Expanded = false, AnimateVisibility = false, Order = OdinUtillities.RefrencesPropertyOrder + 1)]
+    public class RefrencesGroup : Attribute { }
     public class ColoredFoldoutGroupAttribute : PropertyGroupAttribute
     {
         public float R, G, B, A;

@@ -21,12 +21,12 @@ namespace Spacetaurant
         public UpgradeInfo InfoPanel => _infoPanel;
         private void Awake()
         {
-            _collection.ForEach((x) => { if (x != null) x.OnPress += InfoPanel.Load; } );
+            _collection.ForEach((x) => { if (x != null) x.OnPress.AddListener(InfoPanel.Load); } );
         }
         protected override void OnInstantiation(UpgradeButton item)
         {
             base.OnInstantiation(item);
-            item.OnPress += InfoPanel.Load;
+            item.OnPress.AddListener(InfoPanel.Load);
         }
         public override void ReloadCollection()
         {

@@ -7,7 +7,7 @@ namespace Spacetaurant.UI
 {
     public abstract class UiWindow : MonoBehaviour
     {
-        [LabelWidth(200)]
+        [LabelWidth(160)]
         public bool disableWhenNotActive = true;
         #region Events
         [SerializeField, EventsGroup]
@@ -25,8 +25,7 @@ namespace Spacetaurant.UI
         #endregion
 
         #region State
-        [HideInInspector]
-        private WindowGroupHandler groupHandler;
+        private WindowGroupHandler groupHandler = null;
         public WindowGroupHandler GroupHandler 
         { 
             get => groupHandler; 
@@ -34,10 +33,10 @@ namespace Spacetaurant.UI
             {
                 if (groupHandler != null)
                     Debug.LogError("UiWindow is refrenced in multiple managers! Previous manager: " + groupHandler.name + ", New manager: " + value.name);
+
                 groupHandler = value;
             } 
         }
-
         public Tween transitionTween = default;
         private bool _uiLocked;
         public bool Selected => GroupHandler != null && GroupHandler.CurrentState.uiWindow == this;

@@ -17,12 +17,12 @@ namespace Spacetaurant
         private bool _triggerOnlyInside = true;
 
 
-        [SerializeField, EventsGroup]
-        private UnityEvent OnTrigger;
-        [SerializeField, EventsGroup]
-        private UnityEvent OnHoverEnter;
-        [SerializeField, EventsGroup]
-        private UnityEvent OnHoverExit;
+        [EventsGroup]
+        public UnityEvent OnTrigger;
+        [EventsGroup]
+        public UnityEvent OnHoverEnter;
+        [EventsGroup]
+        public UnityEvent OnHoverExit;
 
         private bool _isInside = false;
         private bool _clicked = false;

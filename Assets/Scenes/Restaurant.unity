@@ -15732,46 +15732,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6e310974f283444bc3b0d0a6cce02f, type: 3}
---- !u!1 &537698901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6368305735539799614, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
-  m_PrefabInstance: {fileID: 517414162162383783}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &537698902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537698901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4367ede48637c84291e170964599fd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerTime: 1
-  _triggerOnlyInside: 1
-  OnTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1496459393}
-        m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHoverEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoverExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &538245558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21641,13 +21601,13 @@ MonoBehaviour:
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1111415558}
-        m_TargetAssemblyTypeName: Spacetaurant.UI.WindowGroupHandler, Assembly-CSharp
+      - m_Target: {fileID: 756142436513602969}
+        m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
         m_MethodName: SelectWindow
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -26035,46 +25995,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4467061626989129782, guid: 1d6e310974f283444bc3b0d0a6cce02f, type: 3}
   m_PrefabInstance: {fileID: 1011778358}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1013795205 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4510891346577897752, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-  m_PrefabInstance: {fileID: 4373207072640152624}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1013795206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013795205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4367ede48637c84291e170964599fd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerTime: 1
-  _triggerOnlyInside: 1
-  OnTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1496459393}
-        m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHoverEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoverExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1018064385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26882,7 +26802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1111415557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30278,46 +30198,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   m_PrefabInstance: {fileID: 1390021240}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1395167176 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3323862737698151883, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
-  m_PrefabInstance: {fileID: 756142436513602967}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1395167177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395167176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4367ede48637c84291e170964599fd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerTime: 1
-  _triggerOnlyInside: 1
-  OnTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1496459393}
-        m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHoverEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHoverExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1400491895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4467061626989129782, guid: 1d6e310974f283444bc3b0d0a6cce02f, type: 3}
@@ -40577,13 +40457,13 @@ MonoBehaviour:
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1111415558}
-        m_TargetAssemblyTypeName: Spacetaurant.UI.WindowGroupHandler, Assembly-CSharp
+      - m_Target: {fileID: 700646755540881324}
+        m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
         m_MethodName: SelectWindow
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 700646755540881324}
-          m_ObjectArgumentAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -43059,13 +42939,13 @@ MonoBehaviour:
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1111415558}
-        m_TargetAssemblyTypeName: Spacetaurant.UI.WindowGroupHandler, Assembly-CSharp
+      - m_Target: {fileID: 517414162162383785}
+        m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
         m_MethodName: SelectWindow
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -49451,6 +49331,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -81.799194
       objectReference: {fileID: 0}
+    - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1496459393}
+    - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Spacetaurant.UI.UiWindow, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2405865590814092506, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -50342,10 +50250,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 700646756632385972}
+  - component: {fileID: 700646756632385976}
   - component: {fileID: 700646756632385971}
   - component: {fileID: 700646756632385970}
   - component: {fileID: 700646756632385973}
-  - component: {fileID: 700646756632385976}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -50370,6 +50278,18 @@ MonoBehaviour:
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1496459393}
+        m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
+        m_MethodName: SelectWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1496459393}
         m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
         m_MethodName: SelectWindow
@@ -50572,6 +50492,34 @@ PrefabInstance:
     - target: {fileID: 6278903940033955631, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -117.57925
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243148519233346793, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243148519233346793, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243148519233346793, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1496459393}
+    - target: {fileID: 7243148519233346793, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243148519233346793, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243148519233346793, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Spacetaurant.UI.UiWindow, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7243148519233346793, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8212573034956834203, guid: 25c1d653cf9cdf1459ff2f721ad2831a, type: 3}
       propertyPath: m_IsActive
@@ -51824,7 +51772,7 @@ MonoBehaviour:
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4373207072640152625}
         m_TargetAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
         m_MethodName: SelectWindow
         m_Mode: 1
@@ -53148,7 +53096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.x
@@ -53156,7 +53104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_SizeDelta.x
@@ -53196,11 +53144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -570
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -53749,7 +53697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.x
@@ -53757,7 +53705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_SizeDelta.x
@@ -53797,11 +53745,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50.916626
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -54136,7 +54084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.x
@@ -54144,7 +54092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_SizeDelta.x
@@ -54184,11 +54132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -1039.0834
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -55418,7 +55366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.x
@@ -55426,7 +55374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_SizeDelta.x
@@ -55466,11 +55414,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -310.4583
       objectReference: {fileID: 0}
     - target: {fileID: 2480000911635793551, guid: ab2ab25e2686b3b48bbbe1b84f61beea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -56230,6 +56178,8 @@ MonoBehaviour:
   _name: {fileID: 3688869156728933116}
   _icon: {fileID: 0}
   _description: {fileID: 5680095720556452877}
+  _price: {fileID: 0}
+  _buyButton: {fileID: 0}
 --- !u!33 &4350128413600247439
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56286,69 +56236,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1111415557}
     m_Modifications:
-    - target: {fileID: 1319517960309767275, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_text
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319517961923946628, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_text
-      value: 1/2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319517961923946628, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319517961923946628, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_characterSpacing
-      value: 17.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319517962042679192, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_text
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3037209360115869987, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 224a630888779d642b58182c4bb133e4, type: 3}
-    - target: {fileID: 4341149698294771295, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 224a630888779d642b58182c4bb133e4, type: 3}
-    - target: {fileID: 4341149698415073603, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a676bbc8b4623954cb0ca85bb5b4f3d5, type: 3}
-    - target: {fileID: 4373207073332946036, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373207073332946036, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373207073332946036, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373207073332946036, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373207073394806476, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373207074426284487, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4510891347669528324, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
       propertyPath: m_Name
       value: Resturant Screen
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510891347669528324, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4510891347669528327, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
       propertyPath: m_Pivot.x
@@ -56434,42 +56324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5159570011530535932, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5159570011530535932, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5159570011530535932, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5159570011530535932, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -117.57925
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008084679688071346, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351692276889818642, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351692276889818642, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351692276889818642, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 420.4659
-      objectReference: {fileID: 0}
-    - target: {fileID: 7351692276889818642, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -81.799194
-      objectReference: {fileID: 0}
+    - target: {fileID: 8376002034222217274, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1496459393}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0321a0d09b49c1042bf2419e3047b809, type: 3}
 --- !u!114 &4373207072640152625 stripped

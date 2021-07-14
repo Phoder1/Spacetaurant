@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 namespace Spacetaurant
 {
-    [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(OnClick))]
     public class UpgradeButton : MonoBehaviour
     {
         [SerializeField]
@@ -24,14 +24,14 @@ namespace Spacetaurant
         #region Events
         [SerializeField, EventsGroup]
         private UnityEvent<UpgradeSO> OnLoad;
-
-        public event Action<UpgradeSO> OnPress;
+        [EventsGroup]
+        public UnityEvent<UpgradeSO> OnPress;
         #endregion
 
         public UpgradeSO UpgradeSO => _upgradeSO;
         private void Awake()
         {
-            GetComponent<Button>().onClick.AddListener(() => OnPress?.Invoke(_upgradeSO));
+            GetComponent<OnClick>().OnTrigger.AddListener(() => OnPress?.Invoke(_upgradeSO));
         }
 
         private void Start()

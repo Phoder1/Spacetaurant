@@ -34,35 +34,37 @@ namespace Spacetaurant.UI
                 if (CurrentState != null && value != null && CurrentState.uiWindow == value.uiWindow)
                     return;
 
-                value.uiWindow.GroupHandler = this;
-
                 stateMachine.State = value;
 
                 OnStateChange();
             }
         }
+        private bool _initiated = false;
         #endregion
 
         #region Unity callbacks
         private void Awake()
         {
-            if (GroupHandler == null)
-                Init();
+            Init();
         }
         public override void Init()
         {
-            if (GroupHandler != null)
-                base.Init();
-
-            foreach (var state in states)
+            if (!_initiated)
             {
-                state.uiWindow.GroupHandler = this;
-                state.uiWindow.Init();
+                _initiated = true;
+                if (GroupHandler != null)
+                    base.Init();
+
+                foreach (var state in states)
+                {
+                    state.uiWindow.GroupHandler = this;
+                    state.uiWindow.Init();
+                }
+
+                stateMachine = new StateMachine<MenuUiState>(_defaultState);
+                CurrentState.uiWindow.CancelTween();
+                CurrentState.uiWindow.ForceTransitionedIn();
             }
-            _defaultState.uiWindow.GroupHandler = this;
-            stateMachine = new StateMachine<MenuUiState>(_defaultState);
-            CurrentState.uiWindow.CancelTween();
-            CurrentState.uiWindow.ForceTransitionedIn();
         }
         #endregion
 
