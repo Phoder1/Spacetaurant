@@ -29,6 +29,7 @@ namespace Spacetaurant.UI
 
         public Tween transitionTween = default;
         private bool _uiLocked;
+        public bool Selected => groupHandler != null && groupHandler.CurrentState.uiWindow == this;
         public virtual bool UiLocked
         {
             get => _uiLocked;
@@ -42,13 +43,11 @@ namespace Spacetaurant.UI
                 });
         }
         #endregion
-        void Awake()
+        public virtual void Init()
         {
             ForceTransitionedOut();
             gameObject.SetActive(!disableWhenNotActive);
-            Init();
         }
-        public virtual void Init() { }
         public void CancelTween()
         {
             if (transitionTween != null)

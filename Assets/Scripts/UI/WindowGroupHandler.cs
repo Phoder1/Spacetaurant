@@ -1,22 +1,18 @@
 using Assets.StateMachine;
-using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using PowerGamers.Misc;
 
 namespace Spacetaurant.UI
 {
-    public class WindowGroupHandler : MonoBehaviour
+    public class WindowGroupHandler : UiWindow_EnableDisable
     {
         #region Serielized
 
         #region States
-        [FoldoutGroup("States") ,ValueDropdown("statesDropdown", AppendNextDrawer = true, DisableGUIInAppendedDrawer = true)]
+        [FoldoutGroup("States"), ValueDropdown("statesDropdown", AppendNextDrawer = true, DisableGUIInAppendedDrawer = true)]
         [SerializeField] private MenuUiState _defaultState;
 
         [FoldoutGroup("States"), ListDrawerSettings(Expanded = true)]
@@ -25,22 +21,17 @@ namespace Spacetaurant.UI
 
         #endregion
         private IEnumerable statesDropdown => states.ConvertAll((x) => new ValueDropdownItem<MenuUiState>(x.Name, x));
-        #region Events
-        [SerializeField, FoldoutGroup("Events")]
-        private UnityEvent OnUiLock;
-        [SerializeField, FoldoutGroup("Events")]
-        private UnityEvent OnUiUnlock;
-        #endregion
 
         #region State
-        private Tween transitionTween;
         private StateMachine<MenuUiState> stateMachine;
         public MenuUiState CurrentState
         {
             get => stateMachine.State;
             set
             {
-                if (CurrentState.uiWindow == value.uiWindow)
+                if (CurrentState == null && value == null)
+                    return;
+                if (CurrentState != null && value != null && CurrentState.uiWindow == value.uiWindow)
                     return;
 
                 value.uiWindow.groupHandler = this;
@@ -50,25 +41,24 @@ namespace Spacetaurant.UI
                 OnStateChange();
             }
         }
-        private bool _uiLocked;
-        public bool UiLocked
-        {
-            get => _uiLocked;
-            set
-                => Misc.Setter(ref _uiLocked, value, () =>
-                {
-                    if (_uiLocked)
-                        OnUiLock?.Invoke();
-                    else
-                        OnUiUnlock?.Invoke();
-                });
-        }
         #endregion
 
         #region Unity callbacks
-        private void Start()
+        private void Awake()
         {
-            states.ForEach((x) => x.uiWindow.groupHandler = this);
+            if (groupHandler == null)
+                Init();
+        }
+        public override void Init()
+        {
+            if (groupHandler != null)
+                base.Init();
+
+            foreach (var state in states)
+            {
+                state.uiWindow.groupHandler = this;
+                state.uiWindow.Init();
+            }
             _defaultState.uiWindow.groupHandler = this;
             stateMachine = new StateMachine<MenuUiState>(_defaultState);
             CurrentState.uiWindow.CancelTween();
@@ -77,7 +67,13 @@ namespace Spacetaurant.UI
         #endregion
 
         #region State select
-        public void SelectWindow(UiWindow window) => CurrentState = states.Find((x) => x.uiWindow == window);
+        public void SelectWindow(UiWindow window)
+        {
+            if (groupHandler != null && !Selected)
+                SelectWindow();
+
+            CurrentState = states.Find((x) => x.uiWindow == window);
+        }
         #endregion
         private void OnStateChange()
         {
