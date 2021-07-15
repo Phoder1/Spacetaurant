@@ -88,9 +88,9 @@ Material:
     - _Height2Shift: 0
     - _Height3Shift: 0
     - _Height4Shift: 0
-    - _NormalMap1Strength: 2
-    - _NormalMap2Strength: 5
-    - _NormalMap3Strength: 5
+    - _NormalMap1Strength: 1
+    - _NormalMap2Strength: 3
+    - _NormalMap3Strength: 1.5
     - _NormalMap4Strength: 5
     - _Smoothness1: 0
     - _Smoothness2: 0

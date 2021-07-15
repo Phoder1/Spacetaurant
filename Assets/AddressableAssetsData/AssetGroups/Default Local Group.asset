@@ -16,7 +16,13 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 037fbced7ec05244fa95a76e3933f469
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: daacd58ab95d2ef4a99cd49f98b7385a
+    m_Address: Assets/Rendering/ForwardRendererSpacetaurant.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 878734ee652d0ff4eb0f44cfe7f627d4, type: 2}
   m_SchemaSet:
