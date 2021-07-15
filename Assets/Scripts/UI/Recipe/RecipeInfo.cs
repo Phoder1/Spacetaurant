@@ -2,7 +2,6 @@ using DataSaving;
 using Spacetaurant.Containers;
 using Spacetaurant.Crafting;
 using Spacetaurant.UI;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,6 +19,9 @@ namespace Spacetaurant
         protected ResourceCollection _recipeCost;
 
         [SerializeField, RefrencesGroup]
+        protected List<SlotLoader<ResourceSO, ResourceSlot>> _costLoader;
+
+        [SerializeField, RefrencesGroup]
         protected BoolPassthrough _canMakeIcon;
         public override void Load(RecipeSO info)
         {
@@ -33,6 +35,21 @@ namespace Spacetaurant
 
             if (_canMakeIcon != null)
                 _canMakeIcon.Trigger(DataHandler.Load<PlayerInventory>().CanMake(info));
+
+            if (_costLoader != null && _costLoader.Count > 0)
+            {
+                for (int i = 0; i < _costLoader.Count; i++)
+                {
+                    if (info.ResourceCost.Count <= i)
+                    {
+                        _costLoader[i].gameObject.SetActive(false);
+                        continue;
+                    }
+
+                    _costLoader[i].gameObject.SetActive(true);
+                    _costLoader[i].Load(info.ResourceCost[i]);
+                }
+            }
         }
     }
 }

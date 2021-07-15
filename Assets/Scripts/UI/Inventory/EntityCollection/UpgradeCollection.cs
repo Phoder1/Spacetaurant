@@ -7,7 +7,7 @@ namespace Spacetaurant
 {
 
     [Flags] public enum Filter { Available = 1, Unlocked = 2, Restaurant = 4, Stuff = 8, Garage = 16  }
-    public class UpgradeCollection : ComponentCollection<UpgradeButton>
+    public class UpgradeCollection : ButtonCollection<UpgradeButton, UpgradeSO>
     {
         [SerializeField, EnumToggleButtons, LabelWidth(40)]
         private Filter _filters;
@@ -15,25 +15,6 @@ namespace Spacetaurant
         [SerializeField, ListDrawerSettings(Expanded = true)]
         private UpgradesSorter[] _sorters;
         protected override Sorter<UpgradeButton>[] Sorters => _sorters;
-
-        [SerializeField]
-        private UpgradeInfo _infoPanel;
-        public UpgradeInfo InfoPanel => _infoPanel;
-        private void Awake()
-        {
-            _collection.ForEach((x) => { if (x != null) x.OnPress.AddListener(InfoPanel.Load); } );
-        }
-        protected override void OnInstantiation(UpgradeButton item)
-        {
-            base.OnInstantiation(item);
-            item.OnPress.AddListener(InfoPanel.Load);
-        }
-        public override void ReloadCollection()
-        {
-            base.ReloadCollection();
-
-            _collection.ForEach((x) => x.Load());
-        }
         protected override bool CheckFilters(UpgradeButton slot)
         {
             bool filterResult = base.CheckFilters(slot);

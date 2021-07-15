@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Spacetaurant
 {
@@ -73,6 +74,36 @@ namespace Spacetaurant
         }
         protected override void Enable(T item) => item.gameObject.SetActive(true);
         protected override void Disable(T item) => item.gameObject.SetActive(false);
+    }
+    public abstract class ButtonCollection<T, TData> : ComponentCollection<T> where T : UiButton<TData>
+    {
+        [SerializeField, EventsGroup]
+        private UnityEvent<T> OnClick;
+        [SerializeField]
+        private InfoLoader<TData> _infoPanel;
+        public InfoLoader<TData> InfoPanel => _infoPanel;
+        private void Awake()
+        {
+            if (InfoPanel != null)
+                _collection.ForEach((x) => { if (x != null) x.OnPress.AddListener((y) => ButtonPressed(x, y)); });
+
+            void ButtonPressed(T button, TData info)
+            {
+                InfoPanel.Load(info);
+                OnClick?.Invoke(button);
+            }
+        }
+        protected override void OnInstantiation(T item)
+        {
+            base.OnInstantiation(item);
+            item.OnPress.AddListener(InfoPanel.Load);
+        }
+        public override void ReloadCollection()
+        {
+            base.ReloadCollection();
+
+            _collection.ForEach((x) => x.Load());
+        }
     }
     [Serializable, InlineProperty, HideLabel]
     public abstract class Sorter<T>

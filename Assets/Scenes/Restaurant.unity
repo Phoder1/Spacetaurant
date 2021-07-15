@@ -33004,6 +33004,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7582859602505787227, guid: 9e3d3010c342c3f4599f1430d8e3c38f, type: 3}
   m_PrefabInstance: {fileID: 1625846881}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1625889162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6667999726817203255, guid: 7bbf13112eac9084796fedf90c6ab915, type: 3}
+  m_PrefabInstance: {fileID: 96816087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f62f7fb5af4e249b8ee87648337cc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1625889163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 414849701642749007, guid: 7bbf13112eac9084796fedf90c6ab915, type: 3}
+  m_PrefabInstance: {fileID: 96816087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c9b044d180e944fa2abd52363b5f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1648968359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48952,6 +48974,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1111415557}
     m_Modifications:
+    - target: {fileID: 71871467482388788, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 71871467482388788, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 71871467482388788, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 71871467482388788, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1352393718992582428, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -48960,6 +48998,54 @@ PrefabInstance:
       propertyPath: _selectable
       value: 
       objectReference: {fileID: 2156131223559907950}
+    - target: {fileID: 2405865590814092506, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405865590814092506, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405865590814092506, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405865590814092506, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301492860817632, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301492860817632, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301492860817632, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301492860817632, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301493362436587, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301493362436587, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301493362436587, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073301493362436587, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6368305734416834593, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -49047,6 +49133,10 @@ PrefabInstance:
     - target: {fileID: 6368305734416834594, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
       propertyPath: m_Name
       value: Garage Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368305734416834594, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50d9a6e30634824795b0e7f931360ba, type: 3}
@@ -49582,6 +49672,22 @@ MonoBehaviour:
   _collection:
   - {fileID: 1622085325}
   - {fileID: 1767272686}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1625889163}
+        m_TargetAssemblyTypeName: Spacetaurant.Positioner, Assembly-CSharp
+        m_MethodName: PositionWithOffset
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _infoPanel: {fileID: 1625889162}
 --- !u!222 &700646756108335011
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53378,13 +53484,16 @@ MonoBehaviour:
   _loadCollectionOnStart: 1
   _collection:
   - {fileID: 6715459469114404816}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  _infoPanel: {fileID: 4305002506671266409}
   _filters: 0
   _sorters:
   - reverse: 0
     _sort: 0
   - reverse: 0
     _sort: 1
-  _infoPanel: {fileID: 4305002506671266409}
 --- !u!4 &2793314096418797938
 Transform:
   m_ObjectHideFlags: 0

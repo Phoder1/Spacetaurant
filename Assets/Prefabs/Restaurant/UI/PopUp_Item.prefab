@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8206907301929236548}
+  - component: {fileID: 6157407095329248527}
   m_Layer: 5
   m_Name: PopUp_Item
   m_TagString: Untagged
@@ -42,6 +43,31 @@ RectTransform:
   m_AnchoredPosition: {x: 763.15607, y: 269.7327}
   m_SizeDelta: {x: 813.691, y: 540.5444}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6157407095329248527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206907301929236555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc07119e041409947bb055bd9e9b412c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  _nameText: {fileID: 8206907302215035300}
+  _rarityStars: {fileID: 6327114405615658821}
+  _icon: {fileID: 8206907303640582269}
+  _planetIcon: {fileID: 8206907302007964119}
+  _planetName: {fileID: 8206907303098629823}
+  _descriptionText: {fileID: 0}
+  _amount: {fileID: 8206907302200060452}
+  _amountAvailable: {fileID: 0}
+  _amountOutOfAvailable: {fileID: 0}
+  _hasEnough: {fileID: 0}
 --- !u!1 &8206907302007964117
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8206907302347500679}
+  - component: {fileID: 6327114405615658821}
   - component: {fileID: 8206907302347500673}
   - component: {fileID: 8206907302347500672}
   m_Layer: 5
@@ -559,6 +586,23 @@ RectTransform:
   m_AnchoredPosition: {x: 116.51, y: 86.84414}
   m_SizeDelta: {x: 463.71, y: 63.8773}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6327114405615658821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206907302347500678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572a5f8fcdad1194890590ba2ca0feea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rarityFormat: 0
+  _rarityText: {fileID: 0}
+  _starOne: {fileID: 8206907302577920225}
+  _starTwo: {fileID: 8206907303368919303}
+  _starThree: {fileID: 8206907302551286534}
 --- !u!222 &8206907302347500673
 CanvasRenderer:
   m_ObjectHideFlags: 0

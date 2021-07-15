@@ -1,6 +1,7 @@
+using DataSaving;
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
+using Spacetaurant.Containers;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,9 +17,12 @@ namespace Spacetaurant
         [Button]
         public virtual void Load(T info)
         {
+            gameObject.SetActive(true);
+
             OnLoad?.Invoke(info);
         }
     }
+
     public abstract class EntityLoader<T> : InfoLoader<T> where T : EntitySO
     {
         [SerializeField, SceneObjectsOnly, RefrencesGroup]
@@ -45,6 +49,9 @@ namespace Spacetaurant
         private Image _planetIcon;
 
         [SerializeField, SceneObjectsOnly, RefrencesGroup]
+        private TextMeshProUGUI _planetName;
+
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private TextMeshProUGUI _descriptionText;
         public override void Load(T info)
         {
@@ -64,6 +71,23 @@ namespace Spacetaurant
 
             if (_planetIcon != null && info.Planet != null)
                 _planetIcon.sprite = info.Planet.Icon;
+
+            if (_planetName != null && info.Planet != null)
+                _planetName.text = info.Planet.PlanetName;
+        }
+    }
+    public abstract class SlotLoader<T, TSlot> : ItemLoader<T>
+        where T : ItemSO
+        where TSlot : ItemSlot<T>
+    {
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
+        private TextMeshProUGUI _amount;
+        public virtual void Load(TSlot info)
+        {
+            Load(info.Item);
+
+            if (_amount != null)
+                _amount.text = info.Amount.ToString();
         }
     }
 }
