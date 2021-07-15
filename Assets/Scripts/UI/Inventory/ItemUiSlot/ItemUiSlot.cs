@@ -18,27 +18,27 @@ namespace Spacetaurant
         protected TSlot _itemSlot;
         public TSlot ItemSlot => _itemSlot;
 
-        [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences", 99)]
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private TextMeshProUGUI _nameText;
 
-        [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences", 99)]
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private RarityStars _rarityStars;
 
-        [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private Image _icon;
 
-        [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private Image _planetIcon;
 
-        [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private TextMeshProUGUI _descriptionText;
 
-        [SerializeField, SceneObjectsOnly, FoldoutGroup("Refrences")]
+        [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private TextMeshProUGUI _amountText;
 
 
 
-        [FoldoutGroup("Events", 98)]
+        [EventsGroup]
         public UnityEventForRefrence OnWasPressed;
         public void LoadItem(object item)
         {

@@ -35,8 +35,6 @@ namespace Spacetaurant.UI
                     return;
 
                 stateMachine.State = value;
-
-                OnStateChange();
             }
         }
         private bool _initiated = false;
@@ -62,6 +60,8 @@ namespace Spacetaurant.UI
                 }
 
                 stateMachine = new StateMachine<MenuUiState>(_defaultState);
+                stateMachine.OnStateChange_Finish += (x) => OnStateChange();
+
                 CurrentState.uiWindow.CancelTween();
                 CurrentState.uiWindow.ForceTransitionedIn();
             }

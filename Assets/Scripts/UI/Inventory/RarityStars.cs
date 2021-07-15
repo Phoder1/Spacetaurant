@@ -1,33 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using Spacetaurant.Crafting;
 using UnityEngine;
 using UnityEngine.UI;
-using Spacetaurant.Crafting;
-using Sirenix.OdinInspector;
+using TMPro;
 
 namespace Spacetaurant
 {
     public class RarityStars : MonoBehaviour
     {
-        [SerializeField, SceneObjectsOnly]
+        private enum RarityFormat { StarCount, Number }
+        [SerializeField, EnumToggleButtons]
+        private RarityFormat _rarityFormat = RarityFormat.StarCount;
+        [SerializeField, SceneObjectsOnly, ShowIf("@_rarityFormat == RarityFormat.Number")]
+        private TextMeshProUGUI _rarityText;
+        [SerializeField, SceneObjectsOnly, ShowIf("@_rarityFormat == RarityFormat.StarCount")]
         private Image _starOne;
-        [SerializeField, SceneObjectsOnly]
+        [SerializeField, SceneObjectsOnly, ShowIf("@_rarityFormat == RarityFormat.StarCount")]
         private Image _starTwo;
-        [SerializeField, SceneObjectsOnly]
+        [SerializeField, SceneObjectsOnly, ShowIf("@_rarityFormat == RarityFormat.StarCount")]
         private Image _starThree;
-
         public void SetRarity(ResourceRarity rarity)
         {
-            switch (rarity)
+            switch (_rarityFormat)
             {
-                case ResourceRarity.Common:
-                    SetStars(true, false, false);
+                case RarityFormat.StarCount:
+                    switch (rarity)
+                    {
+                        case ResourceRarity.Common:
+                            SetStars(true, false, false);
+                            break;
+                        case ResourceRarity.Uncommon:
+                            SetStars(true, true, false);
+                            break;
+                        case ResourceRarity.Rare:
+                            SetStars(true, true, true);
+                            break;
+                    }
                     break;
-                case ResourceRarity.Uncommon:
-                    SetStars(true, true, false);
-                    break;
-                case ResourceRarity.Rare:
-                    SetStars(true, true, true);
+                case RarityFormat.Number:
+                    _rarityText.text = ((int)rarity + 1).ToString();
                     break;
             }
         }

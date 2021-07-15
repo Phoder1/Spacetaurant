@@ -277,6 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4385831318672301075}
+  - component: {fileID: 3563284027906075552}
   - component: {fileID: 7617001289707093012}
   - component: {fileID: 3346656947733211482}
   m_Layer: 5
@@ -306,6 +307,23 @@ RectTransform:
   m_AnchoredPosition: {x: -23.964, y: -66.6}
   m_SizeDelta: {x: 37.9273, y: 33.7217}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3563284027906075552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815608443769201561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572a5f8fcdad1194890590ba2ca0feea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rarityFormat: 1
+  _rarityText: {fileID: 4659646403186809858}
+  _starOne: {fileID: 0}
+  _starTwo: {fileID: 0}
+  _starThree: {fileID: 0}
 --- !u!222 &7617001289707093012
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -353,6 +371,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2129623071729453705}
+  - component: {fileID: 355989852906935556}
   m_Layer: 5
   m_Name: Ingrediant_Phase1
   m_TagString: Untagged
@@ -380,6 +399,30 @@ RectTransform:
   m_AnchoredPosition: {x: 15.048, y: -40.8694}
   m_SizeDelta: {x: 148.3572, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &355989852906935556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129623071729453704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d9e7bc8d137c1e489f4a3311d3e32ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSlot:
+    _amount: 0
+    _item: {fileID: 0}
+  _nameText: {fileID: 7715204203552608238}
+  _rarityStars: {fileID: 3563284027906075552}
+  _icon: {fileID: 2129623072254669819}
+  _planetIcon: {fileID: 2129623072281864568}
+  _descriptionText: {fileID: 0}
+  _amountText: {fileID: 2129623073542839365}
+  OnWasPressed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2129623071744528585
 GameObject:
   m_ObjectHideFlags: 0

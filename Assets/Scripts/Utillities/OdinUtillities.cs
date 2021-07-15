@@ -30,6 +30,7 @@ namespace Spacetaurant
     
     [IncludeMyAttributes]
     [GUIColor(0.95f, 0.95f, 1f, 0.85f)]
+    [SceneObjectsOnly]
     [ColoredFoldoutGroup("Refrences", 0.2f, 0.2f, 1f, Expanded = false, AnimateVisibility = false, Order = OdinUtillities.RefrencesPropertyOrder + 1)]
     public class RefrencesGroup : Attribute { }
     public class ColoredFoldoutGroupAttribute : PropertyGroupAttribute

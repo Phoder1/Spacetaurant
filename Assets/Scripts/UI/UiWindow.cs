@@ -1,7 +1,9 @@
+using CustomAttributes;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Spacetaurant.UI
 {
@@ -22,6 +24,9 @@ namespace Spacetaurant.UI
         protected UnityEvent OnUiLock;
         [SerializeField, EventsGroup]
         protected UnityEvent OnUiUnlock;
+
+        [SerializeField, LocalComponent(lockProperty: false)]
+        private Selectable _selectable;
         #endregion
 
         #region State
@@ -57,6 +62,7 @@ namespace Spacetaurant.UI
         {
             ForceTransitionedOut();
             gameObject.SetActive(!disableWhenNotActive);
+            OnTransitionIn_Start.AddListener(() => _selectable?.Select());
         }
         public void CancelTween()
         {

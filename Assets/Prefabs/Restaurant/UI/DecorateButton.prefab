@@ -146,6 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3281072562534296732}
   - component: {fileID: 3281072562534296729}
+  - component: {fileID: 1103003444786583775}
   m_Layer: 5
   m_Name: DecorateButton
   m_TagString: Untagged
@@ -183,6 +184,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3281072562534296733}
   m_CullTransparentMesh: 1
+--- !u!114 &1103003444786583775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281072562534296733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199f9e8bcddd0b54d8e9d86015ce7ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content: {fileID: 0}
+  _loadOnStart: 1
+  _onClick: {fileID: 3934740593212182849}
+  _infoLoader: {fileID: 305120057437281001}
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPress:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4285376131795472863
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +290,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2418019885177019913}
-  - component: {fileID: 6276024783258062962}
   - component: {fileID: 3934740593212182849}
   - component: {fileID: 305120057437281001}
   - component: {fileID: 280158372950620717}
@@ -299,38 +321,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6276024783258062962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6980823816821887321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199f9e8bcddd0b54d8e9d86015ce7ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _upgradeSO: {fileID: 11400000, guid: f2771e3c58cdca0448269b9a5bede7ff, type: 2}
-  _loadOnStart: 1
-  OnLoad:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 305120057437281001}
-        m_TargetAssemblyTypeName: Spacetaurant.UpgradeInfo, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  OnPress:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3934740593212182849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +364,7 @@ MonoBehaviour:
   _icon: {fileID: 7559150276160012267}
   _description: {fileID: 0}
   _price: {fileID: 0}
+  _buyButton: {fileID: 0}
 --- !u!114 &280158372950620717
 MonoBehaviour:
   m_ObjectHideFlags: 0
