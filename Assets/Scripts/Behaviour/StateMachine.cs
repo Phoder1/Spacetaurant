@@ -1,8 +1,12 @@
-﻿namespace Assets.StateMachine
+﻿using System;
+
+namespace Assets.StateMachine
 {
     public class StateMachine<T> where T : State
     {
         T state;
+        public event Action<T> OnStateChange_Start;
+        public event Action<T> OnStateChange_Finish;
         public StateMachine(T startState = null)
         {
             State = startState;
@@ -15,6 +19,8 @@
                 if (state == value)
                     return;
 
+                OnStateChange_Start?.Invoke(value);
+
                 if (state != null)
                     state.Disable();
 
@@ -22,6 +28,8 @@
 
                 if (state != null)
                     state.Enable();
+
+                OnStateChange_Finish?.Invoke(value);
             }
         }
         public void Update() => State?.Update();

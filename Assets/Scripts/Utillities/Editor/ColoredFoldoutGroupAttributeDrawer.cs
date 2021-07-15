@@ -18,10 +18,10 @@ namespace Spacetaurant
         {
             this.isExpanded = this.GetPersistentValue<bool>(
                 "ColoredFoldoutGroupAttributeDrawer.isExpanded",
-                GeneralDrawerConfig.Instance.ExpandFoldoutByDefault);
+                GeneralDrawerConfig.Instance.ExpandFoldoutByDefault && this.Attribute.Expanded);
 
-            if (!this.Attribute.Expanded)
-                this.isExpanded.Value = false;
+            //if (!this.Attribute.Expanded)
+            //    this.isExpanded.Value = false;
         }
 
         protected override void DrawPropertyLayout(GUIContent label)

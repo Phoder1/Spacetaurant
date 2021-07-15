@@ -120,7 +120,7 @@ namespace Spacetaurant.UI
                 if (_itemUiSlots.Count <= i)
                 {
                     var newSlot = Instantiate(_itemSlotPrefab, transform);
-                    _itemUiSlots.Add(newSlot.GetComponent<TUiSlot>());
+                    _itemUiSlots.Add(newSlot);
                 }
 
                 var currentUiSlot = _itemUiSlots[i];

@@ -21,6 +21,9 @@ namespace Spacetaurant
 
         public override void Load(UpgradeSO info)
         {
+            if (info == null)
+                return;
+
             var decoration = info as DecorationSO;
             if (_cameraRenderer != null)
                 _cameraRenderer.transform.parent.gameObject.SetActive(decoration != null);

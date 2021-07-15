@@ -8,22 +8,20 @@ namespace Spacetaurant.UI
     {
         public override void ForceTransitionedIn()
         {
+            OnTransitionIn_Start?.Invoke();
             gameObject.SetActive(true);
+            OnTransitionIn_End?.Invoke();
         }
 
         public override void ForceTransitionedOut()
         {
+            OnTransitionOut_Start?.Invoke();
             gameObject.SetActive(!disableWhenNotActive);
+            OnTransitionOut_End?.Invoke();
         }
 
-        public override void TransitionIn()
-        {
-            gameObject.SetActive(true);
-        }
+        public override void TransitionIn() => ForceTransitionedIn();
 
-        public override void TransitionOut()
-        {
-            gameObject.SetActive(!disableWhenNotActive);
-        }
+        public override void TransitionOut() => ForceTransitionedOut();
     }
 }
