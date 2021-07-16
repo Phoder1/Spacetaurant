@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkyBox_Material 1
+  m_Shader: {fileID: -6465566751694194690, guid: c0fd1d39b377e0c46bfa30d5cf5aaf46, type: 3}
+  m_ShaderKeywords: BOOLEAN_6AF826D9D21A415C8D0B6E1A63BEA7A2_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Texture2DAsset_d31ae2b00d5640308a4c4a5830065576_Out_0:
+        m_Texture: {fileID: 2800000, guid: 63482cd763abd8743b89cbfbd7671de7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - BOOLEAN_6AF826D9D21A415C8D0B6E1A63BEA7A2: 1
+    - SunSize: 0.01
+    - Vector1_1: 0
+    - Vector1_208a262020f04271aa15f079d9303ee1: 17.01
+    - Vector1_5b31dd9c4b5444e3b4549bcccf6ca88a: 4.17
+    - Vector1_6d469145d7e34019a8198ed51e6b4d04: 0
+    - WindSpeed: 34.44
+    m_Colors:
+    - Color_1ddef38b07fb4b369da3d5140e12b252: {r: 0.0020797257, g: 0.0093587665, b: 0.0045060725, a: 0.29411766}
+    - HorizonColor: {r: 0.0031041636, g: 0.062083337, b: 0.14899999, a: 1}
+    - SkyColor: {r: 0, g: 0.031853482, b: 0.1981132, a: 1}
+    - Vector4_7ac9fe8728a743579e9aebc59d3a45d7: {r: 0, g: 0, b: 0, a: 0}
+    - _MoonDirection: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
