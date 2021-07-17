@@ -16,6 +16,6 @@ MonoBehaviour:
   _description: Increase the proficiency of your waiters. you can serve more customers
     simultaneously.
   _price: 650
-  _icon: {fileID: 21300000, guid: ed70b1016826bf443877758e21cfb915, type: 3}
+  _icon: {fileID: 21300000, guid: d5874a50e49c82848b0cbbc683337f9d, type: 3}
   _type: 1
   _prerequisites: []

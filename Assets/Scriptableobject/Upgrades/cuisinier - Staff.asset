@@ -16,6 +16,6 @@ MonoBehaviour:
   _description: Increase the proficiency of your cheff. chances to spoile a dish
     decrease by 1%.
   _price: 600
-  _icon: {fileID: 21300000, guid: 2357a7b5a718499468d41916ccb9b4ba, type: 3}
+  _icon: {fileID: 21300000, guid: 4c6929bb681862e4696c331ea3f46911, type: 3}
   _type: 1
   _prerequisites: []

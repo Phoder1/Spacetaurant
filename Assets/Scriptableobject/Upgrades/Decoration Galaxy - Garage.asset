@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Decoration Galaxy - Garage
   m_EditorClassIdentifier: 
   _name: Decoration Galaxy
-  _description: These things are fun and fun is good.
+  _description: 
   _price: 150
-  _icon: {fileID: 21300000, guid: 7b39d9c275017e9469c3736336dedf85, type: 3}
+  _icon: {fileID: 21300000, guid: bca421fd744d0734f96c9d51dc7e9fb7, type: 3}
   _type: 3
   _prerequisites: []

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Decoration Music - Restaurant
   m_EditorClassIdentifier: 
   _name: Decoration Music
-  _description: These things are fun and fun is good.
+  _description: 
   _price: 150
-  _icon: {fileID: 21300000, guid: f58f4cc6e9123594d940c3a622705936, type: 3}
+  _icon: {fileID: 21300000, guid: bca421fd744d0734f96c9d51dc7e9fb7, type: 3}
   _type: 3
   _prerequisites: []

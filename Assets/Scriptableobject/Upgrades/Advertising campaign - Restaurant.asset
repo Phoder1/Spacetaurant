@@ -16,6 +16,6 @@ MonoBehaviour:
   _description: Lounch an 'Advertising campaign' -- Bonus 20% popularity for the
     next 24 hours.
   _price: 1000
-  _icon: {fileID: 21300000, guid: 224a630888779d642b58182c4bb133e4, type: 3}
+  _icon: {fileID: 21300000, guid: 57b1fea714a449f47a6f6f19eef5ca10, type: 3}
   _type: 0
   _prerequisites: []
