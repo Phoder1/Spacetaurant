@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadScreen.unity
     guid: e2182eecd2e3ba64b94a21314159cde8
   - enabled: 1
+    path: Assets/Scenes/Restaurant.unity
+    guid: 54fb40754571bc84ab98d29ff90d2d6e
+  - enabled: 1
     path: Assets/Scenes/Main_Scene.unity
     guid: d91ca2d2e8f91dd4096af48d3b77a0b3
   m_configObjects:
