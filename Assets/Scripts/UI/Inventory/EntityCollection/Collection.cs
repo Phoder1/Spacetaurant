@@ -78,12 +78,12 @@ namespace Spacetaurant
             {
                 var newItem = Instantiate(item, transform);
                 _collection.Add(newItem);
-                OnInstantiation(newItem);
+                Init(newItem);
             }
 
             ReloadCollection();
         }
-        protected virtual void OnInstantiation(T item) { }
+        protected virtual void Init(T item) { }
         [Button]
         protected override void Sort()
         {
@@ -95,25 +95,16 @@ namespace Spacetaurant
         protected override void Enable(T item) => item.gameObject.SetActive(true);
         protected override void Disable(T item) => item.gameObject.SetActive(false);
     }
-    public abstract class ButtonCollection<T, TData> : ComponentCollection<T> where T : UiButton<TData>
+    public abstract class ButtonCollection<TButton, TData> : ComponentCollection<TButton> where TButton : UiButton<TData>
     {
         [SerializeField, EventsGroup]
-        private UnityEvent<T> OnClick;
+        private UnityEvent<TButton> OnClick;
         [SerializeField]
         private InfoLoader<TData> _infoPanel;
         public InfoLoader<TData> InfoPanel => _infoPanel;
         private void Awake()
         {
-            if (InfoPanel != null)
-                _collection.ForEach((x) => { if (x != null) x.OnPress.AddListener((y) => ButtonPressed(x, y)); });
-
-            void ButtonPressed(T button, TData info)
-            {
-                if (InfoPanel != null)
-                    InfoPanel.Load(info);
-
-                OnClick?.Invoke(button);
-            }
+            _collection.ForEach(Init);
         }
         public override void SetCollection(object collection)
         {
@@ -136,10 +127,20 @@ namespace Spacetaurant
                     _collection[i].Load(newCollection[i]);
                 }
         }
-        protected override void OnInstantiation(T item)
+        protected override void Init(TButton item)
         {
-            base.OnInstantiation(item);
-            item.OnPress.AddListener(InfoPanel.Load);
+            base.Init(item);
+
+            if (item != null)
+                item.OnPress.AddListener((y) => ButtonPressed(item, y));
+
+            void ButtonPressed(TButton button, TData info)
+            {
+                if (InfoPanel != null)
+                    InfoPanel.Load(info);
+
+                OnClick?.Invoke(button);
+            }
         }
         public override void ReloadCollection()
         {
