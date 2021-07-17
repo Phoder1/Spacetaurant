@@ -1,7 +1,4 @@
-using DataSaving;
 using Sirenix.OdinInspector;
-using Spacetaurant.Containers;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,8 +12,20 @@ namespace Spacetaurant
         private UnityEvent<T> OnLoad;
 
         [Button]
+        public virtual void Load(object info)
+        {
+            if (info is T _T)
+                Load(_T);
+        }
         public virtual void Load(T info)
         {
+            if (info == null)
+            {
+
+                gameObject.SetActive(false);
+                return;
+            }
+
             gameObject.SetActive(true);
 
             OnLoad?.Invoke(info);
@@ -76,12 +85,11 @@ namespace Spacetaurant
                 _planetName.text = info.Planet.PlanetName;
         }
     }
-    public abstract class SlotLoader<T, TSlot> : ItemLoader<T>
-        where T : ItemSO
-        where TSlot : ItemSlot<T>
+    public abstract class SlotLoader<T, TSlot> : InfoLoader<T> where TSlot : Slot<T>
     {
         [SerializeField, SceneObjectsOnly, RefrencesGroup]
         private TextMeshProUGUI _amount;
+        public virtual void Load(UiButton<TSlot> uiButton) => Load(uiButton.Content);
         public virtual void Load(TSlot info)
         {
             Load(info.Item);

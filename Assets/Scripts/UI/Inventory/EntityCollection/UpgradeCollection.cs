@@ -39,7 +39,7 @@ namespace Spacetaurant
                         filterResult = slot.UpgradeSO.Type == UpgradeType.Restaurant;
                         break;
                     case Filter.Stuff:
-                        filterResult = slot.UpgradeSO.Type == UpgradeType.Stuff;
+                        filterResult = slot.UpgradeSO.Type == UpgradeType.Staff;
                         break;
                     case Filter.Garage:
                         filterResult = slot.UpgradeSO.Type == UpgradeType.Garage;

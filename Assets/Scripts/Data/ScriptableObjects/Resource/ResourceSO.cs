@@ -16,7 +16,7 @@ namespace Spacetaurant.Crafting
     }
     [Serializable]
     [InlineProperty]
-    public class ResourceSlot : ItemSlot<ResourceSO>
+    public class ResourceSlot : Slot<ResourceSO>
     {
         public ResourceSlot(int amount, ResourceSO item) : base(amount, item)
         {

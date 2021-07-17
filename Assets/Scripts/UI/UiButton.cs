@@ -1,3 +1,4 @@
+using CustomAttributes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,14 +11,10 @@ namespace Spacetaurant
         protected T _content;
         [SerializeField]
         private bool _loadOnStart = false;
-        [SerializeField]
+        [SerializeField, LocalComponent(lockProperty: false)]
         private OnClick _onClick;
         [SerializeField]
-        private InfoLoader<T> _infoLoader;
-
-        #region Refrences
-
-        #endregion
+        protected InfoLoader<T> _infoLoader;
 
         #region Events
         [SerializeField, EventsGroup]
@@ -31,8 +28,8 @@ namespace Spacetaurant
         {
             if (_onClick == null)
                 _onClick = GetComponent<OnClick>();
-
-            _onClick.OnTrigger.AddListener(() => OnPress?.Invoke(Content));
+            if (_onClick != null)
+                _onClick.OnTrigger.AddListener(() => OnPress?.Invoke(Content));
         }
 
         private void Start()
@@ -40,13 +37,21 @@ namespace Spacetaurant
             if (_loadOnStart)
                 Load();
         }
-
+        public virtual void Load(T content)
+        {
+            _content = content;
+            Load();
+        }
         [Button]
         public virtual void Load()
         {
             if (Content == null)
+            {
+                gameObject.SetActive(false);
                 return;
+            }
 
+            gameObject.SetActive(true);
             gameObject.name = Content.ToString();
 
             if (_infoLoader != null)

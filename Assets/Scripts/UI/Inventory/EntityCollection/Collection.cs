@@ -29,6 +29,26 @@ namespace Spacetaurant
             Sort();
             Filter();
         }
+        public virtual void SetCollection(object collection)
+        {
+            if (collection is IList<T> _slots)
+            {
+                SetCollection(_slots);
+                return;
+            }
+
+            if (collection is T _T)
+            {
+                SetCollection(new List<T>() { _T });
+                return;
+            }
+        }
+        public virtual void SetCollection(IList<T> collection)
+        {
+            _collection = new List<T>(collection);
+
+            ReloadCollection();
+        }
 
         private void Filter()
         {
@@ -89,9 +109,32 @@ namespace Spacetaurant
 
             void ButtonPressed(T button, TData info)
             {
-                InfoPanel.Load(info);
+                if (InfoPanel != null)
+                    InfoPanel.Load(info);
+
                 OnClick?.Invoke(button);
             }
+        }
+        public override void SetCollection(object collection)
+        {
+            base.SetCollection(collection);
+
+            if (collection is IList<TData> dataCollection)
+            {
+                SetCollection(dataCollection);
+                return;
+            }
+        }
+        public virtual void SetCollection(IList<TData> newCollection)
+        {
+            for (int i = 0; i < _collection.Count; i++)
+                if (newCollection.Count <= i)
+                    Disable(_collection[i]);
+                else
+                {
+                    Enable(_collection[i]);
+                    _collection[i].Load(newCollection[i]);
+                }
         }
         protected override void OnInstantiation(T item)
         {

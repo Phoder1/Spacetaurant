@@ -11,7 +11,7 @@ using UnityEngine.UI;
 namespace Spacetaurant
 {
     public abstract class ItemUiSlot<TSlot,T> : MonoBehaviour, IUiItem<TSlot>
-        where TSlot : ItemSlot<T>
+        where TSlot : Slot<T>
         where T : ItemSO
     {
         [SerializeField]

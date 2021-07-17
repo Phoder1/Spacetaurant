@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4443895137638604485}
+  - component: {fileID: 8601152365270681758}
+  - component: {fileID: 5113122647197647530}
   - component: {fileID: 7235045390550927668}
   - component: {fileID: 5173639649952687379}
-  - component: {fileID: 4405004391789522024}
+  - component: {fileID: 2869498439499755278}
   m_Layer: 5
   m_Name: Info_Image
   m_TagString: Untagged
@@ -40,6 +42,61 @@ RectTransform:
   m_AnchoredPosition: {x: 1013.7, y: 440.207}
   m_SizeDelta: {x: 212.673, y: 98.446}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8601152365270681758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800150465859267168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e680a985ceec0944a1a4e65ba10eb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content:
+    _amount: 0
+    _item: {fileID: 0}
+  _loadOnStart: 1
+  _onClick: {fileID: 0}
+  _infoLoader: {fileID: 0}
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5113122647197647530}
+        m_TargetAssemblyTypeName: Spacetaurant.ResourceSlotInfo, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPress:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5113122647197647530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800150465859267168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc07119e041409947bb055bd9e9b412c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  _amount: {fileID: 0}
+  _amountAvailable: {fileID: 0}
+  _amountOutOfAvailable: {fileID: 3173188982119158806}
+  _hasEnough: {fileID: 5521145607061083245}
 --- !u!222 &7235045390550927668
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -70,7 +127,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 6eb46d981c170024e9e35d8eddee6c48, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -78,7 +135,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4405004391789522024
+--- !u!114 &2869498439499755278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,21 +144,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 800150465859267168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9e7bc8d137c1e489f4a3311d3e32ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 440c09912609f4b4ca37af888612c266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemSlot:
-    _amount: 0
-    _item: {fileID: 0}
-  _nameText: {fileID: 0}
-  _rarityStars: {fileID: 0}
-  _icon: {fileID: 1721602955301487542}
-  _planetIcon: {fileID: 0}
-  _descriptionText: {fileID: 0}
-  _amountText: {fileID: 3173188982119158806}
-  OnWasPressed:
-    m_PersistentCalls:
-      m_Calls: []
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _graphic: {fileID: 3173188982119158806}
 --- !u!1 &7119345142979076596
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,8 +233,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6828024937110745949}
+  - component: {fileID: 5521145607061083245}
   - component: {fileID: 2498965723550945361}
   - component: {fileID: 3173188982119158806}
+  - component: {fileID: 1029331414827999086}
   m_Layer: 5
   m_Name: Info(Text)
   m_TagString: Untagged
@@ -214,6 +263,54 @@ RectTransform:
   m_AnchoredPosition: {x: -43.1, y: -16.833}
   m_SizeDelta: {x: 91.4595, y: 41.436}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5521145607061083245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139692590203496262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08e31ff6574a2a49b863ec9ef31c69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTrueEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1029331414827999086}
+        m_TargetAssemblyTypeName: Spacetaurant.ColorSetter, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFalseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2869498439499755278}
+        m_TargetAssemblyTypeName: Spacetaurant.ColorSetter, Assembly-CSharp
+        m_MethodName: SetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTriggerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerInversedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!222 &2498965723550945361
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -311,3 +408,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1029331414827999086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139692590203496262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440c09912609f4b4ca37af888612c266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _color: {r: 0, g: 1, b: 0.02341938, a: 1}
+  _graphic: {fileID: 3173188982119158806}

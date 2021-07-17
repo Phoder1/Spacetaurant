@@ -29,7 +29,7 @@ namespace Spacetaurant.UI
     }
     public abstract class ItemCollection<TUiSlot, TSlot, T> : MonoBehaviour
         where TUiSlot : ItemUiSlot<TSlot, T>
-        where TSlot : ItemSlot<T>
+        where TSlot : Slot<T>
         where T : ItemSO
     {
         [SerializeField, AssetsOnly]

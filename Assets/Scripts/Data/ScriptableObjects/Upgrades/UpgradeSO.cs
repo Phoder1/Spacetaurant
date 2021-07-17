@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Spacetaurant
 {
-    public enum UpgradeType { Restaurant, Stuff, Garage, Decoration }
+    public enum UpgradeType { Restaurant, Staff, Garage, Inventory}
     [CreateAssetMenu(menuName = SoUtillities.SoMenuName + "Upgrade")]
     [InlineEditor]
     public class UpgradeSO : EntitySO

@@ -36,7 +36,7 @@ namespace Spacetaurant
 
     [Serializable]
     [InlineProperty]
-    public abstract class ItemSlot<T> : DirtyData where T : EntitySO
+    public abstract class Slot<T> : DirtyData
     {
         [SerializeField, HorizontalGroup, HideLabel]
         private int _amount;
@@ -53,16 +53,20 @@ namespace Spacetaurant
             set => Setter(ref _item, value);
         }
 
-        public ItemSlot(int amount, T item)
+        public Slot(int amount, T item)
         {
             _amount = amount;
             _item = item;
             IsDirty = true;
         }
 
-        public bool Equals(ItemSlot<T> slot)
+        public bool Equals(Slot<T> slot)
         {
-            return slot == null || Amount != slot.Amount || Item != slot.Item || base.Equals(slot);
+            return slot == null || Amount != slot.Amount || !Item.Equals(slot.Item) || base.Equals(slot);
         }
+    }
+    public class EntitySlot : Slot<EntitySO>
+    {
+        public EntitySlot(int amount, EntitySO item) : base(amount, item) { }
     }
 }

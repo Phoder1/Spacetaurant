@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2300073363098022890}
+  - component: {fileID: 1214977502259890674}
   - component: {fileID: 1135217805055849552}
   - component: {fileID: 9088638638836481149}
   - component: {fileID: 3507835324348172309}
@@ -38,6 +39,29 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1214977502259890674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415973176249153965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4367ede48637c84291e170964599fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerTime: 1
+  _triggerOnlyInside: 1
+  OnTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHoverEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHoverExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!222 &1135217805055849552
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -119,16 +143,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9088638638836481149}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Spacetaurant.UI.WindowGroupHandler, Assembly-CSharp
-        m_MethodName: SelectWindow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Spacetaurant.UI.UiWindow, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
