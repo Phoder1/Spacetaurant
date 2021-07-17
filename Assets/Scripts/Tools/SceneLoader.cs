@@ -25,6 +25,13 @@ namespace Spacetaurant
         private bool _lockAtLoad = true;
 
         [BoxGroup("Load")]
+        [SerializeField]
+        private bool _dontDestroyOnLoad = false;
+        [BoxGroup("Load")]
+        [SerializeField]
+        private int _loadDelay;
+
+        [BoxGroup("Load")]
         [SerializeField, ShowIf("@_loadMode == SceneLoadMode.ByName"), ValueDropdown("ScenesNames"), InspectorName("Scene"), ValidateInput("@_sceneName != string.Empty")]
         private string _sceneName;
 
@@ -39,7 +46,10 @@ namespace Spacetaurant
 
         [BoxGroup("Unload")]
         [SerializeField, MinValue(0), ShowIf("@_sceneUnloadMode == SceneUnloadMode.Delay"), SuffixLabel("S")]
-        private float _delay;
+        private float _preUnloadDelay;
+        [BoxGroup("Unload")]
+        [SerializeField, MinValue(0), ShowIf("@_sceneUnloadMode == SceneUnloadMode.Delay"), SuffixLabel("S")]
+        private float _postUnloadDelay;
 
         [BoxGroup("Unload")]
         [SerializeField, ShowIf("@_sceneUnloadMode == SceneUnloadMode.IReadyable"), ValidateInput("@_readyable is IReadyable")]
@@ -107,7 +117,13 @@ namespace Spacetaurant
             {
                 yield return null;
 
+                if (_dontDestroyOnLoad)
+                    DontDestroyOnLoad(gameObject);
+
                 OnStartLoadingScene?.Invoke();
+
+                if (_loadDelay != 0)
+                    yield return new WaitForSecondsRealtime(_loadDelay);
 
                 if (_lockAtLoad)
                     _locked = true;
@@ -126,7 +142,14 @@ namespace Spacetaurant
             {
                 yield return null;
 
+                if (_dontDestroyOnLoad)
+                    DontDestroyOnLoad(gameObject);
+
                 OnStartLoadingScene?.Invoke();
+
+                if (_loadDelay != 0)
+                    yield return new WaitForSecondsRealtime(_loadDelay);
+
 
                 if (_lockAtLoad)
                     _locked = true;
@@ -150,10 +173,10 @@ namespace Spacetaurant
                     UnloadActiveScene();
                     break;
                 case SceneUnloadMode.Delay:
-                    if (_delay <= 0)
+                    if (_preUnloadDelay <= 0)
                         UnloadActiveScene();
                     else
-                        Invoke(nameof(UnloadActiveScene), _delay);
+                        Invoke(nameof(UnloadActiveScene), _preUnloadDelay);
                     break;
                 case SceneUnloadMode.IReadyable:
                     if (_readyable != null && _readyable is IReadyable readyable)
@@ -172,11 +195,21 @@ namespace Spacetaurant
         }
         private IEnumerator UnloadActiveSceneRoutine()
         {
+
+            yield return null;
+
             OnStartUnloadingScene?.Invoke();
+
+            if (_preUnloadDelay != 0)
+                yield return new WaitForSecondsRealtime(_preUnloadDelay);
 
             var _activeScene = SceneManager.GetActiveScene();
 
             yield return SceneManager.UnloadSceneAsync(_activeScene);
+
+
+            if (_postUnloadDelay != 0)
+                yield return new WaitForSecondsRealtime(_postUnloadDelay);
 
             if (_unlockAfterUnload)
                 _locked = false;
