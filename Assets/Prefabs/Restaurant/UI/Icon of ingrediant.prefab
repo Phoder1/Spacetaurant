@@ -208,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8002614435771505435}
   - component: {fileID: 717301872874570979}
+  - component: {fileID: 3784078154294543737}
   - component: {fileID: 8002614435771505433}
   - component: {fileID: 8002614435771505432}
   - component: {fileID: 3655857464629071762}
@@ -252,6 +253,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnLoad:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3784078154294543737}
+        m_TargetAssemblyTypeName: Spacetaurant.ItemLoader`1[[Spacetaurant.Crafting.ResourceSO,
+          Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _amount: {fileID: 0}
+  _amountAvailable: {fileID: 0}
+  _amountOutOfAvailable: {fileID: 1381025953839161071}
+  _hasEnough: {fileID: 4199694740429898038}
+--- !u!114 &3784078154294543737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8002614435771505434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a798569146b7214ba6f2861ef479264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLoad:
+    m_PersistentCalls:
       m_Calls: []
   _nameText: {fileID: 0}
   _rarityStars: {fileID: 0}
@@ -259,9 +292,6 @@ MonoBehaviour:
   _planetIcon: {fileID: 0}
   _planetName: {fileID: 0}
   _descriptionText: {fileID: 0}
-  _amount: {fileID: 0}
-  _amountOutOfAvailable: {fileID: 1381025953839161071}
-  _hasEnough: {fileID: 4199694740429898038}
 --- !u!222 &8002614435771505433
 CanvasRenderer:
   m_ObjectHideFlags: 0

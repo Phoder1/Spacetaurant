@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8206907301929236548}
   - component: {fileID: 6157407095329248527}
   - component: {fileID: -1698335821735264506}
+  - component: {fileID: 8894344872351440881}
   m_Layer: 5
   m_Name: PopUp_Item
   m_TagString: Untagged
@@ -76,6 +77,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: {x: 550, y: 150, z: 0}
+--- !u!114 &8894344872351440881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206907301929236555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a798569146b7214ba6f2861ef479264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  _nameText: {fileID: 8206907302215035300}
+  _rarityStars: {fileID: 6327114405615658821}
+  _icon: {fileID: 8206907303640582269}
+  _planetIcon: {fileID: 8206907302007964119}
+  _planetName: {fileID: 8206907303098629823}
+  _descriptionText: {fileID: 0}
 --- !u!1 &8206907302007964117
 GameObject:
   m_ObjectHideFlags: 0
